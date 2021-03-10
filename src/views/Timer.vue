@@ -77,7 +77,7 @@ export default {
       this.timerInterval = setInterval(() => {
         this.timePassed = this.timePassed += 1;
         this.timeLeft = this.TIME_LIMIT - this.timePassed;
-        document.getElementById("base-timer-label").innerHTML = formatTime(
+        document.getElementById("base-timer-label").innerHTML = this.formatTime(
           this.timeLeft
         );
         setCircleDasharray();
@@ -87,8 +87,17 @@ export default {
           onTimesUp();
         }
       }, 1000);
-    }
+    },
+    formatTime (time) {
+      const minutes = Math.floor(time / 60);
+      let seconds = time % 60;
 
+      if (seconds < 10) {
+        seconds = `0${seconds}`;
+      }
+
+      return `${minutes}:${seconds}`;
+    }
   }
 }
 
