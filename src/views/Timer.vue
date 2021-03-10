@@ -80,13 +80,17 @@ export default {
         document.getElementById("base-timer-label").innerHTML = this.formatTime(
           this.timeLeft
         );
-        setCircleDasharray();
+        this.setCircleDasharray();
         this.setRemainingPathColor(this.timeLeft);
 
         if (this.timeLeft === 0) {
-          onTimesUp();
+          this.onTimesUp();
         }
       }, 1000);
+    },
+
+    onTimesUp() {
+      clearInterval(this.timerInterval);
     },
 
     formatTime (time) {
@@ -129,7 +133,9 @@ export default {
     calculateTimeFraction() {
       const rawTimeFraction = this.timeLeft / this.TIME_LIMIT;
       return rawTimeFraction - (1 / this.TIME_LIMIT) * (1 - rawTimeFraction);
-    }
+    },
+
+
   }
 }
 
