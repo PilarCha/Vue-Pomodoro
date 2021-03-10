@@ -99,7 +99,7 @@ export default {
     },
 
     setRemainingPathColor(timeLeft) {
-      const { alert, warning, info } = COLOR_CODES;
+      const { alert, warning, info } = this.COLOR_CODES;
       if (timeLeft <= alert.threshold) {
         document
           .getElementById("base-timer-path-remaining")
@@ -115,6 +115,20 @@ export default {
           .getElementById("base-timer-path-remaining")
           .classList.add(warning.color);
       }
+    },
+
+    setCircleDasharray() {
+      const circleDasharray = `${(
+        this.calculateTimeFraction() * this.FULL_DASH_ARRAY
+      ).toFixed(0)} 283`;
+      document
+        .getElementById("base-timer-path-remaining")
+        .setAttribute("stroke-dasharray", circleDasharray);
+    },
+
+    calculateTimeFraction() {
+      const rawTimeFraction = this.timeLeft / this.TIME_LIMIT;
+      return rawTimeFraction - (1 / this.TIME_LIMIT) * (1 - rawTimeFraction);
     }
   }
 }
