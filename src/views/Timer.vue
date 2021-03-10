@@ -27,18 +27,6 @@
           </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col s12">
-        <button class="btn waves-effect waves-light green" type="submit" name="action" onclick="startTimer()">Start
-          <i class="material-icons right"></i>
-        </button>
-      </div>
-      <div class="col s12">
-        <button class="btn waves-effect waves-teal pink" type="submit" name="action" onclick="openTimerWindow()">Select Time
-          <i class="material-icons right"></i>
-        </button>
-      </div>
-    </div>
   </div>
 
 </template>
@@ -53,11 +41,11 @@ export default {
         },
         warning: {
           color: "orange",
-          threshold: this.WARNING_THRESHOLD
+          threshold: 10
         },
         alert: {
           color: "red",
-          threshold: this.ALERT_THRESHOLD
+          threshold: 5
         }
       },
       FULL_DASH_ARRAY: 283,
@@ -81,7 +69,7 @@ export default {
           this.timeLeft
         );
         this.setCircleDasharray();
-        this.setRemainingPathColor(this.timeLeft);
+        // this.setRemainingPathColor(this.timeLeft);
 
         if (this.timeLeft === 0) {
           this.onTimesUp();
@@ -102,24 +90,24 @@ export default {
       return `${minutes}:${seconds}`;
     },
 
-    setRemainingPathColor(timeLeft) {
-      const { alert, warning, info } = this.COLOR_CODES;
-      if (timeLeft <= alert.threshold) {
-        document
-          .getElementById("base-timer-path-remaining")
-          .classList.remove(warning.color);
-        document
-          .getElementById("base-timer-path-remaining")
-          .classList.add(alert.color);
-      } else if (timeLeft <= warning.threshold) {
-        document
-          .getElementById("base-timer-path-remaining")
-          .classList.remove(info.color);
-        document
-          .getElementById("base-timer-path-remaining")
-          .classList.add(warning.color);
-      }
-    },
+    // setRemainingPathColor(timeLeft) {
+    //   const { alert, warning, info } = this.COLOR_CODES;
+    //   if (timeLeft <= alert.threshold) {
+    //     document
+    //       .getElementById("base-timer-path-remaining")
+    //       .classList.remove(warning.color);
+    //     document
+    //       .getElementById("base-timer-path-remaining")
+    //       .classList.add(alert.color);
+    //   } else if (timeLeft <= warning.threshold) {
+    //     document
+    //       .getElementById("base-timer-path-remaining")
+    //       .classList.remove(info.color);
+    //     document
+    //       .getElementById("base-timer-path-remaining")
+    //       .classList.add(warning.color);
+    //   }
+    // },
 
     setCircleDasharray() {
       const circleDasharray = `${(
