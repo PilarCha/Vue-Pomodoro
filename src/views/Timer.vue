@@ -52,9 +52,10 @@ export default {
       WARNING_THRESHOLD: 10,
       ALERT_THRESHOLD: 5,
       TIME_LIMIT: 20,
-      timeLeft: this.TIME_LIMIT,
+      timeLeft: 20,
       timerInterval: null,
-      remainingPathColor: this.COLOR_CODES.info.color,
+      remainingPathColor: "green",
+      timePassed: 0,
     }
   },
   mounted() {
@@ -69,7 +70,7 @@ export default {
           this.timeLeft
         );
         this.setCircleDasharray();
-        // this.setRemainingPathColor(this.timeLeft);
+        this.setRemainingPathColor(this.timeLeft);
 
         if (this.timeLeft === 0) {
           this.onTimesUp();
@@ -90,24 +91,24 @@ export default {
       return `${minutes}:${seconds}`;
     },
 
-    // setRemainingPathColor(timeLeft) {
-    //   const { alert, warning, info } = this.COLOR_CODES;
-    //   if (timeLeft <= alert.threshold) {
-    //     document
-    //       .getElementById("base-timer-path-remaining")
-    //       .classList.remove(warning.color);
-    //     document
-    //       .getElementById("base-timer-path-remaining")
-    //       .classList.add(alert.color);
-    //   } else if (timeLeft <= warning.threshold) {
-    //     document
-    //       .getElementById("base-timer-path-remaining")
-    //       .classList.remove(info.color);
-    //     document
-    //       .getElementById("base-timer-path-remaining")
-    //       .classList.add(warning.color);
-    //   }
-    // },
+    setRemainingPathColor(timeLeft) {
+      const { alert, warning, info } = this.COLOR_CODES;
+      if (timeLeft <= alert.threshold) {
+        document
+          .getElementById("base-timer-path-remaining")
+          .classList.remove(warning.color);
+        document
+          .getElementById("base-timer-path-remaining")
+          .classList.add(alert.color);
+      } else if (timeLeft <= warning.threshold) {
+        document
+          .getElementById("base-timer-path-remaining")
+          .classList.remove(info.color);
+        document
+          .getElementById("base-timer-path-remaining")
+          .classList.add(warning.color);
+      }
+    },
 
     setCircleDasharray() {
       const circleDasharray = `${(
