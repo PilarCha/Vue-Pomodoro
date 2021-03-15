@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div v-cloak class="container">
     <div class="row">
       <div class="col s12">
           <div id="app">
@@ -10,7 +10,7 @@
                   <path
                     id="base-timer-path-remaining"
                     stroke-dasharray="283"
-                    class="base-timer__path-remaining ${remainingPathColor}"
+                    class="base-timer__path-remaining {remainingPathColor}"
                     d="
                       M 50, 50
                       m -45, 0
@@ -58,7 +58,7 @@ export default {
       timePassed: 0,
     }
   },
-  mounted() {
+  created() {
     this.startTimer();
   },
   methods: {
