@@ -1,6 +1,7 @@
 <template>
   <div v-cloak class="container">
-    <div class="row">
+    <Loading v-if="isLoading"/>
+    <div v-if="!isLoading" class="row">
       <div class="col s12">
           <div id="app">
             <div class="base-timer">
@@ -30,13 +31,15 @@
   </div>
 
 </template>
-
 <script>
+import Loading from '../components/loading.vue'
 export default {
   components: {
+    Loading
   },
   data() {
     return {
+      isLoading: true,
       COLOR_CODES: {
         info: {
           color: "green"
