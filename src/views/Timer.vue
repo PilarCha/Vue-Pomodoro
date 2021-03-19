@@ -33,6 +33,8 @@
 
 <script>
 export default {
+  components: {
+  },
   data() {
     return {
       COLOR_CODES: {

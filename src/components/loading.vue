@@ -1,19 +1,19 @@
 <template>
-  <div class="fingerprint-spinner">
-    <div class="spinner-ring"></div>
-    <div class="spinner-ring"></div>
-    <div class="spinner-ring"></div>
-    <div class="spinner-ring"></div>
-    <div class="spinner-ring"></div>
-    <div class="spinner-ring"></div>
-    <div class="spinner-ring"></div>
-    <div class="spinner-ring"></div>
-    <div class="spinner-ring"></div>
+  <div id="app">
+    <fingerprint-spinner
+      :animation-duration="1500"
+      :size="64"
+      color="#ff1d5e"
+    />
   </div>
 </template>
 
 <script>
+import {FingerprintSpinner} from 'epic-spinners'
 export default {
+  components: {
+    FingerprintSpinner,
+  }
 }
 </script>
 
