@@ -30,6 +30,7 @@
 
 </template>
 <script>
+
 import Loading from '../components/loading.vue'
 export default {
   components: {
