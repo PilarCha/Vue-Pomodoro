@@ -21,9 +21,7 @@
                   ></path>
                 </g>
               </svg>
-             <span id="base-timer-label" class="base-timer__label">${formatTime(
-               timeLeft
-             )}</span>
+             <span id="base-timer-label" class="base-timer__label">{{formatTime(timeLeft)}}</span>
            </div>
           </div>
       </div>
@@ -72,9 +70,7 @@ export default {
         this.timePassed = this.timePassed += 1;
         this.timeLeft = this.TIME_LIMIT - this.timePassed;
         this.isLoading = false;
-        document.getElementById("base-timer-label").innerHTML = this.formatTime(
-          this.timeLeft
-        );
+        this.formatTime(this.timeLeft);
         this.setCircleDasharray();
         this.setRemainingPathColor(this.timeLeft);
 
