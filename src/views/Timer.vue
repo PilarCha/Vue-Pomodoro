@@ -10,8 +10,8 @@
                   <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
                   <path
                     id="base-timer-path-remaining"
-                    stroke-dasharray="283"
-                    class="base-timer__path-remaining {remainingPathColor}"
+                    stroke-dasharray="remainingDashCirle"
+                    v-bind:class = "remainingPathColor"
                     d="
                       M 50, 50
                       m -45, 0
@@ -30,7 +30,6 @@
 
 </template>
 <script>
-
 import Loading from '../components/loading.vue'
 export default {
   components: {
@@ -52,13 +51,14 @@ export default {
           threshold: 5
         }
       },
+      remainingDashCirle : 34,
       FULL_DASH_ARRAY: 283,
       WARNING_THRESHOLD: 10,
       ALERT_THRESHOLD: 5,
       TIME_LIMIT: 20,
       timeLeft: 20,
       timerInterval: null,
-      remainingPathColor: "green",
+      remainingPathColor: "base-timer__path-remaining green",
       timePassed: 0,
     }
   },
@@ -95,21 +95,11 @@ export default {
     },
 
     setRemainingPathColor(timeLeft) {
-      const { alert, warning, info } = this.COLOR_CODES;
+      const { alert, warning} = this.COLOR_CODES;
       if (timeLeft <= alert.threshold) {
-        document
-          .getElementById("base-timer-path-remaining")
-          .classList.remove(warning.color);
-        document
-          .getElementById("base-timer-path-remaining")
-          .classList.add(alert.color);
+        this.remainingPathColor =  "base-timer__path-remaining red"
       } else if (timeLeft <= warning.threshold) {
-        document
-          .getElementById("base-timer-path-remaining")
-          .classList.remove(info.color);
-        document
-          .getElementById("base-timer-path-remaining")
-          .classList.add(warning.color);
+        this.remainingPathColor = "base-timer__path-remaining orange"
       }
     },
 
@@ -117,9 +107,10 @@ export default {
       const circleDasharray = `${(
         this.calculateTimeFraction() * this.FULL_DASH_ARRAY
       ).toFixed(0)} 283`;
-      document
-        .getElementById("base-timer-path-remaining")
-        .setAttribute("stroke-dasharray", circleDasharray);
+      this.remainingDashCirle = circleDasharray
+      // document
+      //   .getElementById("base-timer-path-remaining")
+      //   .setAttribute("stroke-dasharray", circleDasharray);
     },
 
     calculateTimeFraction() {

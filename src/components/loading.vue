@@ -32,12 +32,12 @@ export default {
     }
 
     .half-circle-spinner .circle.circle-1 {
-      border-top-color: #ff1d5e;
+      border-top-color: rgb(65, 184, 131);
       animation: half-circle-spinner-animation 1s infinite;
     }
 
     .half-circle-spinner .circle.circle-2 {
-      border-bottom-color: #ff1d5e;
+      border-bottom-color: rgb(65, 184, 131);
       animation: half-circle-spinner-animation 1s infinite alternate;
     }
 
@@ -51,3 +51,5 @@ export default {
       }
     }
 </style>
+
+<!-- class="base-timer__path-remaining {remainingPathColor}" -->
