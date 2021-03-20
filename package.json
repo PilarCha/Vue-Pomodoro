@@ -14,7 +14,6 @@
   "main": "background.js",
   "dependencies": {
     "core-js": "^3.6.5",
-    "electron-positioner": "^4.1.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuetify": "^2.4.0"
