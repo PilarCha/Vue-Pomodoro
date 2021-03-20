@@ -4,7 +4,6 @@ import { app, protocol, BrowserWindow } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
-const Positioner = require('electron-positioner');
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
@@ -66,9 +65,7 @@ app.on('ready', async () => {
       console.error('Vue Devtools failed to install:', e.toString())
     }
   }
-  await createWindow()
-  let positioner = new Positioner(win);
-  positioner.move('bottomRight')
+  createWindow()
 })
 
 // Exit cleanly on request from parent process in development mode.
