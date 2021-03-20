@@ -39,9 +39,6 @@ export default {
     return {
       isLoading: true,
       COLOR_CODES: {
-        info: {
-          color: "green"
-        },
         warning: {
           color: "orange",
           threshold: 10
