@@ -71,6 +71,7 @@ export default {
       this.timerInterval = setInterval(() => {
         this.timePassed = this.timePassed += 1;
         this.timeLeft = this.TIME_LIMIT - this.timePassed;
+        this.isLoading = false;
         document.getElementById("base-timer-label").innerHTML = this.formatTime(
           this.timeLeft
         );
