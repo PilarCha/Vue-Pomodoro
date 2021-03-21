@@ -118,7 +118,6 @@ export default {
 
   }
 }
-
 </script>
 <style src="@/assets/styles/timer.css">
 </style>
