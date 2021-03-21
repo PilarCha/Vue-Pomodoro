@@ -4,11 +4,11 @@
 }
 
 :root {
-  --dark-purp: #2e2a5d;
-  --light-purp: #7c52a8;
-  --dark-cyan: #0e5d77;
-  --mid-cyan: #068592;
-  --light-cyan: #5feaf8;
+  --neon-pink: #ff00c1;
+  --light-purp:  	#9600ff;
+  --dark-purp: #4900ff;
+  --mid-cyan: #00b8ff;
+  --light-cyan: #00fff9;
   --blue: #156cdb;
 }
 
@@ -40,8 +40,8 @@ body {
 
 .base-timer__path-elapsed {
   stroke-width: 6px;
-  stroke: #7c52a8;
-  stroke-opacity:.3;
+  stroke: var(--light-purp);
+  stroke-opacity:.5;
 }
 
 .base-timer__path-remaining {
@@ -52,23 +52,22 @@ body {
   transition: 1s linear all;
   fill-rule: nonzero;
   stroke: currentColor;
-  z-index: 999;
 }
 
 .base-timer__path-remaining.green {
-  color: #5feaf8;
+  color: var(--mid-cyan);
 }
 
 .base-timer__path-remaining.orange {
-  color: #156cdb;
+  color: var(--light-cyan);
 }
 
 .base-timer__path-remaining.red {
-  color: #0e5d77;
+  color: var(--neon-pink);
 }
 
 .base-timer__label {
-  color:#068592;
+  color:var(--neon-pink);
   position: absolute;
   width: 250px;
   height: 250px;
@@ -76,8 +75,5 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
-  background-color: #2e2a5d;
-  border-radius: 141px;
-  z-index: 90;
+  font-size: 35px;
 }

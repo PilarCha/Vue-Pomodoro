@@ -41,11 +41,11 @@ export default {
       COLOR_CODES: {
         warning: {
           color: "orange",
-          threshold: 10
+          threshold: 20
         },
         alert: {
           color: "red",
-          threshold: 5
+          threshold: 10
         }
       },
       remainingDashCircle: 34,
