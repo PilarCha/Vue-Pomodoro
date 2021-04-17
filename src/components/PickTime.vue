@@ -1,42 +1,33 @@
-<div id="app">
-  <v-app id="inspire">
-    <v-row justify="center">
-      <v-dialog
-        v-model="dialog"
-        fullscreen
-        hide-overlay
-        transition="dialog-top-transition"
-      >
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            color="primary"
-            dark
-            v-bind="attrs"
-            v-on="on"
-          >
-            Open Dialog
-          </v-btn>
-        </template>
-            <v-list-item>
-              <v-list-item-content>
-                <v-list-item-title @click="dialog = false">Content filtering</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-        </v-card>
-      </v-dialog>
-    </v-row>
-  </v-app>
-</div>
+<template>
+  <div id="myNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="overlay-content">
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="#">Contact</a>
+    </div>
+    <h2>Fullscreen Overlay Nav Example</h2>
+    <p>Click on the element below to open the fullscreen overlay navigation menu.</p>
+    <p>In this example, the navigation menu will slide in, from left to right:</p>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+  </div>
+</template>
+
 <script>
-  export default {
-    data () {
-      return {
-        dialog: false,
-        notifications: false,
-        sound: true,
-        widgets: false,
-      }
+
+export default {
+  methods: {
+    openNav() {
+      document.getElementById("myNav").style.width = "100%";
     },
+
+    closeNav() {
+      document.getElementById("myNav").style.width = "0%";
+    }
   }
+}
 </script>
+
+<style src="@/assets/styles/pickTime.css">
+</style>

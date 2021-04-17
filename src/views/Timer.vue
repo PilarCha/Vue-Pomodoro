@@ -1,7 +1,7 @@
 <template>
-  <div v-cloak class="container">
-    <Loading v-if="isLoading"/>
-    <div v-if="!isLoading" class="row">
+  <div class="container">
+    <Loading v-if="isBreak"/>
+    <div v-if="!isBreak" class="row">
       <div class="col s12">
           <div id="app">
             <div class="base-timer">
@@ -30,29 +30,30 @@
 
 </template>
 <script>
-import Loading from '../components/loading.vue'
+import Loading from '../components/break.vue'
 export default {
   components: {
     Loading
   },
   data() {
     return {
-      isLoading: false,
+      isBreak:false,
       COLOR_CODES: {
         warning: {
           color: "orange",
-          threshold: 20
+          threshold: 30
         },
         alert: {
           color: "red",
-          threshold: 10
+          threshold: 15
         }
       },
       remainingDashCircle: 34,
       FULL_DASH_ARRAY: 283,
-      WARNING_THRESHOLD: 10,
-      ALERT_THRESHOLD: 5,
-      TIME_LIMIT: 300,
+      WARNING_THRESHOLD: 30,
+      ALERT_THRESHOLD: 15,
+      // TIME_LIMIT: 1500, 25 mins
+      TIME_LIMIT: 10,
       timeLeft: null,
       timerInterval: null,
       remainingPathColor: "base-timer__path-remaining green",
@@ -79,6 +80,8 @@ export default {
 
     onTimesUp() {
       clearInterval(this.timerInterval);
+      this.isBreak = true;
+      // window.resizeTo(screen.availWidth, screen.availHeight);
     },
 
     formatTime (time) {
@@ -100,14 +103,9 @@ export default {
     },
 
     setCircleDasharray() {
-      const circleDasharray = `${(
-        this.calculateTimeFraction() * this.FULL_DASH_ARRAY
-      ).toFixed(0)} 283`;
+      const circleDasharray = `${(this.calculateTimeFraction() * this.FULL_DASH_ARRAY).toFixed(0)} 283`;
       this.remainingDashCircle = circleDasharray
 
-      // document
-      //   .getElementById("base-timer-path-remaining")
-      //   .setAttribute("stroke-dasharray", circleDasharray);
     },
 
     calculateTimeFraction() {
