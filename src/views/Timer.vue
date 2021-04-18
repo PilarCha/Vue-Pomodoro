@@ -30,7 +30,7 @@
 
 </template>
 <script>
-import Loading from '../components/break.vue'
+import Loading from '../components/congrats.vue'
 export default {
   components: {
     Loading
