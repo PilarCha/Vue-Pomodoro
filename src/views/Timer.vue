@@ -61,6 +61,11 @@ export default {
     this.startTimer();
   },
   methods: {
+
+    setUpTimer() {
+
+    }
+
     startTimer() {
       this.timerInterval = setInterval(() => {
       this.timePassed = this.timePassed += 1;
