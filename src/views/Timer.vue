@@ -66,15 +66,15 @@ export default {
   methods: {
     startTimer() {
       this.timerInterval = setInterval(() => {
-        this.timePassed = this.timePassed += 1;
-        this.timeLeft = this.TIME_LIMIT - this.timePassed;
-        this.formatTime(this.timeLeft);
-        this.setCircleDasharray();
-        this.setRemainingPathColor(this.timeLeft);
+      this.timePassed = this.timePassed += 1;
+      this.timeLeft = this.TIME_LIMIT - this.timePassed;
+      this.formatTime(this.timeLeft);
+      this.setCircleDasharray();
+      this.setRemainingPathColor(this.timeLeft);
 
-        if (this.timeLeft === 0) {
-          this.onTimesUp();
-        }
+      if (this.timeLeft === 0) {
+        this.onTimesUp();
+      }
       }, 1000);
     },
 

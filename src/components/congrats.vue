@@ -1,5 +1,7 @@
 <template>
-  <div id="confetti-container"></div>
+  <div id="confetti-container">
+    
+  </div>
 </template>
 
 <script>
@@ -10,13 +12,13 @@ export default {
       numConfettis: 400,
       container: document.getElementById('confetti-container'),
       colors: [
-        "#00FF73  ",
+        "#00FF73",
         "#6C4AE2",
-        "#FDDA00 ",
-        "#DB27DB ",
-        "#FA405A ",
-        "#51EFFC ",
-        "#EB640A "
+        "#FDDA00",
+        "#DB27DB",
+        "#FA405A",
+        "#51EFFC",
+        "#EB640A"
       ]
     }
   },
@@ -34,11 +36,11 @@ export default {
 
     animateConfetti() {
       for (var a = 1; a <= this.numConfettis; a++) {
-        var confetti = new Confetti();
+        // var confetti = new Confetti();
         this.create();
       }
       var confettis = document.querySelectorAll('.confetti');
-      for (var i = 0; i < confettis.length; i++) {
+      for (var i = 0; i < this.confettis.length; i++) {
         var opacity = Math.random() + 0.1;
         var animated = confettis[i].animate([
           { transform: 'translate3d(0,0,0)', opacity: opacity },
@@ -48,7 +50,7 @@ export default {
           iterations: Infinity,
           delay: -(Math.random() * 5000)
         });
-       confettiShower.push(animated);
+       this.confettiShower.push(animated);
       }
     }
   }
