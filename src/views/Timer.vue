@@ -18,6 +18,7 @@
                       a 45,45 0 1,0 -90,0
                     "
                   ></path>
+                  <h3>{{phase}}</h3>
                 </g>
               </svg>
              <span id="base-timer-label" class="base-timer__label">{{formatTime(timeLeft)}}</span>
@@ -45,6 +46,7 @@ export default {
           threshold: 15
         }
       },
+      totalRound:0,
       remainingDashCircle: 34,
       FULL_DASH_ARRAY: 283,
       WARNING_THRESHOLD: 30,
@@ -62,9 +64,37 @@ export default {
   },
   methods: {
 
-    setUpTimer() {
+    setUpTimer(isBreak) {
+      clearInterval(this.timerInterval);
+      this.remainingDashCircle = 34;
+      this.FULL_DASH_ARRAY = 283;
+      this.WARNING_THRESHOLD = 30;
+      this.ALERT_THRESHOLD = 15;
+      // TIME_LIMIT: 1500, 25 mins
+      this.timeLeft = null;
+      this.timerInterval = null;
+      this.remainingPathColor = "base-timer__path-remaining green";
+      this.timePassed = 0;
 
-    }
+      if(!isBreak) {
+        // focus time
+        this.TIME_LIMIT = 10;
+        this.isBreak = true;
+      } else {
+        // break time
+        this.TIME_LIMIT = 10;
+        this.totalRound += 1;
+        this.isBreak = false;
+      }
+
+      if(this.totalRound === 3) {
+        this.TIME_LIMIT = 1000
+        this.totalRound = 0;
+        this.isBreak = false;
+      }
+
+      this.startTimer();
+    },
 
     startTimer() {
       this.timerInterval = setInterval(() => {
@@ -75,21 +105,9 @@ export default {
       this.setRemainingPathColor(this.timeLeft);
 
       if (this.timeLeft === 0) {
-        this.onTimesUp();
+        this.setUpTimer(this.isBreak);
       }
       }, 1000);
-    },
-
-    onTimesUp() {
-      clearInterval(this.timerInterval);
-      // setup next round of timer depending if its a break or not
-      if(!this.isBreak) {
-        this.isBreak = true;
-        this.TIME_LIMIT = 360
-        this.startTimer();
-      } else {
-        this.isBreak = false;
-      }
     },
 
     formatTime (time) {
