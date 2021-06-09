@@ -1,7 +1,6 @@
 <template>
   <div class="container">
-    <Loading v-if="isBreak"/>
-    <div v-if="!isBreak" class="row">
+    <div class="row">
       <div class="col s12">
           <div id="app">
             <div class="base-timer">
@@ -30,10 +29,8 @@
 
 </template>
 <script>
-import Loading from '../components/congrats.vue'
 export default {
   components: {
-    Loading
   },
   data() {
     return {
@@ -80,8 +77,15 @@ export default {
 
     onTimesUp() {
       clearInterval(this.timerInterval);
-      this.isBreak = true;
-      // window.resizeTo(screen.availWidth, screen.availHeight);
+      // setup next round of timer depending if its a break or not
+      if(!this.isBreak) {
+        this.isBreak = true;
+        this.TIME_LIMIT = 360
+        this.startTimer();
+      } else {
+        this.isBreak = false;
+      }
+
     },
 
     formatTime (time) {
