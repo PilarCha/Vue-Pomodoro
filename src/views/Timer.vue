@@ -85,7 +85,6 @@ export default {
       } else {
         this.isBreak = false;
       }
-
     },
 
     formatTime (time) {
@@ -109,17 +108,14 @@ export default {
     setCircleDasharray() {
       const circleDasharray = `${(this.calculateTimeFraction() * this.FULL_DASH_ARRAY).toFixed(0)} 283`;
       this.remainingDashCircle = circleDasharray
-
     },
 
     calculateTimeFraction() {
       const rawTimeFraction = this.timeLeft / this.TIME_LIMIT;
       return rawTimeFraction - (1 / this.TIME_LIMIT) * (1 - rawTimeFraction);
     },
-
-
   }
 }
 </script>
-<style src="@/assets/styles/timer.css">
+  <style src="@/assets/styles/timer.css">
 </style>
