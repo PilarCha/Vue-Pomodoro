@@ -21,8 +21,7 @@
                 </g>
               </svg>
              <span id="base-timer-label" >{{formatTime(timeLeft)}}</span>
-             <h3 v-if="isBreak" class ="current-phase">Break</h3>
-             <h3 v-else class ="current-phase">Focus</h3>
+             <h3 class ="current-phase">{{current_phase}}</h3>
            </div>
           </div>
       </div>
@@ -36,7 +35,7 @@ export default {
   },
   data() {
     return {
-      isBreak:false,
+      current_phase:'Focus',
       COLOR_CODES: {
         warning: {
           color: "orange",
@@ -53,7 +52,7 @@ export default {
       WARNING_THRESHOLD: 30,
       ALERT_THRESHOLD: 15,
       // TIME_LIMIT: 1500, 25 mins
-      TIME_LIMIT: 10,
+      TIME_LIMIT: 20,
       timeLeft: null,
       timerInterval: null,
       remainingPathColor: "base-timer__path-remaining green",
@@ -65,7 +64,7 @@ export default {
   },
   methods: {
 
-    setUpTimer(isBreak) {
+    setUpTimer() {
       clearInterval(this.timerInterval);
       this.remainingDashCircle = 34;
       this.FULL_DASH_ARRAY = 283;
@@ -77,22 +76,36 @@ export default {
       this.remainingPathColor = "base-timer__path-remaining green";
       this.timePassed = 0;
 
-      if(!isBreak) {
-        // focus time
-        this.TIME_LIMIT = 10;
-        this.isBreak = true;
-      } else {
-        // break time
-        this.TIME_LIMIT = 10;
-        this.totalRound += 1;
-        this.isBreak = false;
+      switch(this.current_phase) {
+        case 'Focus':
+          this.TIME_LIMIT = 20;
+          this.current_phase = "Break";
+          break;
+        case 'Break':
+          this.TIME_LIMIT = 15;
+          this.totalRound += 1;
+          this.current_phase = "Focus";
+          break;
+        case 'Looong Break':
+          break;
       }
 
-      if(this.totalRound === 3) {
-        this.TIME_LIMIT = 1000
-        this.totalRound = 0;
-        this.isBreak = false;
-      }
+      // if(!isBreak) {
+      //   // focus time
+      //   this.TIME_LIMIT = 20;
+      //   this.current_phase = "Focus";
+      // } else {
+      //   // break time
+      //   this.TIME_LIMIT = 15;
+      //   this.totalRound += 1;
+      //   this.current_phase = "Break";
+      // }
+      // if(this.totalRound === 3) {
+      //   // looong break time
+      //   this.TIME_LIMIT = 30
+      //   this.totalRound = 0;
+      //   this.current_phase = "Looong Break";
+      // }
 
       this.startTimer();
     },
