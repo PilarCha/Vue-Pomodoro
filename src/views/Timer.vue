@@ -18,10 +18,11 @@
                       a 45,45 0 1,0 -90,0
                     "
                   ></path>
-                  <h3>{{phase}}</h3>
                 </g>
               </svg>
-             <span id="base-timer-label" class="base-timer__label">{{formatTime(timeLeft)}}</span>
+             <span id="base-timer-label" >{{formatTime(timeLeft)}}</span>
+             <h3 v-if="isBreak" class ="current-phase">Break</h3>
+             <h3 v-else class ="current-phase">Focus</h3>
            </div>
           </div>
       </div>
