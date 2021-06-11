@@ -91,12 +91,12 @@ export default {
 
       switch(this.current_phase) {
         case 'Focus':
-          this.TIME_LIMIT = 1500;
+          this.TIME_LIMIT = 360;
+          this.totalRound += 1;
           this.current_phase = "Break";
           break;
         case 'Break':
-          this.TIME_LIMIT = 360;
-          this.totalRound += 1;
+          this.TIME_LIMIT = 1500;
           this.current_phase = "Focus";
           break;
         case 'Looong Break':
