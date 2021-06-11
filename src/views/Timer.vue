@@ -20,8 +20,20 @@
                   ></path>
                 </g>
               </svg>
-             <span id="base-timer-label" >{{formatTime(timeLeft)}}</span>
-             <h3 class ="current-phase">{{current_phase}}</h3>
+              <div id="demo">
+                <transition name="fadeOne">
+                  <div v-show="show" class="transition-container">
+                    <span id="base-timer-label" >{{formatTime(timeLeft)}}</span>
+                  </div>
+                </transition>
+                <transition name="fadeTwo">
+                  <div v-show="show" class="transition-container">
+                    <h3 class ="current-phase">{{current_phase}}</h3>
+                  </div>
+                </transition>
+              </div>
+             <!-- <span id="base-timer-label" >{{formatTime(timeLeft)}}</span> -->
+             <!-- <h3 class ="current-phase">{{current_phase}}</h3> -->
            </div>
           </div>
       </div>
@@ -35,6 +47,7 @@ export default {
   },
   data() {
     return {
+      show: false,
       current_phase:'Focus',
       COLOR_CODES: {
         warning: {
@@ -111,6 +124,7 @@ export default {
     },
 
     startTimer() {
+      this.show = true;
       this.timerInterval = setInterval(() => {
       this.timePassed = this.timePassed += 1;
       this.timeLeft = this.TIME_LIMIT - this.timePassed;
@@ -119,7 +133,8 @@ export default {
       this.setRemainingPathColor(this.timeLeft);
 
       if (this.timeLeft === 0) {
-        this.setUpTimer(this.isBreak);
+        this.show = false;
+        this.setUpTimer();
       }
       }, 1000);
     },
