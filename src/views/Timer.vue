@@ -20,7 +20,7 @@
                   ></path>
                 </g>
               </svg>
-              <div id="demo">
+              <!-- <div id="demo">
                 <transition name="fadeOne">
                   <div v-show="show" class="transition-container">
                     <span id="base-timer-label" >{{formatTime(timeLeft)}}</span>
@@ -31,9 +31,9 @@
                     <h3 class ="current-phase">{{current_phase}}</h3>
                   </div>
                 </transition>
-              </div>
-             <!-- <span id="base-timer-label" >{{formatTime(timeLeft)}}</span> -->
-             <!-- <h3 class ="current-phase">{{current_phase}}</h3> -->
+              </div> -->
+             <span id="base-timer-label" >{{formatTime(timeLeft)}}</span>
+             <h3 class ="current-phase">{{current_phase}}</h3>
            </div>
           </div>
       </div>
@@ -64,8 +64,8 @@ export default {
       FULL_DASH_ARRAY: 283,
       WARNING_THRESHOLD: 30,
       ALERT_THRESHOLD: 15,
-      // TIME_LIMIT: 1500, 25 mins
-      TIME_LIMIT: 20,
+      TIME_LIMIT: 1500,
+      // TIME_LIMIT: 20,
       timeLeft: null,
       timerInterval: null,
       remainingPathColor: "base-timer__path-remaining green",
@@ -91,11 +91,11 @@ export default {
 
       switch(this.current_phase) {
         case 'Focus':
-          this.TIME_LIMIT = 20;
+          this.TIME_LIMIT = 1500;
           this.current_phase = "Break";
           break;
         case 'Break':
-          this.TIME_LIMIT = 15;
+          this.TIME_LIMIT = 360;
           this.totalRound += 1;
           this.current_phase = "Focus";
           break;
@@ -119,8 +119,8 @@ export default {
       //   this.totalRound = 0;
       //   this.current_phase = "Looong Break";
       // }
-
-      this.startTimer();
+      // start timer after 2 seconds
+      setTimeout(this.startTimer,2000);
     },
 
     startTimer() {
