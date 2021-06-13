@@ -34,7 +34,7 @@
               </div> -->
               <h3 class = "round-counter">{{totalRound}} / 3</h3>
              <span id="base-timer-label" >{{formatTime(timeLeft)}}</span>
-             <h3 class ="current-phase" v-on:click="pauseStart">{{currentPhase}}</h3>
+             <h3 class ="current-phase" @click="paused = !paused">{{currentPhase}}</h3>
            </div>
           </div>
       </div>
@@ -51,16 +51,6 @@ export default {
       show: false,
       paused:true,
       currentPhase:'Focus',
-      colorCodes: {
-        warning: {
-          color: "orange",
-          threshold: 30
-        },
-        alert: {
-          color: "red",
-          threshold: 15
-        }
-      },
       totalRound:0,
       remainingDashCircle: 34,
       fullDashArray: 283,
@@ -72,22 +62,25 @@ export default {
       timerInterval: null,
       remainingPathColor: "base-timer__path-remaining green",
       timePassed: 0,
+      colorCodes: {
+        warning: {
+          color: "orange",
+          threshold: 30
+        },
+        alert: {
+          color: "red",
+          threshold: 15
+        }
+      },
     }
   },
   mounted() {
     this.setUpTimer();
   },
-  methods: {
 
-    setUpTimer() {
-      this.timeLeft = this.timeLimit - this.timePassed;
-      this.formatTime(this.timeLeft);
-      this.setRemainingPathColor(this.timeLeft);
-    },
-
-    pauseStart() {
-      // paused
-      if(this.paused) {
+  watch: {
+    paused() {
+      if(!this.paused) {
         this.startTimer()
         this.paused=false;
         return;
@@ -97,9 +90,17 @@ export default {
       console.log(previousInterval)
       clearInterval(this.timerInterval);
       this.paused=true
+    }
+  },
 
+  methods: {
+
+    setUpTimer() {
+      this.timeLeft = this.timeLimit - this.timePassed;
+      this.formatTime(this.timeLeft);
+      this.setRemainingPathColor(this.timeLeft);
     },
-
+    
     restartTimer() {
       clearInterval(this.timerInterval);
       this.remainingDashCircle = 34;
