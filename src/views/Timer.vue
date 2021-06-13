@@ -66,14 +66,14 @@ export default {
       WARNING_THRESHOLD: 30,
       ALERT_THRESHOLD: 15,
       // TIME_LIMIT: 1500,
-      TIME_LIMIT: 20, 
+      TIME_LIMIT: 20,
       timeLeft: null,
       timerInterval: null,
       remainingPathColor: "base-timer__path-remaining green",
       timePassed: 0,
     }
   },
-  created() {
+  mounted() {
     this.setUpTimer();
   },
   methods: {
@@ -81,18 +81,17 @@ export default {
     setUpTimer() {
       this.timeLeft = this.TIME_LIMIT - this.timePassed;
       this.formatTime(this.timeLeft);
-      // this.setCircleDasharray();
       this.setRemainingPathColor(this.timeLeft);
     },
 
     pauseStart() {
-      //
+      // paused
       if(this.paused) {
         this.startTimer()
         this.paused=false;
         return;
       }
-      // continue
+      // continue. save the timerinterval to continue it when starting again.
       let previousInterval = this.timerInterval
       console.log(previousInterval)
       clearInterval(this.timerInterval);
@@ -126,7 +125,8 @@ export default {
           break;
       }
 
-      setTimeout(this.startTimer,2000);
+      // setTimeout(this.startTimer,2000);
+      this.startTimer();
     },
 
     startTimer() {
@@ -145,6 +145,7 @@ export default {
       }, 1000);
     },
 
+    // setup methods below. No need to change these boyos
     formatTime (time) {
       const minutes = Math.floor(time / 60);
       let seconds = time % 60;
