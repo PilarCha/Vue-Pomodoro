@@ -74,6 +74,7 @@ export default {
       },
     }
   },
+
   mounted() {
     this.setUpTimer();
   },
@@ -86,8 +87,6 @@ export default {
         return;
       }
       // continue. save the timerinterval to continue it when starting again.
-      let previousInterval = this.timerInterval
-      console.log(previousInterval)
       clearInterval(this.timerInterval);
       this.paused=true
     }
@@ -100,7 +99,7 @@ export default {
       this.formatTime(this.timeLeft);
       this.setRemainingPathColor(this.timeLeft);
     },
-    
+
     restartTimer() {
       clearInterval(this.timerInterval);
       this.remainingDashCircle = 34;
