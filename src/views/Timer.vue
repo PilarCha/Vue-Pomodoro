@@ -28,12 +28,13 @@
                 </transition>
                 <transition name="fadeTwo">
                   <div v-show="show" class="transition-container">
-                    <h3 class ="current-phase">{{current_phase}}</h3>
+                    <h3 class ="current-phase">{{currentPhase}}</h3>
                   </div>
                 </transition>
               </div> -->
+              <h3 class = "round-counter">{{totalRound}} / 3</h3>
              <span id="base-timer-label" >{{formatTime(timeLeft)}}</span>
-             <h3 class ="current-phase" v-on:click="pauseStart">{{current_phase}}</h3>
+             <h3 class ="current-phase" v-on:click="pauseStart">{{currentPhase}}</h3>
            </div>
           </div>
       </div>
@@ -49,8 +50,8 @@ export default {
     return {
       show: false,
       paused:true,
-      current_phase:'Focus',
-      COLOR_CODES: {
+      currentPhase:'Focus',
+      colorCodes: {
         warning: {
           color: "orange",
           threshold: 30
@@ -62,11 +63,11 @@ export default {
       },
       totalRound:0,
       remainingDashCircle: 34,
-      FULL_DASH_ARRAY: 283,
-      WARNING_THRESHOLD: 30,
-      ALERT_THRESHOLD: 15,
-      // TIME_LIMIT: 1500,
-      TIME_LIMIT: 20,
+      fullDashArray: 283,
+      warningThreshold: 30,
+      alertThreshold: 15,
+      // timeLimit: 1500,
+      timeLimit: 5,
       timeLeft: null,
       timerInterval: null,
       remainingPathColor: "base-timer__path-remaining green",
@@ -79,7 +80,7 @@ export default {
   methods: {
 
     setUpTimer() {
-      this.timeLeft = this.TIME_LIMIT - this.timePassed;
+      this.timeLeft = this.timeLimit - this.timePassed;
       this.formatTime(this.timeLeft);
       this.setRemainingPathColor(this.timeLeft);
     },
@@ -102,46 +103,44 @@ export default {
     restartTimer() {
       clearInterval(this.timerInterval);
       this.remainingDashCircle = 34;
-      this.FULL_DASH_ARRAY = 283;
-      this.WARNING_THRESHOLD = 30;
-      this.ALERT_THRESHOLD = 15;
-      // TIME_LIMIT: 1500, 25 mins
+      // timeLimit: 1500, 25 mins
       this.timeLeft = null;
       this.timerInterval = null;
       this.remainingPathColor = "base-timer__path-remaining green";
       this.timePassed = 0;
+      let phase = this.currentPhase
 
-      switch(this.current_phase) {
-        case 'Focus':
-          this.TIME_LIMIT = 360;
-          this.totalRound += 1;
-          this.current_phase = "Break";
-          break;
-        case 'Break':
-          this.TIME_LIMIT = 1500;
-          this.current_phase = "Focus";
-          break;
-        case 'Looong Break':
-          break;
+      if(phase == 'Focus' && this.totalRound == 2) {
+        this.timeLimit = 30;
+        this.totalRound+=1;
+        this.currentPhase = "Long Break"
+      } else if(phase == 'Focus') {
+        this.timeLimit = 5;
+        this.totalRound += 1;
+        this.currentPhase = "Break";
+      } else {
+        this.timeLimit = 5;
+        this.currentPhase = "Focus";
+        if(phase == "Long Break")
+          this.totalRound = 0;
       }
 
-      // setTimeout(this.startTimer,2000);
       this.startTimer();
     },
 
     startTimer() {
       this.show = true;
       this.timerInterval = setInterval(() => {
-      this.timePassed = this.timePassed += 1;
-      this.timeLeft = this.TIME_LIMIT - this.timePassed;
-      this.formatTime(this.timeLeft);
-      this.setCircleDasharray();
-      this.setRemainingPathColor(this.timeLeft);
+        this.timePassed = this.timePassed += 1;
+        this.timeLeft = this.timeLimit - this.timePassed;
+        this.formatTime(this.timeLeft);
+        this.setCircleDasharray();
+        this.setRemainingPathColor(this.timeLeft);
 
-      if (this.timeLeft === 0) {
-        this.show = false;
-        this.restartTimer();
-      }
+        if (this.timeLeft === 0) {
+          this.show = false;
+          this.restartTimer();
+        }
       }, 1000);
     },
 
@@ -156,7 +155,7 @@ export default {
     },
 
     setRemainingPathColor(timeLeft) {
-      const { alert, warning} = this.COLOR_CODES;
+      const { alert, warning} = this.colorCodes;
       if (timeLeft <= alert.threshold) {
         this.remainingPathColor =  "base-timer__path-remaining red"
       } else if (timeLeft <= warning.threshold) {
@@ -165,13 +164,13 @@ export default {
     },
 
     setCircleDasharray() {
-      const circleDasharray = `${(this.calculateTimeFraction() * this.FULL_DASH_ARRAY).toFixed(0)} 283`;
+      const circleDasharray = `${(this.calculateTimeFraction() * this.fullDashArray).toFixed(0)} 283`;
       this.remainingDashCircle = circleDasharray
     },
 
     calculateTimeFraction() {
-      const rawTimeFraction = this.timeLeft / this.TIME_LIMIT;
-      return rawTimeFraction - (1 / this.TIME_LIMIT) * (1 - rawTimeFraction);
+      const rawTimeFraction = this.timeLeft / this.timeLimit;
+      return rawTimeFraction - (1 / this.timeLimit) * (1 - rawTimeFraction);
     },
   }
 }
