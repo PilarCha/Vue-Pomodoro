@@ -33,7 +33,7 @@
                 </transition>
               </div> -->
              <span id="base-timer-label" >{{formatTime(timeLeft)}}</span>
-             <h3 class ="current-phase">{{current_phase}}</h3>
+             <h3 class ="current-phase" v-on:click="pauseStart">{{current_phase}}</h3>
            </div>
           </div>
       </div>
@@ -80,8 +80,12 @@ export default {
     setUpTimer() {
       this.timeLeft = this.TIME_LIMIT - this.timePassed;
       this.formatTime(this.timeLeft);
-      this.setCircleDasharray();
+      // this.setCircleDasharray();
       this.setRemainingPathColor(this.timeLeft);
+    },
+
+    pauseStart() {
+
     },
 
     restartTimer() {

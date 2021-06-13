@@ -76,6 +76,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 39px;
+  cursor:pointer;
 }
 
 .current-phase {
@@ -88,6 +89,7 @@ body {
   justify-content: center;
   font-size: 23px;
   color:white;
+  cursor:pointer;
 }
 
 /* experimental transitions */
