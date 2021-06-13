@@ -48,6 +48,7 @@ export default {
   data() {
     return {
       show: false,
+      paused:true,
       current_phase:'Focus',
       COLOR_CODES: {
         warning: {
@@ -64,8 +65,8 @@ export default {
       FULL_DASH_ARRAY: 283,
       WARNING_THRESHOLD: 30,
       ALERT_THRESHOLD: 15,
-      TIME_LIMIT: 1500,
-      // TIME_LIMIT: 20, Debug statement
+      // TIME_LIMIT: 1500,
+      TIME_LIMIT: 20, 
       timeLeft: null,
       timerInterval: null,
       remainingPathColor: "base-timer__path-remaining green",
@@ -85,6 +86,17 @@ export default {
     },
 
     pauseStart() {
+      //
+      if(this.paused) {
+        this.startTimer()
+        this.paused=false;
+        return;
+      }
+      // continue
+      let previousInterval = this.timerInterval
+      console.log(previousInterval)
+      clearInterval(this.timerInterval);
+      this.paused=true
 
     },
 
@@ -114,23 +126,6 @@ export default {
           break;
       }
 
-      // if(!isBreak) {
-      //   // focus time
-      //   this.TIME_LIMIT = 20;
-      //   this.current_phase = "Focus";
-      // } else {
-      //   // break time
-      //   this.TIME_LIMIT = 15;
-      //   this.totalRound += 1;
-      //   this.current_phase = "Break";
-      // }
-      // if(this.totalRound === 3) {
-      //   // looong break time
-      //   this.TIME_LIMIT = 30
-      //   this.totalRound = 0;
-      //   this.current_phase = "Looong Break";
-      // }
-      // start timer after 2 seconds
       setTimeout(this.startTimer,2000);
     },
 
