@@ -65,7 +65,7 @@ export default {
       WARNING_THRESHOLD: 30,
       ALERT_THRESHOLD: 15,
       TIME_LIMIT: 1500,
-      // TIME_LIMIT: 20,
+      // TIME_LIMIT: 20, Debug statement
       timeLeft: null,
       timerInterval: null,
       remainingPathColor: "base-timer__path-remaining green",
@@ -73,11 +73,18 @@ export default {
     }
   },
   created() {
-    this.startTimer();
+    this.setUpTimer();
   },
   methods: {
 
     setUpTimer() {
+      this.timeLeft = this.TIME_LIMIT - this.timePassed;
+      this.formatTime(this.timeLeft);
+      this.setCircleDasharray();
+      this.setRemainingPathColor(this.timeLeft);
+    },
+
+    restartTimer() {
       clearInterval(this.timerInterval);
       this.remainingDashCircle = 34;
       this.FULL_DASH_ARRAY = 283;
@@ -134,7 +141,7 @@ export default {
 
       if (this.timeLeft === 0) {
         this.show = false;
-        this.setUpTimer();
+        this.restartTimer();
       }
       }, 1000);
     },
