@@ -58,8 +58,7 @@ export default {
       fullDashArray: 283,
       warningThreshold: 30,
       alertThreshold: 15,
-      // timeLimit: 1500,
-      timeLimit: 5,
+      timeLimit: 1500,
       timeLeft: null,
       timerInterval: null,
       remainingPathColor: "base-timer__path-remaining green",
@@ -104,8 +103,6 @@ export default {
 
     restartTimer() {
       clearInterval(this.timerInterval);
-      let audio = new Audio(this.sound);
-      audio.play();
       this.remainingDashCircle = 34;
       this.timeLeft = null;
       this.timerInterval = null;
@@ -142,6 +139,8 @@ export default {
 
         if (this.timeLeft === 0) {
           this.show = false;
+          let audio = new Audio(this.sound);
+          audio.play();
           this.restartTimer();
         }
       }, 1000);
