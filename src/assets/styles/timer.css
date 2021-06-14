@@ -28,6 +28,8 @@ body {
   width: 250px;
   height: 250px;
   background: rgba(52, 56, 61,.2);
+  border-radius:125px;
+
 }
 
 .base-timer__svg {
