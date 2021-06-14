@@ -27,8 +27,7 @@ body {
   position: relative;
   width: 250px;
   height: 250px;
-  border-radius: 125px;
-  background-color: #34383d;
+  background: rgba(52, 56, 61,.2);
 }
 
 .base-timer__svg {
