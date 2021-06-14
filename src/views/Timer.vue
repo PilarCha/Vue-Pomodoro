@@ -32,8 +32,8 @@
                   </div>
                 </transition>
               </div> -->
-              <h3 class = "round-counter">{{totalRound}} / 3</h3>
-             <span id="base-timer-label" >{{formatTime(timeLeft)}}</span>
+              <h3 class = "round-counter" >{{totalRound}} / 3</h3>
+             <span id="base-timer-label" v-bind:class = "remainingPathColor">{{formatTime(timeLeft)}}</span>
              <h3 class ="current-phase" @click="paused = !paused">{{currentPhase}}</h3>
            </div>
           </div>
@@ -57,7 +57,7 @@ export default {
       warningThreshold: 30,
       alertThreshold: 15,
       // timeLimit: 1500,
-      timeLimit: 5,
+      timeLimit: 1500,
       timeLeft: null,
       timerInterval: null,
       remainingPathColor: "base-timer__path-remaining green",
@@ -103,7 +103,6 @@ export default {
     restartTimer() {
       clearInterval(this.timerInterval);
       this.remainingDashCircle = 34;
-      // timeLimit: 1500, 25 mins
       this.timeLeft = null;
       this.timerInterval = null;
       this.remainingPathColor = "base-timer__path-remaining green";
@@ -111,15 +110,15 @@ export default {
       let phase = this.currentPhase
 
       if(phase == 'Focus' && this.totalRound == 2) {
-        this.timeLimit = 30;
+        this.timeLimit = 900;
         this.totalRound+=1;
         this.currentPhase = "Long Break"
       } else if(phase == 'Focus') {
-        this.timeLimit = 5;
+        this.timeLimit = 300;
         this.totalRound += 1;
         this.currentPhase = "Break";
       } else {
-        this.timeLimit = 5;
+        this.timeLimit = 1500;
         this.currentPhase = "Focus";
         if(phase == "Long Break")
           this.totalRound = 0;

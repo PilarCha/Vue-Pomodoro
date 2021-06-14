@@ -67,7 +67,7 @@ body {
 }
 
 #base-timer-label {
-  color:var(--neon-pink);
+  /* color:var(--neon-pink); */
   position: absolute;
   width: 250px;
   height: 213px;
