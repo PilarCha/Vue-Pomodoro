@@ -43,11 +43,13 @@
 
 </template>
 <script>
+const sound = require("@/assets/moshi.mp3");
 export default {
   components: {
   },
   data() {
     return {
+      sound,
       show: false,
       paused:true,
       currentPhase:'Focus',
@@ -57,7 +59,7 @@ export default {
       warningThreshold: 30,
       alertThreshold: 15,
       // timeLimit: 1500,
-      timeLimit: 1500,
+      timeLimit: 5,
       timeLeft: null,
       timerInterval: null,
       remainingPathColor: "base-timer__path-remaining green",
@@ -102,6 +104,8 @@ export default {
 
     restartTimer() {
       clearInterval(this.timerInterval);
+      let audio = new Audio(this.sound);
+      audio.play();
       this.remainingDashCircle = 34;
       this.timeLeft = null;
       this.timerInterval = null;
