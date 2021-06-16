@@ -86,8 +86,7 @@ export default {
         this.startTimer()
         this.paused=false;
         return;
-      }
-      // continue. save the timerinterval to continue it when starting again.
+      }      
       clearInterval(this.timerInterval);
       this.paused=true
     }
