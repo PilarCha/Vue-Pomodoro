@@ -12,6 +12,20 @@ export default new Vuex.Store({
       totalRounds:3,
     }
   },
+
+  getters: {
+    timeLimit: state => {
+      return state.timeLimit
+    },
+    currentPhase: state => {
+      return state.currentPhase
+    },
+    totalRounds: state => {
+      return state.currentPhase
+    }
+
+  },
+
   mutations: {
     updatetimeLimit(state,time) {
       state.timeLimit = time

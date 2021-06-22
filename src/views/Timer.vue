@@ -32,7 +32,7 @@
                   </div>
                 </transition>
               </div> -->
-              <h3 class = "round-counter" >{{currentRound}} / 3</h3>
+              <h3 class = "round-counter" >{{currentRound}} / {{totalRounds}}</h3>
              <span id="base-timer-label" v-bind:class = "remainingPathColor">{{formatTime(timeLeft)}}</span>
              <h3 class ="current-phase" @click="paused = !paused">{{currentPhase}}</h3>
            </div>
@@ -44,6 +44,7 @@
 </template>
 <script>
 const sound = require("@/assets/moshi.mp3");
+import {mapState} from 'vuex';
 export default {
   components: {
   },
@@ -53,14 +54,15 @@ export default {
       show: false,
       paused:true,
       //
-      currentPhase:'Focus',
+      // currentPhase:'Focus',
+      // totalRounds:3,
       currentRound:0,
       remainingDashCircle: 34,
       fullDashArray: 283,
       warningThreshold: 30,
       alertThreshold: 15,
       //
-      timeLimit: 1500,
+      // timeLimit: 1500,
       timeLeft: null,
       timerInterval: null,
       remainingPathColor: "base-timer__path-remaining green",
@@ -80,6 +82,14 @@ export default {
 
   mounted() {
     this.setUpTimer();
+  },
+
+  computed: {
+    ...mapState({
+      totalRounds: (state) => state.totalRounds,
+      timeLimit: (state) => state.timeLimit,
+      currentPhase: (state) => state.currentPhase
+    })
   },
 
   watch: {
