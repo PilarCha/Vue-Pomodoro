@@ -20,7 +20,7 @@ export default new Vuex.Store({
       return state.currentPhase
     },
     totalRounds: state => {
-      return state.currentPhase
+      return state.totalRounds
     },
     currentRound: state => {
       return state.currentRound
@@ -29,10 +29,13 @@ export default new Vuex.Store({
 
   mutations: {
     updatetimeLimit(state,time) {
-      state.timeLimit = time
+      state.timeLimit = time;
     },
     updatetotalRounds(state,rounds) {
-      state.totalRounds = rounds
+      state.totalRounds = rounds;
+    },
+    updateCurrRound(state) {
+      state.currentRound++;
     }
   }
 })

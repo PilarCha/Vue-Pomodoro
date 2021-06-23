@@ -33,7 +33,7 @@
                 </transition>
               </div> -->
 
-              <h3 class = "round-counter" v-if="$store.getters.currentRound" >{{currentRound}} / {{totalRounds}}</h3>
+              <h3 class = "round-counter">{{currentRound}} / {{totalRounds}}</h3>
              <span id="base-timer-label" v-bind:class = "remainingPathColor">{{formatTime(timeLeft)}}</span>
              <h3 class ="current-phase" @click="paused = !paused">{{currentPhase}}</h3>
            </div>
@@ -87,7 +87,6 @@ export default {
 
   computed: {
     ...mapGetters(['timeLimit','currentPhase','totalRounds','currentRound'])
-
   },
 
   watch: {
