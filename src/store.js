@@ -28,14 +28,21 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    updatetimeLimit(state,time) {
+    UPDATE_TIME_LIMIT(state,time) {
       state.timeLimit = time;
     },
-    updatetotalRounds(state,rounds) {
+    UPDATE_TOTAL_ROUNDS(state,rounds) {
       state.totalRounds = rounds;
     },
-    updateCurrRound(state) {
+    UPDATE_CURRENT_ROUND(state) {
       state.currentRound++;
+    },
+    UPDATE_CURRENT_PHASE(state,phase){
+      state.currentPhase = phase
     }
+  },
+
+  actions: {
+    
   }
 })
