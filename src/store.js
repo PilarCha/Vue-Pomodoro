@@ -43,6 +43,17 @@ export default new Vuex.Store({
   },
 
   actions: {
-    
+    setTimeLimit({commit} , payload) {
+      commit('UPDATE_TIME_LIMIT',payload)
+    },
+    setTotalRounds({commit}, payload) {
+      commit('UPDATE_TOTAL_ROUNDS', payload)
+    },
+    setCurrentRound({commit}) {
+      commit('UPDATE_CURRENT_ROUND')
+    },
+    setCurrentPhase({commit},payload) {
+      commit('UPDATE_CURRENT_PHASE',payload)
+    }
   }
 })
