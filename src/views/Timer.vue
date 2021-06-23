@@ -98,7 +98,7 @@ export default {
 
   methods: {
 
-    ...mapActions(['setTimeLimit','setTotalRounds','setCurrentRound','setCurrentPhase'])
+    ...mapActions(['setTimeLimit','setTotalRounds','setCurrentRound','setCurrentPhase']),
 
     setUpTimer() {
       this.timeLeft = this.timeLimit - this.timePassed;
