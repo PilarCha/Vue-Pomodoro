@@ -22,6 +22,9 @@ export default new Vuex.Store({
     },
     totalRounds: state => {
       return state.currentPhase
+    },
+    currentRound: state => {
+      return state.currentRound
     }
 
   },

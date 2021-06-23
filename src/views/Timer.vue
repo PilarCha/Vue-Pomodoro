@@ -44,7 +44,7 @@
 </template>
 <script>
 const sound = require("@/assets/moshi.mp3");
-import {mapState} from 'vuex';
+import {mapGetters} from 'vuex';
 export default {
   components: {
   },
@@ -56,7 +56,7 @@ export default {
       //
       // currentPhase:'Focus',
       // totalRounds:3,
-      currentRound:0,
+      // currentRound:0,
       remainingDashCircle: 34,
       fullDashArray: 283,
       warningThreshold: 30,
@@ -85,11 +85,8 @@ export default {
   },
 
   computed: {
-    ...mapState({
-      totalRounds: (state) => state.totalRounds,
-      timeLimit: (state) => state.timeLimit,
-      currentPhase: (state) => state.currentPhase
-    })
+    ...mapGetters({timelimit:'timeLimit',currentPhase:'currentPhase',totalRounds:'totalRounds',currentRound:'currentRound'})
+
   },
 
   watch: {
