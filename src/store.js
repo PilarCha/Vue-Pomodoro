@@ -38,7 +38,7 @@ export default new Vuex.Store({
       if(round == undefined) {
         return state.currentRound++;
       }
-      return state.currentRound = round
+      state.currentRound = round
     },
     UPDATE_CURRENT_PHASE(state,phase){
       state.currentPhase = phase

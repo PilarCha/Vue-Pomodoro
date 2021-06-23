@@ -81,9 +81,10 @@ export default {
   },
 
   computed: {
+    // calls store to set store variables to local variables. can be called with this.whatevsss
     ...mapGetters(['timeLimit','currentPhase','totalRounds','currentRound'])
   },
-
+  // keeps an eye on paused. If changed runs code.
   watch: {
     paused() {
       if(!this.paused) {
@@ -95,11 +96,11 @@ export default {
       this.paused=true
     }
   },
-
+  // bulk of the applications
   methods: {
-
+    // actions are used to mutate the store data. Can be called with this.whatevsss
     ...mapActions(['setTimeLimit','setTotalRounds','setCurrentRound','setCurrentPhase']),
-
+    // sets up the basic looks of the timer. Must click to start
     setUpTimer() {
       this.timeLeft = this.timeLimit - this.timePassed;
       this.formatTime(this.timeLeft);
@@ -130,10 +131,10 @@ export default {
         if(phase == "Long Break")
           this.setCurrentRound(0);
       }
-
+      // we have this here to immediately start the next phase
       this.startTimer();
     },
-
+    // starts interval of 1 second countdown.
     startTimer() {
       this.show = true;
       this.timerInterval = setInterval(() => {
