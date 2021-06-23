@@ -54,16 +54,10 @@ export default {
       sound,
       show: false,
       paused:true,
-      //
-      // currentPhase:'Focus',
-      // totalRounds:3,
-      // currentRound:0,
       remainingDashCircle: 34,
       fullDashArray: 283,
       warningThreshold: 30,
       alertThreshold: 15,
-      //
-      // timeLimit: 1500,
       timeLeft: null,
       timerInterval: null,
       remainingPathColor: "base-timer__path-remaining green",
