@@ -119,6 +119,7 @@ export default {
         this.setTimeLimit(900);
         this.setCurrentRound();
         this.setCurrentPhase("Long Break");
+        // TODO: Incorporate sending action to firebase api to store time limit
       } else if(phase == 'Focus') {
         this.setTimeLimit(300);
         this.setCurrentRound();

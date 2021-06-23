@@ -34,8 +34,11 @@ export default new Vuex.Store({
     UPDATE_TOTAL_ROUNDS(state,rounds) {
       state.totalRounds = rounds;
     },
-    UPDATE_CURRENT_ROUND(state) {
-      state.currentRound++;
+    UPDATE_CURRENT_ROUND(state,round) {
+      if(round == undefined) {
+        return state.currentRound++;
+      }
+      return state.currentRound = round
     },
     UPDATE_CURRENT_PHASE(state,phase){
       state.currentPhase = phase
@@ -49,8 +52,8 @@ export default new Vuex.Store({
     setTotalRounds({commit}, payload) {
       commit('UPDATE_TOTAL_ROUNDS', payload)
     },
-    setCurrentRound({commit}) {
-      commit('UPDATE_CURRENT_ROUND')
+    setCurrentRound({commit}, payload) {
+      commit('UPDATE_CURRENT_ROUND',payload)
     },
     setCurrentPhase({commit},payload) {
       commit('UPDATE_CURRENT_PHASE',payload)
