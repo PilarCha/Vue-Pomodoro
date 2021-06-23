@@ -116,18 +116,18 @@ export default {
       let phase = this.currentPhase
 
       if(phase == 'Focus' && this.currentRound == 2) {
-        this.timeLimit = 900;
-        this.currentRound+=1;
-        this.currentPhase = "Long Break"
+        this.setTimeLimit(900);
+        this.setCurrentRound();
+        this.setCurrentPhase("Long Break");
       } else if(phase == 'Focus') {
-        this.timeLimit = 300;
-        this.currentRound += 1;
-        this.currentPhase = "Break";
+        this.setTimeLimit(300);
+        this.setCurrentRound();
+        this.setCurrentPhase("Break");
       } else {
-        this.timeLimit = 1500;
-        this.currentPhase = "Focus";
+        this.setTimeLimit(1500);
+        this.setCurrentPhase("Focus");
         if(phase == "Long Break")
-          this.currentRound = 0;
+          this.setCurrentRound(0);
       }
 
       this.startTimer();
