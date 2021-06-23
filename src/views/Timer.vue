@@ -46,6 +46,7 @@
 <script>
 const sound = require("@/assets/moshi.mp3");
 import {mapGetters} from 'vuex';
+import {mapActions} from 'vuex';
 export default {
   components: {
   },
@@ -96,6 +97,8 @@ export default {
   },
 
   methods: {
+
+    ...mapActions(['setTimeLimit','setTotalRounds','setCurrentRound','setCurrentPhase'])
 
     setUpTimer() {
       this.timeLeft = this.timeLimit - this.timePassed;
