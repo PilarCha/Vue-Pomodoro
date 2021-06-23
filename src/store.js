@@ -5,12 +5,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    timerSettings:
-    {
-      timeLimit: 1500,
-      currentPhase: 'Focus',
-      totalRounds:3,
-    }
+    loading: false,
+    timeLimit: 1500,
+    currentPhase: 'Focus',
+    totalRounds:3,
+    currentRound:0
   },
 
   getters: {
@@ -26,7 +25,6 @@ export default new Vuex.Store({
     currentRound: state => {
       return state.currentRound
     }
-
   },
 
   mutations: {
