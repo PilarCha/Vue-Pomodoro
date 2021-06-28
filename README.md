@@ -6,9 +6,9 @@
 Blah
 
 ## Getting started (#get-started)
--npm i
--npm audit fix
--npm start
+- npm i
+- npm audit fix
+- npm start
 
 ## Core team (#core-team)
 -PilarCha
