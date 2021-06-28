@@ -5,10 +5,10 @@
 ## How it Works
 Blah
 
-## [Getting started] (#get-started)
+## Getting started (#get-started)
 -npm i
 -npm audit fix
 -npm start
 
-## [Core team] (#core-team)
+## Core team (#core-team)
 -PilarCha
