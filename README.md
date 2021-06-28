@@ -1,6 +1,6 @@
--How it Works (#how-it-works)
--Getting started (#get-started)
--Core team (#core-team)
+- [How it Works] (#how-it-works)
+- [Getting started] (#get-started)
+- [Core team] (#core-team)
 
 ## How it Works
 Blah
