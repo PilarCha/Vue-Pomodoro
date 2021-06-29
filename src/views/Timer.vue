@@ -57,8 +57,6 @@ export default {
       paused:true,
       remainingDashCircle: 34,
       fullDashArray: 283,
-      warningThreshold: 30,
-      alertThreshold: 15,
       timeLeft: null,
       timerInterval: null,
       remainingPathColor: "base-timer__path-remaining green",
@@ -66,11 +64,11 @@ export default {
       colorCodes: {
         warning: {
           color: "orange",
-          threshold: 30
+          threshold: 15
         },
         alert: {
           color: "red",
-          threshold: 15
+          threshold: 40
         }
       },
     }
