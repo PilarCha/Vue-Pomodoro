@@ -64,11 +64,11 @@ export default {
       colorCodes: {
         warning: {
           color: "orange",
-          threshold: 15
+          threshold: 300
         },
         alert: {
           color: "red",
-          threshold: 40
+          threshold: 90
         }
       },
     }
