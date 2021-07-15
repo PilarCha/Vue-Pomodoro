@@ -1,33 +1,42 @@
 <template>
-  <div id="myNav" class="overlay">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <div class="overlay-content">
-      <a href="#">About</a>
-      <a href="#">Services</a>
-      <a href="#">Clients</a>
-      <a href="#">Contact</a>
-    </div>
-    <h2>Fullscreen Overlay Nav Example</h2>
-    <p>Click on the element below to open the fullscreen overlay navigation menu.</p>
-    <p>In this example, the navigation menu will slide in, from left to right:</p>
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+  <div class="ma-12 pa-12">
+    <v-card>
+      <v-navigation-drawer
+        floating
+        permanent
+        expand-on-hover
+      >
+
+        <v-list
+          nav
+          dense
+        >
+          <v-list-item link>
+            <v-list-item-icon>
+              <v-icon>mdi-folder</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>My Files</v-list-item-title>
+          </v-list-item>
+          <v-list-item link>
+            <v-list-item-icon>
+              <v-icon>mdi-account-multiple</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Shared with me</v-list-item-title>
+          </v-list-item>
+          <v-list-item link>
+            <v-list-item-icon>
+              <v-icon>mdi-star</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Starred</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+    </v-card>
   </div>
 </template>
-
 <script>
+  export default {
 
-export default {
-  methods: {
-    openNav() {
-      document.getElementById("myNav").style.width = "100%";
-    },
-
-    closeNav() {
-      document.getElementById("myNav").style.width = "0%";
-    }
   }
-}
-</script>
 
-<style src="@/assets/styles/pickTime.css">
-</style>
+</script>

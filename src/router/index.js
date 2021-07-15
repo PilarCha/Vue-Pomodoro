@@ -1,21 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Timer from '../views/Timer.vue'
-// import PickTime from '../components/PickTime.vue'
+// import Timer from '../views/Timer.vue'
+import PickTime from '../components/PickTime.vue'
 
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: '/',
-    name: 'Timer',
-    component: Timer
-  },
   // {
   //   path: '/',
-  //   name: 'PickTIme',
-  //   component: PickTime
+  //   name: 'Timer',
+  //   component: Timer
   // },
+  {
+    path: '/',
+    name: 'PickTIme',
+    component: PickTime
+  },
   // {
   //   path: '/about',
   //   name: 'About',
