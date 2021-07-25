@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <!-- <PickTime></PickTime> -->
     <div class="row">
       <div class="col s12">
           <div id="app">
@@ -45,12 +46,12 @@
 </template>
 <script>
 const sound = require("@/assets/moshi.mp3");
-import PickTime from './components/PickTime.vue'
+// import PickTime from '@/components/PickTime.vue'
 import {mapGetters} from 'vuex';
 import {mapActions} from 'vuex';
 export default {
   components: {
-    PickTime
+    // PickTime
   },
   data() {
     return {

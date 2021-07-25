@@ -1,42 +1,60 @@
 <template>
-  <div class="ma-12 pa-12">
-    <v-card>
-      <v-navigation-drawer
-        floating
-        permanent
-        expand-on-hover
-      >
+  <v-card
+    height="50"
+    width="70"
+  >
 
-        <v-list
-          nav
-          dense
+    <v-app-bar
+
+    >
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+
+    </v-app-bar>
+
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      left
+      temporary
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          v-model="group"
         >
-          <v-list-item link>
-            <v-list-item-icon>
-              <v-icon>mdi-folder</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>My Files</v-list-item-title>
+          <v-list-item>
+            <v-list-item-title>Foo</v-list-item-title>
           </v-list-item>
-          <v-list-item link>
-            <v-list-item-icon>
-              <v-icon>mdi-account-multiple</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Shared with me</v-list-item-title>
+
+          <v-list-item>
+            <v-list-item-title>Bar</v-list-item-title>
           </v-list-item>
-          <v-list-item link>
-            <v-list-item-icon>
-              <v-icon>mdi-star</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Starred</v-list-item-title>
+
+          <v-list-item>
+            <v-list-item-title>Fizz</v-list-item-title>
           </v-list-item>
-        </v-list>
-      </v-navigation-drawer>
-    </v-card>
-  </div>
+
+          <v-list-item>
+            <v-list-item-title>Buzz</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+  </v-card>
 </template>
 <script>
   export default {
+    data: () => ({
+      drawer: false,
+      group: null,
+    }),
 
+    watch: {
+      group () {
+        this.drawer = false
+      },
+    },
   }
-
 </script>
