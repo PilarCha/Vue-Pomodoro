@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     loading: false,
-    timeLimit: 1500,
+    timeLimit: 1800,
     currentPhase: 'Focus',
     totalRounds:3,
     currentRound:0

@@ -116,18 +116,18 @@ export default {
       this.remainingPathColor = "base-timer__path-remaining green";
       this.timePassed = 0;
       let phase = this.currentPhase
-
+      //TODO: put the below conditionals into the storeeee
       if(phase == 'Focus' && this.currentRound == 2) {
         this.setTimeLimit(900);
         this.setCurrentRound();
         this.setCurrentPhase("Long Break");
         // TODO: Incorporate sending action to firebase api to store time limit
       } else if(phase == 'Focus') {
-        this.setTimeLimit(300);
+        this.setTimeLimit(360);
         this.setCurrentRound();
         this.setCurrentPhase("Break");
       } else {
-        this.setTimeLimit(1500);
+        this.setTimeLimit(1800);
         this.setCurrentPhase("Focus");
         if(phase == "Long Break")
           this.setCurrentRound(0);
