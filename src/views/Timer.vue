@@ -1,44 +1,46 @@
 <template>
   <div class="container">
-    <!-- <PickTime></PickTime> -->
-    <div class="row">
-      <div class="col s12">
-          <div id="app">
-            <div class="base-timer">
-              <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <g class="base-timer__circle">
-                  <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" ></circle>
-                  <path
-                    id="base-timer-path-remaining"
-                    :stroke-dasharray="remainingDashCircle"
-                    v-bind:class = "remainingPathColor"
-                    d="
-                      M 50, 50
-                      m -45, 0
-                      a 45,45 0 1,0 90,0
-                      a 45,45 0 1,0 -90,0
-                    "
-                  ></path>
-                </g>
-              </svg>
-              <!-- <div id="demo">
-                <transition name="fadeOne">
-                  <div v-show="show" class="transition-container">
-                    <span id="base-timer-label" >{{formatTime(timeLeft)}}</span>
-                  </div>
-                </transition>
-                <transition name="fadeTwo">
-                  <div v-show="show" class="transition-container">
-                    <h3 class ="current-phase">{{currentPhase}}</h3>
-                  </div>
-                </transition>
-              </div> -->
+    <div data-app>
+      <PickTime/>
+      <div class="row">
+        <div class="col s12">
+            <div id="app">
+              <div class="base-timer">
+                <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <g class="base-timer__circle">
+                    <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" ></circle>
+                    <path
+                      id="base-timer-path-remaining"
+                      :stroke-dasharray="remainingDashCircle"
+                      v-bind:class = "remainingPathColor"
+                      d="
+                        M 50, 50
+                        m -45, 0
+                        a 45,45 0 1,0 90,0
+                        a 45,45 0 1,0 -90,0
+                      "
+                    ></path>
+                  </g>
+                </svg>
+                <!-- <div id="demo">
+                  <transition name="fadeOne">
+                    <div v-show="show" class="transition-container">
+                      <span id="base-timer-label" >{{formatTime(timeLeft)}}</span>
+                    </div>
+                  </transition>
+                  <transition name="fadeTwo">
+                    <div v-show="show" class="transition-container">
+                      <h3 class ="current-phase">{{currentPhase}}</h3>
+                    </div>
+                  </transition>
+                </div> -->
 
-              <h3 class = "round-counter">{{currentRound}} / {{totalRounds}}</h3>
-             <span id="base-timer-label" v-bind:class = "remainingPathColor">{{formatTime(timeLeft)}}</span>
-             <h3 class ="current-phase" @click="paused = !paused">{{currentPhase}}</h3>
-           </div>
-          </div>
+                <h3 class = "round-counter">{{currentRound}} / {{totalRounds}}</h3>
+               <span id="base-timer-label" v-bind:class = "remainingPathColor">{{formatTime(timeLeft)}}</span>
+               <h3 class ="current-phase" @click="paused = !paused">{{currentPhase}}</h3>
+             </div>
+            </div>
+        </div>
       </div>
     </div>
   </div>
@@ -46,12 +48,12 @@
 </template>
 <script>
 const sound = require("@/assets/moshi.mp3");
-// import PickTime from '@/components/PickTime.vue'
+import PickTime from '@/components/PickTime.vue'
 import {mapGetters} from 'vuex';
 import {mapActions} from 'vuex';
 export default {
   components: {
-    // PickTime
+    PickTime
   },
   data() {
     return {
