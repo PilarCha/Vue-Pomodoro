@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div data-app>
+  <div data-app>
+    <div class="container">
       <PickTime/>
       <div class="row">
         <div class="col s12">

@@ -4,22 +4,24 @@
       v-model="dialog"
       fullscreen
       hide-overlay
-      transition="dialog-bottom-transition"
+      transition="dialog-top-transition"
     >
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-          color="primary"
-          dark
-          v-bind="attrs"
           v-on="on"
+          v-bind="attrs"
+          class="ma-2"
+          text
+          icon
+          color="blue lighten-2"
         >
-          Open Dialog
+          <v-icon>mdi-tune</v-icon>
         </v-btn>
       </template>
       <v-card>
         <v-toolbar
           dark
-          color="primary"
+          color="purple darken-4"
         >
           <v-btn
             icon
