@@ -13,7 +13,7 @@
           class="ma-2"
           text
           icon
-          color="blue lighten-2"
+          style="color:var(--settings-cyan)"
         >
           <v-icon>mdi-tune</v-icon>
         </v-btn>
