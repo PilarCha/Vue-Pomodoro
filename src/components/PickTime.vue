@@ -1,5 +1,8 @@
 <template>
-  <v-row justify="center">
+  <v-row
+    justify="center"
+    align="center"
+    >
     <v-dialog
       v-model="dialog"
       fullscreen
@@ -18,9 +21,12 @@
           <v-icon>mdi-tune</v-icon>
         </v-btn>
       </template>
-      <v-card >
+      <v-card
+        dark
+        class="mx-auto my-12"
+      >
         <v-toolbar
-          style="background-color:var(--settings-cyan)"
+          style="background-color:var(--settings-darkblue)"
           dense
         >
           <v-btn
@@ -31,24 +37,21 @@
           </v-btn>
           <v-toolbar-title>Settings</v-toolbar-title>
         </v-toolbar>
-        <v-list
-          three-line
-          subheader
-        >
-          <v-subheader>User Controls</v-subheader>
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title>Content filtering</v-list-item-title>
-              <v-list-item-subtitle>Set the content filtering level to restrict apps that can be downloaded</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-content>
-              <v-list-item-title>Password</v-list-item-title>
-              <v-list-item-subtitle>Require password for purchase or use password to restrict purchase</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
+        <v-card-title>Pick Time</v-card-title>
+        <v-card-text>
+          <v-chip-group
+            v-model="selection"
+            active-class="deep-purple accent-4 white--text"
+            column
+          >
+            <v-chip>30 Mins</v-chip>
+
+            <v-chip>45 Mins</v-chip>
+
+            <v-chip>60 Mins</v-chip>
+
+          </v-chip-group>
+        </v-card-text>
         <v-divider></v-divider>
         <v-list
           three-line
@@ -91,6 +94,7 @@
   export default {
     data () {
       return {
+        selection:1,
         dialog: false,
         notifications: false,
         sound: true,
