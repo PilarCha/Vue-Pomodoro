@@ -18,29 +18,18 @@
           <v-icon>mdi-tune</v-icon>
         </v-btn>
       </template>
-      <v-card>
+      <v-card >
         <v-toolbar
-          dark
-          color="purple darken-4"
+          style="background-color:var(--settings-cyan)"
+          dense
         >
           <v-btn
             icon
-            dark
             @click="dialog = false"
           >
             <v-icon>mdi-close</v-icon>
           </v-btn>
           <v-toolbar-title>Settings</v-toolbar-title>
-          <v-spacer></v-spacer>
-          <v-toolbar-items>
-            <v-btn
-              dark
-              text
-              @click="dialog = false"
-            >
-              Save
-            </v-btn>
-          </v-toolbar-items>
         </v-toolbar>
         <v-list
           three-line
