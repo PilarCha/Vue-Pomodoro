@@ -37,55 +37,56 @@
           </v-btn>
           <v-toolbar-title>Settings</v-toolbar-title>
         </v-toolbar>
-        <v-card-title>Pick Time</v-card-title>
+        <v-card-title>Focus Time</v-card-title>
         <v-card-text>
           <v-chip-group
-            v-model="selection"
+            v-model="focusSelection"
             active-class="deep-purple accent-4 white--text"
             column
           >
-            <v-chip>30 Mins</v-chip>
+            <v-chip>30 Min</v-chip>
 
-            <v-chip>45 Mins</v-chip>
+            <v-chip>45 Min</v-chip>
 
-            <v-chip>60 Mins</v-chip>
+            <v-chip>60 Min</v-chip>
 
           </v-chip-group>
         </v-card-text>
         <v-divider></v-divider>
-        <v-list
-          three-line
-          subheader
-        >
-          <v-subheader>General</v-subheader>
-          <v-list-item>
-            <v-list-item-action>
-              <v-checkbox v-model="notifications"></v-checkbox>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Notifications</v-list-item-title>
-              <v-list-item-subtitle>Notify me about updates to apps or games that I downloaded</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-action>
-              <v-checkbox v-model="sound"></v-checkbox>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Sound</v-list-item-title>
-              <v-list-item-subtitle>Auto-update apps at any time. Data charges may apply</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-action>
-              <v-checkbox v-model="widgets"></v-checkbox>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Auto-add widgets</v-list-item-title>
-              <v-list-item-subtitle>Automatically add home screen widgets</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
+
+        <v-card-title>Break Time</v-card-title>
+        <v-card-text>
+          <v-chip-group
+            v-model="breakSelection"
+            active-class="deep-purple accent-4 white--text"
+            column
+          >
+            <v-chip>5 Min</v-chip>
+
+            <v-chip>10 Min</v-chip>
+
+            <v-chip>15 Min</v-chip>
+
+          </v-chip-group>
+        </v-card-text>
+        <v-divider></v-divider>
+
+        <v-card-title>Long Break</v-card-title>
+        <v-card-text>
+          <v-chip-group
+            v-model="longSelection"
+            active-class="deep-purple accent-4 white--text"
+            column
+          >
+            <v-chip>20 Min</v-chip>
+
+            <v-chip>25 Min</v-chip>
+
+            <v-chip>30 Min</v-chip>
+
+          </v-chip-group>
+        </v-card-text>
+
       </v-card>
     </v-dialog>
   </v-row>
@@ -94,7 +95,9 @@
   export default {
     data () {
       return {
-        selection:1,
+        breakSelection:1,
+        focusSelection:1,
+        longSelection:1,
         dialog: false,
         notifications: false,
         sound: true,
