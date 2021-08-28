@@ -1,8 +1,8 @@
 <template>
   <div data-app>
     <div class="container">
-      <PickTime/>
       <div class="row">
+        <PickTime/>
         <div class="col s12">
             <div id="app">
               <div class="base-timer">

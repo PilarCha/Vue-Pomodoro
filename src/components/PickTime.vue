@@ -26,7 +26,7 @@
         class="mx-auto my-12"
       >
         <v-toolbar
-          style="background-color:var(--settings-darkblue)"
+          style="background-color:var(--settings-pink)"
           dense
         >
           <v-btn
@@ -41,7 +41,7 @@
         <v-card-text>
           <v-chip-group
             v-model="focusSelection"
-            active-class="deep-purple accent-4 white--text"
+            style="color:var(--mid-cyan)"
             column
           >
             <v-chip>30 Min</v-chip>
@@ -58,7 +58,7 @@
         <v-card-text>
           <v-chip-group
             v-model="breakSelection"
-            active-class="deep-purple accent-4 white--text"
+            style="color:var(--mid-cyan)"
             column
           >
             <v-chip>5 Min</v-chip>
@@ -75,7 +75,7 @@
         <v-card-text>
           <v-chip-group
             v-model="longSelection"
-            active-class="deep-purple accent-4 white--text"
+            style="color:var(--mid-cyan)"
             column
           >
             <v-chip>20 Min</v-chip>
