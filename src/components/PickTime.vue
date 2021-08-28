@@ -103,7 +103,7 @@
 <script>
   export default {
     data () {
-      return {
+      return {        
         breakSelection:1,
         focusSelection:1,
         longSelection:1,
