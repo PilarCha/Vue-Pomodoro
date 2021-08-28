@@ -36,52 +36,62 @@
           </v-btn>
           <v-toolbar-title>Settings</v-toolbar-title>
         </v-toolbar>
-        <v-card-title>Focus Time</v-card-title>
+        <v-card-title
+            style="color:var(--settings-pink)"
+            >
+            Focus Time
+          </v-card-title>
         <v-card-text>
           <v-chip-group
             v-model="focusSelection"
             style="color:var(--mid-cyan)"
             column
           >
-            <v-chip>30 Min</v-chip>
+            <v-chip outlined>30 Min</v-chip>
 
-            <v-chip>45 Min</v-chip>
+            <v-chip outlined>45 Min</v-chip>
 
-            <v-chip>60 Min</v-chip>
+            <v-chip outlined>60 Min</v-chip>
 
           </v-chip-group>
         </v-card-text>
         <v-divider></v-divider>
 
-        <v-card-title>Break Time</v-card-title>
+        <v-card-title
+            style="color:var(--settings-pink)"
+          >Break Time
+        </v-card-title>
         <v-card-text>
           <v-chip-group
             v-model="breakSelection"
             style="color:var(--mid-cyan)"
             column
           >
-            <v-chip>5 Min</v-chip>
+            <v-chip outlined>5 Min</v-chip>
 
-            <v-chip>10 Min</v-chip>
+            <v-chip outlined>10 Min</v-chip>
 
-            <v-chip>15 Min</v-chip>
+            <v-chip outlined>15 Min</v-chip>
 
           </v-chip-group>
         </v-card-text>
         <v-divider></v-divider>
 
-        <v-card-title>Long Break</v-card-title>
+        <v-card-title
+          style="color:var(--settings-pink)"
+          >Long Break
+        </v-card-title>
         <v-card-text>
           <v-chip-group
             v-model="longSelection"
             style="color:var(--mid-cyan)"
             column
           >
-            <v-chip>20 Min</v-chip>
+            <v-chip outlined>20 Min</v-chip>
 
-            <v-chip>25 Min</v-chip>
+            <v-chip outlined>25 Min</v-chip>
 
-            <v-chip>30 Min</v-chip>
+            <v-chip outlined>30 Min</v-chip>
 
           </v-chip-group>
         </v-card-text>
