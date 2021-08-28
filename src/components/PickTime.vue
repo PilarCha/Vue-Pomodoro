@@ -13,12 +13,11 @@
         <v-btn
           v-on="on"
           v-bind="attrs"
-          class="ma-2"
+          id="tuner"
           text
           icon
-          style="color:var(--settings-cyan)"
         >
-          <v-icon id ="tuner">mdi-tune</v-icon>
+          <v-icon>mdi-tune</v-icon>
         </v-btn>
       </template>
       <v-card

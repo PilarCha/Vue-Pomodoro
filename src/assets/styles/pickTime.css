@@ -1,3 +1,4 @@
 #tuner {
-  margin:1px !important;
+  margin:9px !important;
+  color:var(--settings-cyan);
 }
