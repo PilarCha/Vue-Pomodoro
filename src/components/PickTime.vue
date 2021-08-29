@@ -36,65 +36,35 @@
           </v-btn>
           <v-toolbar-title>Settings</v-toolbar-title>
         </v-toolbar>
-        <v-card-title
-            style="color:var(--settings-pink)"
+
+        <div
+          v-for="chip in chipObj"
+          :key = "chip.id"
+          >
+          <v-card-title
+              style="color:var(--settings-pink)"
+              >
+              {{chip.title}}
+            </v-card-title>
+          <v-card-text>
+            <v-chip-group
+              v-model="chip.vmodel"
+              style="color:var(--mid-cyan)"
+              column
             >
-            Focus Time
-          </v-card-title>
-        <v-card-text>
-          <v-chip-group
-            v-model="focusSelection"
-            style="color:var(--mid-cyan)"
-            column
-          >
-            <v-chip outlined>30 Min</v-chip>
 
-            <v-chip outlined>45 Min</v-chip>
+              <v-chip
+                outlined
+                v-for="value in chip.values"
+                :key = "value.id"
+                >
+                {{value}}
+              </v-chip>
 
-            <v-chip outlined>60 Min</v-chip>
-
-          </v-chip-group>
-        </v-card-text>
-        <v-divider></v-divider>
-
-        <v-card-title
-            style="color:var(--settings-pink)"
-          >Break Time
-        </v-card-title>
-        <v-card-text>
-          <v-chip-group
-            v-model="breakSelection"
-            style="color:var(--mid-cyan)"
-            column
-          >
-            <v-chip outlined>5 Min</v-chip>
-
-            <v-chip outlined>10 Min</v-chip>
-
-            <v-chip outlined>15 Min</v-chip>
-
-          </v-chip-group>
-        </v-card-text>
-        <v-divider></v-divider>
-
-        <v-card-title
-          style="color:var(--settings-pink)"
-          >Long Break
-        </v-card-title>
-        <v-card-text>
-          <v-chip-group
-            v-model="longSelection"
-            style="color:var(--mid-cyan)"
-            column
-          >
-            <v-chip outlined>20 Min</v-chip>
-
-            <v-chip outlined>25 Min</v-chip>
-
-            <v-chip outlined>30 Min</v-chip>
-
-          </v-chip-group>
-        </v-card-text>
+            </v-chip-group>
+          </v-card-text>
+          <v-divider></v-divider>
+        </div>
 
       </v-card>
     </v-dialog>
