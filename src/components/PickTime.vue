@@ -85,12 +85,12 @@
       return {
         chipObj: [
           {
-            title: 'Focus',
+            title: 'Focus Time',
             vmodel: 'focusSelection',
             values: ['30 Min', '45 Min', '60 Min']
           },
           {
-            title: 'Break',
+            title: 'Break Time',
             vmodel: 'breakSelection',
             values: ['5 Min', '10 Min', '15 Min']
           },

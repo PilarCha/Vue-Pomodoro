@@ -117,8 +117,7 @@ export default {
       this.timerInterval = null;
       this.remainingPathColor = "base-timer__path-remaining green";
       this.timePassed = 0;
-      let phase = this.currentPhase
-      //TODO: put the below conditionals into the storeeee
+      let phase = this.currentPhase      
       if(phase == 'Focus' && this.currentRound == this.totalRounds - 1) {
         this.setTimeLimit(this.longBreak);
         this.setCurrentRound();
