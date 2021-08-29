@@ -48,15 +48,16 @@
             </v-card-title>
           <v-card-text>
             <v-chip-group
-              v-model="focusSelection"
+              v-model="chip.vmodel"
               style="color:var(--mid-cyan)"
               column
             >
-              <v-chip outlined>30 Min</v-chip>
-
-              <v-chip outlined>45 Min</v-chip>
-
-              <v-chip outlined>60 Min</v-chip>
+              <v-chip
+                outlined
+                v-for="value in chip.values"
+                :key = "value.id"
+                >{{value}}
+              </v-chip>
 
             </v-chip-group>
           </v-card-text>
