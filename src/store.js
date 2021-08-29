@@ -69,6 +69,15 @@ export default new Vuex.Store({
     },
     setCurrentPhase({commit},payload) {
       commit('UPDATE_CURRENT_PHASE',payload)
-    }
+    },
+    setFocusTime({commit},payload) {
+      commit('UPDATE_FOCUS_TIME',payload)
+    },
+    setBreakTime({commit},payload) {
+      commit('UPDATE_BREAK_TIME',payload)
+    },
+    setLongBreakTime({commit},payload) {
+      commit('UPDATE_LONG_BREAK_TIME',payload)
+    },
   }
 })
