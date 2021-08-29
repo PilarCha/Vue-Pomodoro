@@ -76,18 +76,18 @@
       return {
         chipObj: [
           {
-            "title": 'Focus Time',
-            'vmodel': 'focusSelection',
+            title: 'Focus Time',
+            vmodel: 'focusSelection',
             values: ['30 Min', '45 Min', '60 Min']
           },
           {
-            "title": 'Break Time',
-            'vmodel': 'breakSelection',
+            title: 'Break Time',
+            vmodel: 'breakSelection',
             values: ['5 Min', '10 Min', '15 Min']
           },
           {
-            "title": 'Long Break',
-            'vmodel': 'longSelection',
+            title: 'Long Break',
+            vmodel: 'longSelection',
             values: ['20 Min', '25 Min', '30 Min']
           }
         ],
@@ -95,9 +95,6 @@
         focusSelection:1,
         longSelection:1,
         dialog: true,
-        notifications: false,
-        sound: true,
-        widgets: false,
       }
     },
   }
