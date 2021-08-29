@@ -37,27 +37,31 @@
           <v-toolbar-title>Settings</v-toolbar-title>
         </v-toolbar>
 
-
-        <v-card-title
-            style="color:var(--settings-pink)"
-            >
-            Focus Time
-          </v-card-title>
-        <v-card-text>
-          <v-chip-group
-            v-model="focusSelection"
-            style="color:var(--mid-cyan)"
-            column
+        <div
+          v-for="chip in chipObj"
+          :key = "chip.id"
           >
-            <v-chip outlined>30 Min</v-chip>
+          <v-card-title
+              style="color:var(--settings-pink)"
+              >
+              {{chip.title}}
+            </v-card-title>
+          <v-card-text>
+            <v-chip-group
+              v-model="focusSelection"
+              style="color:var(--mid-cyan)"
+              column
+            >
+              <v-chip outlined>30 Min</v-chip>
 
-            <v-chip outlined>45 Min</v-chip>
+              <v-chip outlined>45 Min</v-chip>
 
-            <v-chip outlined>60 Min</v-chip>
+              <v-chip outlined>60 Min</v-chip>
 
-          </v-chip-group>
-        </v-card-text>
-        <v-divider></v-divider>
+            </v-chip-group>
+          </v-card-text>
+          <v-divider></v-divider>
+        </div>
 
         <!-- <v-card-title
           style="color:var(--settings-pink)"
