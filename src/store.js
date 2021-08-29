@@ -61,15 +61,6 @@ export default new Vuex.Store({
     setTimeLimit({commit} , payload) {
       commit('UPDATE_TIME_LIMIT',payload)
     },
-    setTotalRounds({commit}, payload) {
-      commit('UPDATE_TOTAL_ROUNDS', payload)
-    },
-    setCurrentRound({commit}, payload) {
-      commit('UPDATE_CURRENT_ROUND',payload)
-    },
-    setCurrentPhase({commit},payload) {
-      commit('UPDATE_CURRENT_PHASE',payload)
-    },
     setFocusTime({commit},payload) {
       commit('UPDATE_FOCUS_TIME',payload)
     },
@@ -78,6 +69,15 @@ export default new Vuex.Store({
     },
     setLongBreakTime({commit},payload) {
       commit('UPDATE_LONG_BREAK_TIME',payload)
+    },
+    setTotalRounds({commit}, payload) {
+      commit('UPDATE_TOTAL_ROUNDS', payload)
+    },
+    setCurrentRound({commit}, payload) {
+      commit('UPDATE_CURRENT_ROUND',payload)
+    },
+    setCurrentPhase({commit},payload) {
+      commit('UPDATE_CURRENT_PHASE',payload)
     },
   }
 })

@@ -119,7 +119,7 @@ export default {
       this.timePassed = 0;
       let phase = this.currentPhase
       //TODO: put the below conditionals into the storeeee
-      if(phase == 'Focus' && this.currentRound == 2) {
+      if(phase == 'Focus' && this.currentRound == this.totalRounds - 1) {
         this.setTimeLimit(this.longBreak);
         this.setCurrentRound();
         this.setCurrentPhase("Long Break");
