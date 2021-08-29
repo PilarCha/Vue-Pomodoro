@@ -65,7 +65,7 @@
                 outlined
                 v-for="chipValue in chip.values"
                 :key = "chipValue"
-                @click="printThis(chipValue,chip.title)"
+                @click="saveValues(chipValue,chip.title)"
                 >
                 {{chipValue}}
               </v-chip>
@@ -109,12 +109,12 @@
         focusSelection:1,
         longSelection:1,
         roundSelection:1,
-        dialog: true,
+        dialog: false,
       }
     },
     methods: {
-      printThis(value,who) {
-        console.log(value,who)
+      saveValues(value,phase) {
+        console.log(value,phase)
       }
     }
   }

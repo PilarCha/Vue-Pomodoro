@@ -19,6 +19,15 @@ export default new Vuex.Store({
     timeLimit: state => {
       return state.timeLimit
     },
+    focusTime: state => {
+      return state.focusTime
+    },
+    breakTime: state => {
+      return state.breakTime
+    },
+    longBreak: state => {
+      return state.longBreak
+    },
     currentPhase: state => {
       return state.currentPhase
     },

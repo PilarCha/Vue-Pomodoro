@@ -85,7 +85,7 @@ export default {
 
   computed: {
     // calls store to set store variables to local variables. can be called with this.whatevsss
-    ...mapGetters(['timeLimit','currentPhase','totalRounds','currentRound'])
+    ...mapGetters(['timeLimit','focusTime','breakTime','longBreak','currentPhase','totalRounds','currentRound'])
   },
   // keeps an eye on paused. If changed runs code.
   watch: {
@@ -120,16 +120,16 @@ export default {
       let phase = this.currentPhase
       //TODO: put the below conditionals into the storeeee
       if(phase == 'Focus' && this.currentRound == 2) {
-        this.setTimeLimit(900);
+        this.setTimeLimit(this.longBreak);
         this.setCurrentRound();
         this.setCurrentPhase("Long Break");
         // TODO: Incorporate sending action to firebase api to store time limit
       } else if(phase == 'Focus') {
-        this.setTimeLimit(360);
+        this.setTimeLimit(this.breakTime);
         this.setCurrentRound();
         this.setCurrentPhase("Break");
       } else {
-        this.setTimeLimit(1800);
+        this.setTimeLimit(this.focusTime);
         this.setCurrentPhase("Focus");
         if(phase == "Long Break")
           this.setCurrentRound(0);
