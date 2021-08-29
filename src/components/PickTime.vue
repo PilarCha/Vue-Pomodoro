@@ -89,11 +89,17 @@
             title: 'Long Break',
             vmodel: 'longSelection',
             values: ['20 Min', '25 Min', '30 Min']
+          },
+          {
+            title: 'Total Rounds',
+            vmodel: 'roundSelection',
+            values: ['3', '4', '5','6','7']
           }
         ],
         breakSelection:1,
         focusSelection:1,
         longSelection:1,
+        roundSelection:1,
         dialog: true,
       }
     },
