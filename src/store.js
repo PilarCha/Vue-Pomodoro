@@ -9,7 +9,10 @@ export default new Vuex.Store({
     timeLimit: 1800,
     currentPhase: 'Focus',
     totalRounds:3,
-    currentRound:0
+    currentRound:0,
+    focusTime:1800,
+    breakTime:360,
+    longBreak:900
   },
 
   getters: {

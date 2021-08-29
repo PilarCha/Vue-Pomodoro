@@ -20,6 +20,7 @@
           <v-icon>mdi-tune</v-icon>
         </v-btn>
       </template>
+
       <v-card
         dark
         class="mx-auto my-12"
@@ -38,7 +39,7 @@
           <v-spacer></v-spacer>
 
           <v-btn
-            small            
+            small
           >
             Save
           </v-btn>
@@ -62,10 +63,11 @@
 
               <v-chip
                 outlined
-                v-for="value in chip.values"
-                :key = "value.id"
+                v-for="chipValue in chip.values"
+                :key = "chipValue"
+                @click="printThis(chipValue,chip.title)"
                 >
-                {{value}}
+                {{chipValue}}
               </v-chip>
 
             </v-chip-group>
@@ -83,12 +85,12 @@
       return {
         chipObj: [
           {
-            title: 'Focus Time',
+            title: 'Focus',
             vmodel: 'focusSelection',
             values: ['30 Min', '45 Min', '60 Min']
           },
           {
-            title: 'Break Time',
+            title: 'Break',
             vmodel: 'breakSelection',
             values: ['5 Min', '10 Min', '15 Min']
           },
@@ -110,6 +112,11 @@
         dialog: true,
       }
     },
+    methods: {
+      printThis(value,who) {
+        console.log(value,who)
+      }
+    }
   }
 </script>
 <style src="@/assets/styles/pickTime.css">
