@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     loading: false,
+    updateTimer:false,
     timeLimit: 2700,
     currentPhase: 'Focus',
     totalRounds:3,
@@ -16,6 +17,9 @@ export default new Vuex.Store({
   },
 
   getters: {
+    updateTimer: state => {
+      return state.updateTimer
+    },
     timeLimit: state => {
       return state.timeLimit
     },
@@ -45,6 +49,7 @@ export default new Vuex.Store({
     },
     UPDATE_FOCUS_TIME(state,time) {
       state.focusTime = time;
+      state.updateTimer = true;
     },
     UPDATE_BREAK_TIME(state,time) {
       state.breakTime = time;

@@ -125,16 +125,16 @@ import {mapActions} from 'vuex';
         for(let key in this.selectedObj) {
           switch(key) {
             case "Break Time":
-              this.setBreakTime(this.selectedObj[key])
+              this.setBreakTime(parseInt(this.selectedObj[key]) * 60)
               break;
             case "Focus Time":
-              this.setFocusTime(this.selectedObj[key])
+              this.setFocusTime(parseInt(this.selectedObj[key]) * 60)
               break;
             case "Long Break":
-              this.setLongBreakTime(this.selectedObj[key])
+              this.setLongBreakTime(parseInt(this.selectedObj[key]) * 60)
               break;
             case "Total Rounds":
-              this.setTotalRounds(this.selectedObj[key])
+              this.setTotalRounds(parseInt(this.selectedObj[key]))
               break;
           }
         }

@@ -85,7 +85,7 @@ export default {
 
   computed: {
     // calls store to set store variables to local variables. can be called with this.whatevsss
-    ...mapGetters(['timeLimit','focusTime','breakTime','longBreak','currentPhase','totalRounds','currentRound'])
+    ...mapGetters(['timeLimit','focusTime','breakTime','longBreak','currentPhase','totalRounds','currentRound','updateTimer'])
   },
   // keeps an eye on paused. If changed runs code.
   watch: {
@@ -117,7 +117,7 @@ export default {
       this.timerInterval = null;
       this.remainingPathColor = "base-timer__path-remaining green";
       this.timePassed = 0;
-      let phase = this.currentPhase      
+      let phase = this.currentPhase
       if(phase == 'Focus' && this.currentRound == this.totalRounds - 1) {
         this.setTimeLimit(this.longBreak);
         this.setCurrentRound();
