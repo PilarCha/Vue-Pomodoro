@@ -40,6 +40,7 @@
 
           <v-btn
             small
+            @click="saveSelected()"
           >
             Save
           </v-btn>
@@ -79,6 +80,7 @@
   </v-row>
 </template>
 <script>
+import {mapActions} from 'vuex';
   export default {
     data () {
       return {
@@ -107,6 +109,9 @@
         selectedObj:{},
         dialog: false,
       }
+    },
+    computed: {
+      ...mapActions(['setFocusTime','setBreakTime','setLongBreakTime','setTotalRounds'])
     },
     methods: {
       storeSelected(value,phase) {
