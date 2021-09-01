@@ -29,7 +29,6 @@
 
         <template slot="progress">
           <v-progress-linear
-            color="white"
             height="10"
             indeterminate
           ></v-progress-linear>
@@ -117,8 +116,8 @@ import {mapActions} from 'vuex';
           }
         ],
         selectedObj:{},
-        dialog: true,
-        loading:true
+        dialog: false,
+        loading:false
       }
     },
 
@@ -151,6 +150,7 @@ import {mapActions} from 'vuex';
           }
         }
         this.loading = false;
+        this.dialog = false;
       }
     }
   }

@@ -2,3 +2,7 @@
   margin:9px !important;
   color:var(--settings-cyan);
 }
+
+.v-progress-linear .v-progress-linear__indeterminate .long, .v-progress-linear .v-progress-linear__indeterminate .short {
+  background-color: var(--settings-cyan) !important;
+}
