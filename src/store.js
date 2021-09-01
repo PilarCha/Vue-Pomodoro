@@ -6,11 +6,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     loading: false,
-    timeLimit: 1800,
+    timeLimit: 2700,
     currentPhase: 'Focus',
     totalRounds:3,
     currentRound:0,
-    focusTime:1800,
+    focusTime:2700,
     breakTime:360,
     longBreak:900
   },
@@ -42,6 +42,15 @@ export default new Vuex.Store({
   mutations: {
     UPDATE_TIME_LIMIT(state,time) {
       state.timeLimit = time;
+    },
+    UPDATE_FOCUS_TIME(state,time) {
+      state.focusTime = time;
+    },
+    UPDATE_BREAK_TIME(state,time) {
+      state.breakTime = time;
+    },
+    UPDATE_LONG_BREAK_TIME(state,time) {
+      state.longBreak = time;
     },
     UPDATE_TOTAL_ROUNDS(state,rounds) {
       state.totalRounds = rounds;
