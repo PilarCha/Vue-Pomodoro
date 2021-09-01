@@ -23,8 +23,18 @@
 
       <v-card
         dark
+        :loading = "loading"
         class="mx-auto my-12"
       >
+
+        <template slot="progress">
+          <v-progress-linear
+            color="white"
+            height="10"
+            indeterminate
+          ></v-progress-linear>
+        </template>
+
         <v-toolbar
           style="background-color:var(--settings-pink)"
           dense
@@ -107,7 +117,8 @@ import {mapActions} from 'vuex';
           }
         ],
         selectedObj:{},
-        dialog: false,
+        dialog: true,
+        loading:true
       }
     },
 
@@ -122,6 +133,7 @@ import {mapActions} from 'vuex';
       },
 
       saveSelected() {
+        this.loading = true;
         for(let key in this.selectedObj) {
           switch(key) {
             case "Break Time":
@@ -138,6 +150,7 @@ import {mapActions} from 'vuex';
               break;
           }
         }
+        this.loading = false;
       }
     }
   }
