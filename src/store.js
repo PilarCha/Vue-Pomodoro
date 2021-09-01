@@ -49,6 +49,7 @@ export default new Vuex.Store({
     },
     UPDATE_FOCUS_TIME(state,time) {
       state.focusTime = time;
+      state.timeLimit = time;
       state.updateTimer = true;
     },
     UPDATE_BREAK_TIME(state,time) {
@@ -68,6 +69,9 @@ export default new Vuex.Store({
     },
     UPDATE_CURRENT_PHASE(state,phase){
       state.currentPhase = phase
+    },
+    UPDATE_UPDATE_TIMER(state,boolean) {
+      state.updateTimer = boolean
     }
   },
 
@@ -93,5 +97,8 @@ export default new Vuex.Store({
     setCurrentPhase({commit},payload) {
       commit('UPDATE_CURRENT_PHASE',payload)
     },
+    setUpdateTimer({commit},payload) {
+      commit('UPDATE_UPDATE_TIMER',payload)
+    }
   }
 })

@@ -97,12 +97,19 @@ export default {
       }
       clearInterval(this.timerInterval);
       this.paused=true
+    },
+
+    updateTimer() {
+      if(this.updateTimer) {
+        this.setUpdateTimer(false)
+        this.setUpTimer();
+      }
     }
   },
   // bulk of the applications
   methods: {
     // actions are used to mutate the store data. Can be called with this.whatevsss
-    ...mapActions(['setTimeLimit','setTotalRounds','setCurrentRound','setCurrentPhase']),
+    ...mapActions(['setTimeLimit','setTotalRounds','setCurrentRound','setCurrentPhase','setUpdateTimer']),
     // sets up the basic looks of the timer. Must click to start
     setUpTimer() {
       this.timeLeft = this.timeLimit - this.timePassed;
