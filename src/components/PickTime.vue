@@ -46,8 +46,8 @@
         </v-toolbar>
 
         <div
-          v-for="chip in chipObj"
-          :key = "chip.id"
+          v-for="(chip,i) in chipObj"
+          :key = "i"
           >
           <v-card-title
               style="color:var(--settings-pink)"
@@ -56,16 +56,15 @@
             </v-card-title>
           <v-card-text>
             <v-chip-group
-              v-model="chip.vmodel"
               style="color:var(--mid-cyan)"
               column
             >
 
               <v-chip
                 outlined
-                v-for="chipValue in chip.values"
-                :key = "chipValue"
-                @click="saveValues(chipValue,chip.title)"
+                v-for="(chipValue,j) in chip.values"
+                :key = "j"
+                @click="storeSelected(chipValue,chip.title)"
                 >
                 {{chipValue}}
               </v-chip>
@@ -105,16 +104,20 @@
             values: ['3', '4', '5','6','7']
           }
         ],
-        breakSelection:1,
-        focusSelection:1,
-        longSelection:1,
-        roundSelection:1,
+        selectedObj:{},
         dialog: false,
       }
     },
     methods: {
-      saveValues(value,phase) {
-        console.log(value,phase)
+      storeSelected(value,phase) {
+        if(phase in this.selectedObj) {
+          this.selectedObj[phase] = value.split(' ')[0]
+        }
+        this.selectedObj[phase] = value.split(' ')[0]
+      },
+
+      saveSelected() {
+
       }
     }
   }
