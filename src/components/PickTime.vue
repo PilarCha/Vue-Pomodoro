@@ -110,10 +110,10 @@ import {mapActions} from 'vuex';
         dialog: false,
       }
     },
-    computed: {
-      ...mapActions(['setFocusTime','setBreakTime','setLongBreakTime','setTotalRounds'])
-    },
+
     methods: {
+      ...mapActions(['setFocusTime','setBreakTime','setLongBreakTime','setTotalRounds']),
+
       storeSelected(value,phase) {
         if(phase in this.selectedObj) {
           this.selectedObj[phase] = value.split(' ')[0]
