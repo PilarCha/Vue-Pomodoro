@@ -122,7 +122,22 @@ import {mapActions} from 'vuex';
       },
 
       saveSelected() {
-
+        for(let key in this.selectedObj) {
+          switch(key) {
+            case "Break Time":
+              this.setBreakTime(this.selectedObj[key])
+              break;
+            case "Focus Time":
+              this.setFocusTime(this.selectedObj[key])
+              break;
+            case "Long Break":
+              this.setLongBreakTime(this.selectedObj[key])
+              break;
+            case "Total Rounds":
+              this.setTotalRounds(this.selectedObj[key])
+              break;
+          }
+        }
       }
     }
   }
