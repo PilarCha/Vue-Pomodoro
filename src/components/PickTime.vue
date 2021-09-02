@@ -112,7 +112,7 @@ import {mapActions} from 'vuex';
           {
             title: 'Total Rounds',
             vmodel: 'roundSelection',
-            values: ['3', '4', '5','6','7']
+            values: ['2','3', '4', '5','6','7']
           }
         ],
         selectedObj:{},
