@@ -62,14 +62,14 @@ path.base-timer__path-remaining {
 }
 
 .base-timer__path-remaining.green {
-  color: var(--mid-cyan);
-}
-
-.base-timer__path-remaining.orange {
   color: var(--light-cyan);
 }
 
-.base-timer__path-remaining.red {
+.base-timer__path-remaining.warning {
+  color: var(--mid-cyan);
+}
+
+.base-timer__path-remaining.danger {
   color: var(--neon-pink);
 }
 

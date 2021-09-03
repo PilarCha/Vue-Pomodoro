@@ -12,7 +12,7 @@
                     <path
                       id="base-timer-path-remaining"
                       :stroke-dasharray="remainingDashCircle"
-                      v-bind:class = "remainingPathColor"
+                      v-bind:class = "currentPathColor"
                       d="
                         M 50, 50
                         m -45, 0
@@ -36,7 +36,7 @@
                 </div> -->
 
                 <h3 class = "round-counter">{{currentRound}} / {{totalRounds}}</h3>
-               <span id="base-timer-label" v-bind:class = "remainingPathColor">{{formatTime(timeLeft)}}</span>
+               <span id="base-timer-label" v-bind:class = "currentPathColor">{{formatTime(timeLeft)}}</span>
                <h3 class ="current-phase" @click="paused = !paused">{{currentPhase}}</h3>
              </div>
             </div>
@@ -64,15 +64,15 @@ export default {
       fullDashArray: 283,
       timeLeft: null,
       timerInterval: null,
-      remainingPathColor: "base-timer__path-remaining green",
+      currentPathColor: "base-timer__path-remaining green",
       timePassed: 0,
       colorCodes: {
         warning: {
-          color: "orange",
+          color: "warning",
           threshold: 1000
         },
         alert: {
-          color: "red",
+          color: "danger",
           threshold: 300
         }
       },
@@ -114,7 +114,7 @@ export default {
     setUpTimer() {
       this.timeLeft = this.timeLimit - this.timePassed;
       this.formatTime(this.timeLeft);
-      this.setRemainingPathColor(this.timeLeft);
+      this.setcurrentPathColor(this.timeLeft);
     },
 
     restartTimer() {
@@ -122,7 +122,7 @@ export default {
       this.remainingDashCircle = 34;
       this.timeLeft = null;
       this.timerInterval = null;
-      this.remainingPathColor = "base-timer__path-remaining green";
+      this.currentPathColor = "base-timer__path-remaining green";
       this.timePassed = 0;
       let phase = this.currentPhase
       if(phase == 'Focus' && this.currentRound == this.totalRounds - 1) {
@@ -151,7 +151,7 @@ export default {
         this.timeLeft = this.timeLimit - this.timePassed;
         this.formatTime(this.timeLeft);
         this.setCircleDasharray();
-        this.setRemainingPathColor(this.timeLeft);
+        this.setcurrentPathColor(this.timeLeft);
 
         if (this.timeLeft === 0) {
           this.show = false;
@@ -172,12 +172,12 @@ export default {
       return `${minutes}:${seconds}`;
     },
 
-    setRemainingPathColor(timeLeft) {
+    setcurrentPathColor(timeLeft) {
       const { alert, warning} = this.colorCodes;
       if (timeLeft <= alert.threshold) {
-        this.remainingPathColor =  "base-timer__path-remaining red"
+        this.currentPathColor =  "base-timer__path-remaining danger"
       } else if (timeLeft <= warning.threshold) {
-        this.remainingPathColor = "base-timer__path-remaining orange"
+        this.currentPathColor = "base-timer__path-remaining warning"
       }
     },
 
