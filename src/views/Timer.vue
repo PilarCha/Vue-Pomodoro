@@ -69,11 +69,11 @@ export default {
       colorCodes: {
         warning: {
           color: "warning",
-          threshold: 1000
+          threshold: Math.floor(this.focusTime/2)
         },
         danger: {
           color: "danger",
-          threshold: 300
+          threshold: 250
         }
       },
     }
