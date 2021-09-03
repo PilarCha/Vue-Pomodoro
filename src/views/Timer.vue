@@ -1,7 +1,10 @@
 <template>
   <div data-app>
     <div class="container">
-      <v-row>
+      <v-row
+        no-gutters
+        class="flex-nowrap"
+      >
         <v-col cols="2">
           <PickTime/>
         </v-col>
