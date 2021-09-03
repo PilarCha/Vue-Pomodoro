@@ -53,7 +53,7 @@
 </template>
 <script>
 const sound = require("@/assets/moshi.mp3");
-import PickTime from '@/components/PickTime.vue'
+import PickTime from '@/components/pick-time.vue'
 import {mapGetters} from 'vuex';
 import {mapActions} from 'vuex';
 export default {

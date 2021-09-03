@@ -1,6 +1,5 @@
 <template>
-  <div id="confetti-container">
-    
+  <div id="confetti-container">    
   </div>
 </template>
 

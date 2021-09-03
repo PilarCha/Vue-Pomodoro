@@ -1,5 +1,6 @@
 <template>
   <v-row
+
     >
     <v-dialog
       v-model="dialog"
@@ -82,12 +83,13 @@
           <v-divider></v-divider>
         </div>
       </v-card>
-    </v-dialog>    
+    </v-dialog>
   </v-row>
 </template>
 <script>
 import {mapActions} from 'vuex';
   export default {
+    name:'PickTime',
     data () {
       return {
         chipObj: [
