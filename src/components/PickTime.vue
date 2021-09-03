@@ -1,7 +1,5 @@
 <template>
   <v-row
-    justify="center"
-    align="center"
     >
     <v-dialog
       v-model="dialog"
@@ -83,9 +81,8 @@
           </v-card-text>
           <v-divider></v-divider>
         </div>
-
       </v-card>
-    </v-dialog>
+    </v-dialog>    
   </v-row>
 </template>
 <script>
