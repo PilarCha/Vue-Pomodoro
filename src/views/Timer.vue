@@ -71,7 +71,7 @@ export default {
           color: "warning",
           threshold: 1000
         },
-        alert: {
+        danger: {
           color: "danger",
           threshold: 300
         }
@@ -173,8 +173,8 @@ export default {
     },
 
     setcurrentPathColor(timeLeft) {
-      const { alert, warning} = this.colorCodes;
-      if (timeLeft <= alert.threshold) {
+      const { danger, warning} = this.colorCodes;
+      if (timeLeft <= danger.threshold) {
         this.currentPathColor =  "base-timer__path-remaining danger"
       } else if (timeLeft <= warning.threshold) {
         this.currentPathColor = "base-timer__path-remaining warning"
