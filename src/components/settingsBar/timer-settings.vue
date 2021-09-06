@@ -1,51 +1,43 @@
 <template>
-  <!-- <v-btn
-    icon
-    style="color:var(--settings-cyan)"
+  <v-speed-dial
+    v-model="fab"
+    :right="right"
+    :direction="direction"
+    :transition="transition"
   >
-
-    <v-icon large>mdi-chevron-down</v-icon>
-  </v-btn> -->
-
-    <v-speed-dial
-      v-model="fab"
-      :right="right"
-      :direction="direction"
-      :transition="transition"
+    <template v-slot:activator>
+      <v-btn
+        v-model="fab"
+        class="main-icon"
+        dark
+        fab
+        small
+      >
+        <v-icon v-if="fab">
+          mdi-close
+        </v-icon>
+        <v-icon v-else large>
+          mdi-chevron-right
+        </v-icon>
+      </v-btn>
+    </template>
+    <v-btn
+      fab
+      dark
+      small
+      color="indigo"
     >
-      <template v-slot:activator>
-        <v-btn
-          v-model="fab"
-          class="main-icon"
-          dark
-          fab
-          small
-        >
-          <v-icon v-if="fab">
-            mdi-close
-          </v-icon>
-          <v-icon v-else large>
-            mdi-chevron-right
-          </v-icon>
-        </v-btn>
-      </template>
-      <v-btn
-        fab
-        dark
-        small
-        color="indigo"
-      >
-        <v-icon>mdi-replay</v-icon>
-      </v-btn>
-      <v-btn
-        fab
-        dark
-        small
-        color="red"
-      >
-        <v-icon>mdi-fast-forward</v-icon>
-      </v-btn>
-    </v-speed-dial>
+      <v-icon>mdi-replay</v-icon>
+    </v-btn>
+    <v-btn
+      fab
+      dark
+      small
+      color="red"
+    >
+      <v-icon>mdi-fast-forward</v-icon>
+    </v-btn>
+  </v-speed-dial>
 </template>
 
 <script>
