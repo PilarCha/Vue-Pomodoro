@@ -3,7 +3,7 @@
     icon
   >
 
-    <v-icon>mdi-tune</v-icon>
+    <v-icon>mdi-chevron-down</v-icon>
   </v-btn>
 
 </template>
