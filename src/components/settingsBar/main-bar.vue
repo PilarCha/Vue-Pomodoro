@@ -1,6 +1,7 @@
 <template>
   <v-row
     no-gutters
+    class="space-between"
   >
     <PickTime/>
     <TimerSettings/>
