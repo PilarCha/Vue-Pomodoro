@@ -1,7 +1,4 @@
 <template>
-  <v-row
-
-    >
     <v-dialog
       v-model="dialog"
       fullscreen
@@ -84,7 +81,6 @@
         </div>
       </v-card>
     </v-dialog>
-  </v-row>
 </template>
 <script>
 import {mapActions} from 'vuex';

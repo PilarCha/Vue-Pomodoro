@@ -27,6 +27,12 @@ body {
   overflow-y: hidden;
 }
 
+.mainbar-settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .base-timer {
   position: relative;
   width: 250px;

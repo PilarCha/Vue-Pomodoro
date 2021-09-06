@@ -5,7 +5,10 @@
         no-gutters
         class="flex-nowrap"
       >
-        <v-col cols="2">
+        <v-col
+          cols="2"
+          class="mainbar-settings"
+        >
           <MainBar/>
         </v-col>
         <v-col cols = "9">

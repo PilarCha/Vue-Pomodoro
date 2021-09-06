@@ -1,8 +1,6 @@
 <template>
   <v-row
     no-gutters
-    align="center"
-    justify="space-between"
   >
     <PickTime/>
     <TimerSettings/>
@@ -26,5 +24,5 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style src="@/assets/styles/mainbar.css">
 </style>
