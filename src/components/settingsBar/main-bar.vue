@@ -1,13 +1,13 @@
 <template>
   <v-row>
     <PickTime/>
-      
+
   </v-row>
 
 </template>
 
 <script>
-import PickTime from '@/components/settingsBar/pick-time.vue';
+import PickTime from './pick-time.vue';
 export default {
   name:'MainBar',
   components: {
