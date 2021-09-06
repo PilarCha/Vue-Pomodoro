@@ -33,17 +33,9 @@
         fab
         dark
         small
-        color="green"
-      >
-        <v-icon>mdi-pencil</v-icon>
-      </v-btn>
-      <v-btn
-        fab
-        dark
-        small
         color="indigo"
       >
-        <v-icon>mdi-plus</v-icon>
+        <v-icon>mdi-replay</v-icon>
       </v-btn>
       <v-btn
         fab
@@ -51,7 +43,7 @@
         small
         color="red"
       >
-        <v-icon>mdi-delete</v-icon>
+        <v-icon>mdi-fast-forward</v-icon>
       </v-btn>
     </v-speed-dial>
 </template>
