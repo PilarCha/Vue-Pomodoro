@@ -1,5 +1,9 @@
 <template>
-
+  <v-btn
+    icon
+  >
+    <v-icon>mdi-chart-areaspline</v-icon>
+  </v-btn>
 </template>
 
 <script>
