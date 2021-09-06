@@ -13,7 +13,7 @@
           text
           icon
         >
-          <v-icon>mdi-tune</v-icon>
+          <v-icon>mdi-cogs</v-icon>
         </v-btn>
       </template>
 

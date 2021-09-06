@@ -1,9 +1,10 @@
 <template>
   <v-btn
     icon
+    style="color:var(--settings-cyan)"
   >
 
-    <v-icon>mdi-chevron-down</v-icon>
+    <v-icon large>mdi-chevron-down</v-icon>
   </v-btn>
 
 </template>
