@@ -6,7 +6,7 @@
         class="flex-nowrap"
       >
         <v-col cols="2">
-          <PickTime/>
+          <MainBar/>
         </v-col>
         <v-col cols = "9">
           <div id="app">
@@ -53,12 +53,12 @@
 </template>
 <script>
 const sound = require("@/assets/moshi.mp3");
-import PickTime from '@/components/pick-time.vue'
+import MainBar from '@/components/settingsBar/main-bar.vue'
 import {mapGetters} from 'vuex';
 import {mapActions} from 'vuex';
 export default {
   components: {
-    PickTime
+    MainBar
   },
   data() {
     return {
