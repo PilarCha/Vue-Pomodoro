@@ -11,7 +11,6 @@
       v-model="fab"
       :right="right"
       :direction="direction"
-      :open-on-hover="hover"
       :transition="transition"
     >
       <template v-slot:activator>
@@ -25,8 +24,8 @@
           <v-icon v-if="fab">
             mdi-close
           </v-icon>
-          <v-icon v-else>
-            mdi-account-circle
+          <v-icon v-else large>
+            mdi-chevron-right
           </v-icon>
         </v-btn>
       </template>
@@ -63,25 +62,13 @@ export default {
   data: () => ({
       direction: 'right',
       fab: false,
-      fling: false,
-      hover: false,
-      tabs: null,
       right: true,
       transition: 'scale-transition',
     }),
 
     watch: {
-      top (val) {
-        this.bottom = !val
-      },
       right (val) {
         this.left = !val
-      },
-      bottom (val) {
-        this.top = !val
-      },
-      left (val) {
-        this.right = !val
       },
     },
 }
