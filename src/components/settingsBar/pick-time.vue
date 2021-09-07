@@ -45,6 +45,7 @@
 
           <v-btn
             small
+            class="save-button-color"
             @click="saveSelected()"
           >
             Save

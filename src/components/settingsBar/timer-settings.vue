@@ -12,6 +12,7 @@
         dark
         fab
         small
+        icon
       >
         <v-icon v-if="fab">
           mdi-close
@@ -24,6 +25,7 @@
     <v-btn
       fab
       dark
+      icon
       class="replay-icon"
       @click="restartRound()"
     >
@@ -32,6 +34,7 @@
     <v-btn
       fab
       dark
+      icon
       class="ff-icon"
       @click="ffNextRound()"
     >
@@ -77,10 +80,8 @@ export default {
   }
   .replay-icon {
     color:var(--light-purp);
-    background: rgba(0,0,0,0.5);
   }
   .ff-icon {
     color:var(--mid-cyan);
-    background: rgba(0,0,0,0.5);
   }
 </style>

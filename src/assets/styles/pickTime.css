@@ -5,3 +5,7 @@
 .v-progress-linear .v-progress-linear__indeterminate .long, .v-progress-linear .v-progress-linear__indeterminate .short {
   background-color: var(--settings-cyan) !important;
 }
+
+.save-button-color {
+  background-color: var(--blue) !important;
+}
