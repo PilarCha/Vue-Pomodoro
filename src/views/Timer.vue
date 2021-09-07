@@ -122,6 +122,7 @@ export default {
         this.setUpTimer();
       }
     },
+
     nextRound() {
       if(this.nextRound) {
         this.setNextRound(false);
@@ -132,7 +133,6 @@ export default {
     restartRound() {
       if(this.restartRound) {
         this.setRestartRound(false);
-
         clearInterval(this.timerInterval);
         this.remainingDashCircle = 34;
         this.timeLeft = null;
@@ -144,7 +144,6 @@ export default {
         // this.startTimer();
       }
     }
-
   },
   // bulk of the applications
   methods: {

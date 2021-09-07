@@ -8,16 +8,19 @@
     <template v-slot:activator>
       <v-btn
         v-model="fab"
-        class="main-icon"
         dark
         fab
         small
         icon
+        class="main-icon"
       >
         <v-icon v-if="fab">
           mdi-close
         </v-icon>
-        <v-icon v-else large>
+        <v-icon
+          v-else
+          large
+        >
           mdi-chevron-right
         </v-icon>
       </v-btn>
@@ -25,16 +28,17 @@
     <v-btn
       fab
       dark
-      icon
       class="replay-icon"
       @click="restartRound()"
     >
-      <v-icon large>mdi-replay</v-icon>
+      <v-icon
+        large
+      >mdi-replay
+      </v-icon>
     </v-btn>
     <v-btn
       fab
       dark
-      icon
       class="ff-icon"
       @click="ffNextRound()"
     >
@@ -75,11 +79,11 @@ export default {
 
 <style lang="css" scoped>
   .main-icon {
-    color:var(--settings-cyan);
+    color:var(--settings-cyan) !important;
     margin-left:10px;
   }
   .replay-icon {
-    color:var(--light-purp);
+    color:var(--light-purp) !important;
   }
   .ff-icon {
     color:var(--mid-cyan);
