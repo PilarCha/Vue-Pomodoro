@@ -26,6 +26,7 @@
       </v-btn>
     </template>
     <v-btn
+      elevation="4"
       fab
       dark
       class="replay-icon"
@@ -37,6 +38,7 @@
       </v-icon>
     </v-btn>
     <v-btn
+      elevation="4"
       fab
       dark
       class="ff-icon"
