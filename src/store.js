@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     loading: false,
     updateTimer:false,
+    nextRound:false,
     timeLimit: 2700,
     currentPhase: 'Focus',
     totalRounds:3,
@@ -17,6 +18,9 @@ export default new Vuex.Store({
   },
 
   getters: {
+    nextRound: state=> {
+      return state.nextRound
+    },
     updateTimer: state => {
       return state.updateTimer
     },
@@ -72,6 +76,9 @@ export default new Vuex.Store({
     },
     UPDATE_UPDATE_TIMER(state,boolean) {
       state.updateTimer = boolean
+    },
+    UPDATE_NEXT_ROUND(state,boolean) {
+      state.nextRound = boolean
     }
   },
 
@@ -99,6 +106,9 @@ export default new Vuex.Store({
     },
     setUpdateTimer({commit},payload) {
       commit('UPDATE_UPDATE_TIMER',payload)
+    },
+    setNextRound({commit},payload) {
+      commit('UPDATE_NEXT_ROUND',payload)
     }
   }
 })

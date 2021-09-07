@@ -26,6 +26,7 @@
       dark
       small
       color="indigo"
+      @click="restartTimer()"
     >
       <v-icon>mdi-replay</v-icon>
     </v-btn>
@@ -34,6 +35,7 @@
       dark
       small
       color="red"
+      @click="ffNextRound()"
     >
       <v-icon>mdi-fast-forward</v-icon>
     </v-btn>
@@ -41,6 +43,7 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex';
 export default {
   name:'TimerSettings',
   data: () => ({
@@ -49,6 +52,14 @@ export default {
       right: true,
       transition: 'scale-transition',
     }),
+
+    methods: {
+      ...mapActions(['setNextRound']),
+
+      ffNextRound() {
+        this.setNextRound(true);
+      }
+    },
 
     watch: {
       right (val) {

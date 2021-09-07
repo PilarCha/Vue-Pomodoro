@@ -77,7 +77,7 @@ export default {
       colorCodes: {
         warning: {
           color: "warning",
-          threshold: Math.floor(this.focusTime/2)
+          threshold: 1000
         },
         danger: {
           color: "danger",
@@ -93,7 +93,7 @@ export default {
 
   computed: {
     // calls store to set store variables to local variables. can be called with this.whatevsss
-    ...mapGetters(['timeLimit','focusTime','breakTime','longBreak','currentPhase','totalRounds','currentRound','updateTimer'])
+    ...mapGetters(['timeLimit','focusTime','breakTime','longBreak','currentPhase','totalRounds','currentRound','updateTimer','nextRound'])
   },
   // keeps an eye on paused. If changed runs code.
   watch: {
@@ -112,12 +112,18 @@ export default {
         this.setUpdateTimer(false)
         this.setUpTimer();
       }
+    },
+    nextRound() {
+      if(this.nextRound) {
+        this.setNextRound(false);
+        this.restartTimer();
+      }
     }
   },
   // bulk of the applications
   methods: {
     // actions are used to mutate the store data. Can be called with this.whatevsss
-    ...mapActions(['setTimeLimit','setTotalRounds','setCurrentRound','setCurrentPhase','setUpdateTimer']),
+    ...mapActions(['setTimeLimit','setTotalRounds','setCurrentRound','setCurrentPhase','setUpdateTimer','setNextRound']),
     // sets up the basic looks of the timer. Must click to start
     setUpTimer() {
       this.timeLeft = this.timeLimit - this.timePassed;
