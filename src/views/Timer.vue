@@ -1,6 +1,7 @@
 <template>
   <div data-app>
-    <div class="container">
+    <div class="container"
+    >
       <v-row
         no-gutters
         class="flex-nowrap"
@@ -9,7 +10,7 @@
           cols="2"
           class="mainbar-settings"
         >
-          <MainBar/>
+          <MainBar />
         </v-col>
         <v-col cols = "9">
           <div id="app">
@@ -44,8 +45,15 @@
                 </div> -->
 
               <h3 class = "round-counter">{{currentRound}} / {{totalRounds}}</h3>
-              <span id="base-timer-label" v-bind:class = "currentPathColor">{{formatTime(timeLeft)}}</span>
-              <h3 class ="current-phase" @click="paused = !paused">{{currentPhase}}</h3>
+              <span
+                id="base-timer-label"
+                v-bind:class = "currentPathColor">{{formatTime(timeLeft)}}
+              </span>
+              <h3
+                class ="current-phase"
+                @click="paused = !paused"
+              >{{currentPhase}}
+              </h3>
             </div>
           </div>
         </v-col>
@@ -66,6 +74,7 @@ export default {
   data() {
     return {
       sound,
+      hover:false,
       show: false,
       paused:true,
       remainingDashCircle: 34,
@@ -132,6 +141,7 @@ export default {
         this.timePassed = 0;
         this.setTimeLimit(this.timeLimit)
         this.setUpTimer();
+        // this.startTimer();
       }
     }
 

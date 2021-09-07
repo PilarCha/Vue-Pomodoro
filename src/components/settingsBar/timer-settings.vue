@@ -24,20 +24,18 @@
     <v-btn
       fab
       dark
-      small
-      color="indigo"
+      class="replay-icon"
       @click="restartRound()"
     >
-      <v-icon>mdi-replay</v-icon>
+      <v-icon large>mdi-replay</v-icon>
     </v-btn>
     <v-btn
       fab
       dark
-      small
-      color="red"
+      class="ff-icon"
       @click="ffNextRound()"
     >
-      <v-icon>mdi-fast-forward</v-icon>
+      <v-icon large>mdi-fast-forward</v-icon>
     </v-btn>
   </v-speed-dial>
 </template>
@@ -76,5 +74,13 @@ export default {
   .main-icon {
     color:var(--settings-cyan);
     margin-left:10px;
+  }
+  .replay-icon {
+    color:var(--light-purp);
+    background: rgba(0,0,0,0.5);
+  }
+  .ff-icon {
+    color:var(--mid-cyan);
+    background: rgba(0,0,0,0.5);
   }
 </style>
