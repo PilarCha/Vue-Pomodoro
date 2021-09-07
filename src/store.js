@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     loading: false,
     updateTimer:false,
+    restartRound:false,
     nextRound:false,
     timeLimit: 2700,
     currentPhase: 'Focus',
@@ -44,6 +45,9 @@ export default new Vuex.Store({
     },
     currentRound: state => {
       return state.currentRound
+    },
+    restartRound: state => {
+      return state.restartRound
     }
   },
 
@@ -79,6 +83,9 @@ export default new Vuex.Store({
     },
     UPDATE_NEXT_ROUND(state,boolean) {
       state.nextRound = boolean
+    },
+    UPDATE_RESTART_ROUND(state,boolean) {
+      state.restartRound = boolean
     }
   },
 
@@ -109,6 +116,9 @@ export default new Vuex.Store({
     },
     setNextRound({commit},payload) {
       commit('UPDATE_NEXT_ROUND',payload)
+    },
+    setRestartRound({commit},payload) {
+      commit('UPDATE_RESTART_ROUND',payload)
     }
   }
 })

@@ -26,7 +26,7 @@
       dark
       small
       color="indigo"
-      @click="restartTimer()"
+      @click="restartRound()"
     >
       <v-icon>mdi-replay</v-icon>
     </v-btn>
@@ -54,10 +54,13 @@ export default {
     }),
 
     methods: {
-      ...mapActions(['setNextRound']),
+      ...mapActions(['setNextRound','setRestartRound']),
 
       ffNextRound() {
         this.setNextRound(true);
+      },
+      restartRound() {
+        this.setRestartRound(true);
       }
     },
 

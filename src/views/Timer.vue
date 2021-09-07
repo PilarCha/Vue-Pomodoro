@@ -93,7 +93,7 @@ export default {
 
   computed: {
     // calls store to set store variables to local variables. can be called with this.whatevsss
-    ...mapGetters(['timeLimit','focusTime','breakTime','longBreak','currentPhase','totalRounds','currentRound','updateTimer','nextRound'])
+    ...mapGetters(['timeLimit','focusTime','breakTime','longBreak','currentPhase','totalRounds','currentRound','updateTimer','nextRound','restartRound'])
   },
   // keeps an eye on paused. If changed runs code.
   watch: {
@@ -118,12 +118,28 @@ export default {
         this.setNextRound(false);
         this.restartTimer();
       }
+    },
+
+    restartRound() {
+      if(this.restartRound) {
+        this.setRestartRound(false);
+
+        clearInterval(this.timerInterval);
+        this.remainingDashCircle = 34;
+        this.timeLeft = null;
+        this.timerInterval = null;
+        this.currentPathColor = "base-timer__path-remaining green";
+        this.timePassed = 0;
+        this.setTimeLimit(this.timeLimit)
+        this.setUpTimer();
+      }
     }
+
   },
   // bulk of the applications
   methods: {
     // actions are used to mutate the store data. Can be called with this.whatevsss
-    ...mapActions(['setTimeLimit','setTotalRounds','setCurrentRound','setCurrentPhase','setUpdateTimer','setNextRound']),
+    ...mapActions(['setTimeLimit','setTotalRounds','setCurrentRound','setCurrentPhase','setUpdateTimer','setNextRound','setRestartRound']),
     // sets up the basic looks of the timer. Must click to start
     setUpTimer() {
       this.timeLeft = this.timeLimit - this.timePassed;
