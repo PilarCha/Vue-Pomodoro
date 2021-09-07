@@ -10,8 +10,7 @@
           v-on="on"
           v-bind="attrs"
           id="tuner"
-          text
-          icon
+          icon          
         >
           <v-icon>mdi-cogs</v-icon>
         </v-btn>
