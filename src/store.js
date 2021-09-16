@@ -9,13 +9,14 @@ export default new Vuex.Store({
     updateTimer:false,
     restartRound:false,
     nextRound:false,
-    timeLimit: 2700,
+    timeLimit: 1800,
     currentPhase: 'Focus',
     totalRounds:3,
     currentRound:0,
-    focusTime:2700,
+    focusTime:1800,
     breakTime:360,
-    longBreak:900
+    longBreak:900,
+    sound:true
   },
 
   getters: {

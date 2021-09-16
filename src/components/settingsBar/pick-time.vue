@@ -10,7 +10,7 @@
           v-on="on"
           v-bind="attrs"
           id="tuner"
-          icon          
+          icon
         >
           <v-icon>mdi-cogs</v-icon>
         </v-btn>
@@ -41,7 +41,12 @@
           </v-btn>
           <v-toolbar-title>Settings</v-toolbar-title>
           <v-spacer></v-spacer>
-
+          <v-btn
+            style="margin-left:5px;"
+            icon
+          >
+            <v-icon>mdi-volume-high</v-icon>
+          </v-btn>
           <v-btn
             small
             class="save-button-color"
