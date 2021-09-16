@@ -76,6 +76,7 @@ export default {
     return {
       roundEndAudio,
       completeCycleAudio,
+      currentSound:roundEndAudio,
       hover:false,
       show: false,
       paused:true,
@@ -104,7 +105,7 @@ export default {
 
   computed: {
     // calls store to set store variables to local variables. can be called with this.whatevsss
-    ...mapGetters(['timeLimit','focusTime','breakTime','longBreak','currentPhase','totalRounds','currentRound','updateTimer','nextRound','restartRound'])
+    ...mapGetters(['timeLimit','focusTime','breakTime','longBreak','currentPhase','totalRounds','currentRound','updateTimer','nextRound','restartRound','playSound'])
   },
   // keeps an eye on paused. If changed runs code.
   watch: {
@@ -169,15 +170,18 @@ export default {
       if(phase == 'Focus' && this.currentRound == this.totalRounds - 1) {
         this.setTimeLimit(this.longBreak);
         this.setCurrentRound();
+        this.currentSound = completeCycleAudio;
         this.setCurrentPhase("Long Break");
         // TODO: Incorporate sending action to firebase api to store time limit
       } else if(phase == 'Focus') {
         this.setTimeLimit(this.breakTime);
         this.setCurrentRound();
+        this.currentSound = roundEndAudio;
         this.setCurrentPhase("Break");
       } else {
         this.setTimeLimit(this.focusTime);
         this.setCurrentPhase("Focus");
+        this.currentSound = roundEndAudio;
         if(phase == "Long Break")
           this.setCurrentRound(0);
       }
@@ -196,8 +200,10 @@ export default {
 
         if (this.timeLeft === 0) {
           this.show = false;
-          let audio = new Audio(this.roundEndAudio);
-          audio.play();
+          if(this.playSound) {
+            let audio = new Audio(this.currentSound);
+            audio.play();
+          }
           this.restartTimer();
         }
       }, 1000);
