@@ -63,7 +63,8 @@
 
 </template>
 <script>
-const sound = require("@/assets/moshi.mp3");
+const roundEndAudio = require("@/assets/audios/moshi.mp3");
+const completeCycleAudio = require("@/assets/audios/congratulations.mp3")
 import MainBar from '@/components/settingsBar/main-bar.vue'
 import {mapGetters} from 'vuex';
 import {mapActions} from 'vuex';
@@ -73,7 +74,8 @@ export default {
   },
   data() {
     return {
-      sound,
+      roundEndAudio,
+      completeCycleAudio,
       hover:false,
       show: false,
       paused:true,
@@ -194,7 +196,7 @@ export default {
 
         if (this.timeLeft === 0) {
           this.show = false;
-          let audio = new Audio(this.sound);
+          let audio = new Audio(this.roundEndAudio);
           audio.play();
           this.restartTimer();
         }
