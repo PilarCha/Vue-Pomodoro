@@ -105,7 +105,7 @@ export default {
 
   computed: {
     // calls store to set store variables to local variables. can be called with this.whatevsss
-    ...mapGetters(['timeLimit','focusTime','breakTime','longBreak','currentPhase','totalRounds','currentRound','updateTimer','nextRound','restartRound','playSound'])
+    ...mapGetters(['timeLimit','focusTime','breakTime','longBreak','currentPhase','totalRounds','currentRound','updateTimer','nextRound','restartRound','muteSound'])
   },
   // keeps an eye on paused. If changed runs code.
   watch: {
@@ -200,7 +200,7 @@ export default {
 
         if (this.timeLeft === 0) {
           this.show = false;
-          if(this.playSound) {
+          if(!this.muteSound) {
             let audio = new Audio(this.currentSound);
             audio.play();
           }

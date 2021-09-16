@@ -48,15 +48,15 @@
             icon
           >
             <v-icon
-              v-if="playSound"
+              v-if="muteSound"
             >
-              mdi-volume-high
+              mdi-volume-off
             </v-icon>
 
             <v-icon
               v-else
             >
-              mdi-volume-off
+              mdi-volume-high
             </v-icon>
           </v-btn>
 
@@ -134,13 +134,13 @@ import {mapActions,mapGetters} from 'vuex';
       }
     },
     computed: {
-      ...mapGetters(['playSound'])
+      ...mapGetters(['muteSound'])
     },
     methods: {
-      ...mapActions(['setFocusTime','setBreakTime','setLongBreakTime','setTotalRounds','setPlaySound']),
+      ...mapActions(['setFocusTime','setBreakTime','setLongBreakTime','setTotalRounds','setMuteSound']),
 
       updatePlaySound() {
-        this.playSound ? this.setPlaySound(false) : this.setPlaySound(true);        
+        this.muteSound ? this.setMuteSound(false) : this.setMuteSound(true);
       },
 
       storeSelected(value,phase) {
