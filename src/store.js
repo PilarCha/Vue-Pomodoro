@@ -16,7 +16,7 @@ export default new Vuex.Store({
     focusTime:1800,
     breakTime:360,
     longBreak:900,
-    sound:true
+    playSound:true
   },
 
   getters: {
@@ -49,6 +49,9 @@ export default new Vuex.Store({
     },
     restartRound: state => {
       return state.restartRound
+    },
+    playSound: state => {
+      return state.playSound
     }
   },
 
@@ -87,6 +90,9 @@ export default new Vuex.Store({
     },
     UPDATE_RESTART_ROUND(state,boolean) {
       state.restartRound = boolean
+    },
+    UPDATE_PLAY_SOUND(state,boolean) {
+      state.playSound = boolean
     }
   },
 
@@ -120,6 +126,9 @@ export default new Vuex.Store({
     },
     setRestartRound({commit},payload) {
       commit('UPDATE_RESTART_ROUND',payload)
+    },
+    setPlaySound({commit},payload) {
+      commit('UPDATE_PLAY_SOUND',payload)
     }
   }
 })
