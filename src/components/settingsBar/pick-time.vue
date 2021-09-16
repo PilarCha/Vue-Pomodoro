@@ -43,7 +43,8 @@
           <v-spacer></v-spacer>
 
           <v-btn
-            style="margin-left:5px;"
+            style="margin-right:10px;"
+            @click="updatePlaySound()"
             icon
           >
             <v-icon
@@ -58,8 +59,6 @@
               mdi-volume-off
             </v-icon>
           </v-btn>
-
-
 
           <v-btn
             small
@@ -139,6 +138,10 @@ import {mapActions,mapGetters} from 'vuex';
     },
     methods: {
       ...mapActions(['setFocusTime','setBreakTime','setLongBreakTime','setTotalRounds','setPlaySound']),
+
+      updatePlaySound() {
+        this.playSound ? this.setPlaySound(false) : this.setPlaySound(true);        
+      },
 
       storeSelected(value,phase) {
         if(phase in this.selectedObj) {
