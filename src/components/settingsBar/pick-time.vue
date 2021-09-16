@@ -47,9 +47,15 @@
             icon
           >
             <v-icon
-
+              v-if="playSound"
             >
               mdi-volume-high
+            </v-icon>
+
+            <v-icon
+              v-else
+            >
+              mdi-volume-off
             </v-icon>
           </v-btn>
 
