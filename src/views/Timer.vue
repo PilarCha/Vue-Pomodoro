@@ -15,7 +15,7 @@
             <v-expand-transition>
               <MainBar
                 v-if="hover"
-                 class="d-flex transition-fast-in-fast-out"
+                 class="transition-fast-in-fast-out"
 
               />
             </v-expand-transition>
