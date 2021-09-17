@@ -10,7 +10,9 @@
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps",
     "start": "vue-cli-service electron:serve",
-    "test:unit": "vue-cli-service test:unit src/**/*.spec.js"
+    "test:unit": "vue-cli-service test:unit src/**/*.spec.js",
+    "test": "mocha"
+
   },
   "main": "background.js",
   "dependencies": {
