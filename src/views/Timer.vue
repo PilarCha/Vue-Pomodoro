@@ -7,7 +7,6 @@
           no-gutters
           class="flex-nowrap"
         >
-
             <v-col
               cols="2"
               class="mainbar-settings"
@@ -16,7 +15,6 @@
               <MainBar
                 v-if="hover"
                  class="transition-fast-in-fast-out"
-
               />
             </v-expand-transition>
             </v-col>
