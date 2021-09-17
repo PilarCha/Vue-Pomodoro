@@ -1,3 +1,4 @@
 .space-between {
+  display:flex;
   align-content: space-between;
 }

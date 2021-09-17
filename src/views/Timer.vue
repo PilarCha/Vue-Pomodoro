@@ -7,17 +7,19 @@
           no-gutters
           class="flex-nowrap"
         >
-          <v-expand-transition>
+
             <v-col
               cols="2"
-              class="main-settings"
+              class="mainbar-settings"
             >
+            <v-expand-transition>
               <MainBar
                 v-if="hover"
+                 class="d-flex transition-fast-in-fast-out"
 
               />
+            </v-expand-transition>
             </v-col>
-          </v-expand-transition>
           <v-col cols = "9">
             <div id="app">
               <div class="base-timer">
