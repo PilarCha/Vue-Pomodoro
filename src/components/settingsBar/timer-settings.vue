@@ -14,12 +14,16 @@
         icon
         class="main-icon"
       >
-        <v-icon v-if="fab">
+        <v-icon
+          v-if="fab"
+          class="mdiClose"
+          >
           mdi-close
         </v-icon>
         <v-icon
           v-else
           large
+          class="chevronRight"
         >
           mdi-chevron-right
         </v-icon>
