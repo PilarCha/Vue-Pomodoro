@@ -1,33 +1,32 @@
 <template>
   <v-hover v-slot="{ hover }">
     <div data-app>
-      <div class="container"
-      >
-        <v-row
-          no-gutters
-          class="flex-nowrap"
-        >
-            <v-col
-              cols="2"
-              class="mainbar-settings"
-            >
+      <div class="container">
+        <v-row no-gutters class="flex-nowrap">
+          <v-col cols="2" class="mainbar-settings">
             <v-expand-transition>
-              <MainBar
-                v-if="hover"
-                 class="transition-fast-in-fast-out"
-              />
+              <MainBar v-if="hover" class="transition-fast-in-fast-out" />
             </v-expand-transition>
-            </v-col>
-          <v-col cols = "9">
+          </v-col>
+          <v-col cols="9">
             <div id="app">
               <div class="base-timer">
-                <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  class="base-timer__svg"
+                  viewBox="0 0 100 100"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <g class="base-timer__circle">
-                    <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" ></circle>
+                    <circle
+                      class="base-timer__path-elapsed"
+                      cx="50"
+                      cy="50"
+                      r="45"
+                    ></circle>
                     <path
                       id="base-timer-path-remaining"
                       :stroke-dasharray="remainingDashCircle"
-                      v-bind:class = "currentPathColor"
+                      v-bind:class="currentPathColor"
                       d="
                         M 50, 50
                         m -45, 0
@@ -37,7 +36,7 @@
                     ></path>
                   </g>
                 </svg>
-                  <!-- <div id="demo">
+                <!-- <div id="demo">
                     <transition name="fadeOne">
                       <div v-show="show" class="transition-container">
                         <span id="base-timer-label" >{{formatTime(timeLeft)}}</span>
@@ -50,15 +49,14 @@
                     </transition>
                   </div> -->
 
-                <h3 class = "round-counter">{{currentRound}} / {{totalRounds}}</h3>
-                <span
-                  id="base-timer-label"
-                  v-bind:class = "currentPathColor">{{formatTime(timeLeft)}}
+                <h3 class="round-counter">
+                  {{ currentRound }} / {{ totalRounds }}
+                </h3>
+                <span id="base-timer-label" v-bind:class="currentPathColor"
+                  >{{ formatTime(timeLeft) }}
                 </span>
-                <h3
-                  class ="current-phase"
-                  @click="paused = !paused"
-                >{{currentPhase}}
+                <h3 class="current-phase" @click="paused = !paused">
+                  {{ currentPhase }}
                 </h3>
               </div>
             </div>
@@ -70,22 +68,21 @@
 </template>
 <script>
 const roundEndAudio = require("@/assets/audios/moshi.mp3");
-const completeCycleAudio = require("@/assets/audios/congratulations.mp3")
-import MainBar from '@/components/settingsBar/main-bar.vue'
-import {mapGetters} from 'vuex';
-import {mapActions} from 'vuex';
+const completeCycleAudio = require("@/assets/audios/congratulations.mp3");
+import MainBar from "@/components/settingsBar/main-bar.vue";
+import { mapGetters, mapActions } from "vuex";
 export default {
   components: {
-    MainBar
+    MainBar,
   },
   data() {
     return {
       roundEndAudio,
       completeCycleAudio,
-      currentSound:roundEndAudio,
-      hover:false,
+      currentSound: roundEndAudio,
+      hover: false,
       show: false,
-      paused:true,
+      paused: true,
       remainingDashCircle: 34,
       fullDashArray: 283,
       timeLeft: null,
@@ -95,14 +92,14 @@ export default {
       colorCodes: {
         warning: {
           color: "warning",
-          threshold: 1000
+          threshold: 1000,
         },
         danger: {
           color: "danger",
-          threshold: 250
-        }
+          threshold: 250,
+        },
       },
-    }
+    };
   },
 
   mounted() {
@@ -111,36 +108,48 @@ export default {
 
   computed: {
     // calls store to set store variables to local variables. can be called with this.whatevsss
-    ...mapGetters(['timeLimit','focusTime','breakTime','longBreak','currentPhase','totalRounds','currentRound','updateTimer','nextRound','restartRound','muteSound'])
+    ...mapGetters([
+      "timeLimit",
+      "focusTime",
+      "breakTime",
+      "longBreak",
+      "currentPhase",
+      "totalRounds",
+      "currentRound",
+      "updateTimer",
+      "nextRound",
+      "restartRound",
+      "muteSound",
+    ]),
   },
   // keeps an eye on paused. If changed runs code.
   watch: {
     paused() {
-      if(!this.paused) {
-        this.startTimer()
-        this.paused=false;
+      if (!this.paused) {
+        this.startTimer();
+        this.paused = false;
         return;
       }
       clearInterval(this.timerInterval);
-      this.paused=true
+      this.paused = true;
     },
 
     updateTimer() {
-      if(this.updateTimer) {
-        this.setUpdateTimer(false)
+      if (this.updateTimer) {
+        this.setUpdateTimer(false);
         this.setUpTimer();
       }
     },
 
     nextRound() {
-      if(this.nextRound) {
+      if (this.nextRound) {
         this.setNextRound(false);
         this.restartTimer();
       }
     },
 
     restartRound() {
-      if(this.restartRound) {
+      if (this.restartRound) {
         this.setRestartRound(false);
         clearInterval(this.timerInterval);
         this.remainingDashCircle = 34;
@@ -148,16 +157,24 @@ export default {
         this.timerInterval = null;
         this.currentPathColor = "base-timer__path-remaining green";
         this.timePassed = 0;
-        this.setTimeLimit(this.timeLimit)
+        this.setTimeLimit(this.timeLimit);
         this.setUpTimer();
         // this.startTimer();
       }
-    }
+    },
   },
   // bulk of the applications
   methods: {
     // actions are used to mutate the store data. Can be called with this.whatevsss
-    ...mapActions(['setTimeLimit','setTotalRounds','setCurrentRound','setCurrentPhase','setUpdateTimer','setNextRound','setRestartRound']),
+    ...mapActions([
+      "setTimeLimit",
+      "setTotalRounds",
+      "setCurrentRound",
+      "setCurrentPhase",
+      "setUpdateTimer",
+      "setNextRound",
+      "setRestartRound",
+    ]),
     // sets up the basic looks of the timer. Must click to start
     setUpTimer() {
       this.timeLeft = this.timeLimit - this.timePassed;
@@ -172,14 +189,14 @@ export default {
       this.timerInterval = null;
       this.currentPathColor = "base-timer__path-remaining green";
       this.timePassed = 0;
-      let phase = this.currentPhase
-      if(phase == 'Focus' && this.currentRound == this.totalRounds - 1) {
+      let phase = this.currentPhase;
+      if (phase == "Focus" && this.currentRound == this.totalRounds - 1) {
         this.setTimeLimit(this.longBreak);
         this.setCurrentRound();
         this.currentSound = completeCycleAudio;
         this.setCurrentPhase("Long Break");
         // TODO: Incorporate sending action to firebase api to store time limit
-      } else if(phase == 'Focus') {
+      } else if (phase == "Focus") {
         this.setTimeLimit(this.breakTime);
         this.setCurrentRound();
         this.currentSound = roundEndAudio;
@@ -188,8 +205,7 @@ export default {
         this.setTimeLimit(this.focusTime);
         this.setCurrentPhase("Focus");
         this.currentSound = roundEndAudio;
-        if(phase == "Long Break")
-          this.setCurrentRound(0);
+        if (phase == "Long Break") this.setCurrentRound(0);
       }
       // we have this here to immediately start the next phase
       this.startTimer();
@@ -206,7 +222,7 @@ export default {
 
         if (this.timeLeft === 0) {
           this.show = false;
-          if(!this.muteSound) {
+          if (!this.muteSound) {
             let audio = new Audio(this.currentSound);
             audio.play();
           }
@@ -216,7 +232,7 @@ export default {
     },
 
     // setup methods below. No need to change these boyos
-    formatTime (time) {
+    formatTime(time) {
       const minutes = Math.floor(time / 60);
       let seconds = time % 60;
       if (seconds < 10) {
@@ -226,25 +242,26 @@ export default {
     },
 
     setcurrentPathColor(timeLeft) {
-      const { danger, warning} = this.colorCodes;
+      const { danger, warning } = this.colorCodes;
       if (timeLeft <= danger.threshold) {
-        this.currentPathColor =  "base-timer__path-remaining danger"
+        this.currentPathColor = "base-timer__path-remaining danger";
       } else if (timeLeft <= warning.threshold) {
-        this.currentPathColor = "base-timer__path-remaining warning"
+        this.currentPathColor = "base-timer__path-remaining warning";
       }
     },
 
     setCircleDasharray() {
-      const circleDasharray = `${(this.calculateTimeFraction() * this.fullDashArray).toFixed(0)} 283`;
-      this.remainingDashCircle = circleDasharray
+      const circleDasharray = `${(
+        this.calculateTimeFraction() * this.fullDashArray
+      ).toFixed(0)} 283`;
+      this.remainingDashCircle = circleDasharray;
     },
 
     calculateTimeFraction() {
       const rawTimeFraction = this.timeLeft / this.timeLimit;
       return rawTimeFraction - (1 / this.timeLimit) * (1 - rawTimeFraction);
     },
-  }
-}
+  },
+};
 </script>
-<style src="@/assets/styles/timer.css">
-</style>
+<style src="@/assets/styles/timer.css"></style>

@@ -1,29 +1,23 @@
 <template>
-  <v-row
-    no-gutters
-    class="space-between"
-  >
-    <PickTime/>
-    <TimerSettings/>
-    <HistoryGraph/>
-
+  <v-row no-gutters class="space-between">
+    <PickTime />
+    <TimerSettings />
+    <HistoryGraph />
   </v-row>
-
 </template>
 
 <script>
-import PickTime from './pick-time.vue';
-import TimerSettings from './timer-settings.vue';
-import HistoryGraph from './history-graph.vue';
+import PickTime from "./pick-time.vue";
+import TimerSettings from "./timer-settings.vue";
+import HistoryGraph from "./history-graph.vue";
 export default {
-  name:'MainBar',
+  name: "MainBar",
   components: {
     PickTime,
     TimerSettings,
-    HistoryGraph
-  }
-}
+    HistoryGraph,
+  },
+};
 </script>
 
-<style src="@/assets/styles/mainbar.css">
-</style>
+<style src="@/assets/styles/mainbar.css"></style>

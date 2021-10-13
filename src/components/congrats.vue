@@ -1,15 +1,14 @@
 <template>
-  <div id="confetti-container">    
-  </div>
+  <div id="confetti-container"></div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       confettiShower: [],
       numConfettis: 400,
-      container: document.getElementById('confetti-container'),
+      container: document.getElementById("confetti-container"),
       colors: [
         "#00FF73",
         "#6C4AE2",
@@ -17,9 +16,9 @@ export default {
         "#DB27DB",
         "#FA405A",
         "#51EFFC",
-        "#EB640A"
-      ]
-    }
+        "#EB640A",
+      ],
+    };
   },
 
   created() {
@@ -27,10 +26,20 @@ export default {
   },
 
   methods: {
-    create () {
-      var newConfetti = '<div class="confetti" style="bottom:' + Math.floor(Math.random() * 100) +'%; left:' + Math.floor(Math.random() * 100) +'%;width:' +
-      Math.floor(Math.random() * 15 + 5) +'px; height:' + Math.floor(Math.random() * 15 + 5)*1.2 +'px;"><div class="rotate"><div class="askew" style="background-color:' + this.colors[Math.floor(Math.random() * this.colors.length)] + '"></div></div></div>';
-      this.container.innerHTML+= newConfetti;
+    create() {
+      var newConfetti =
+        '<div class="confetti" style="bottom:' +
+        Math.floor(Math.random() * 100) +
+        "%; left:" +
+        Math.floor(Math.random() * 100) +
+        "%;width:" +
+        Math.floor(Math.random() * 15 + 5) +
+        "px; height:" +
+        Math.floor(Math.random() * 15 + 5) * 1.2 +
+        'px;"><div class="rotate"><div class="askew" style="background-color:' +
+        this.colors[Math.floor(Math.random() * this.colors.length)] +
+        '"></div></div></div>';
+      this.container.innerHTML += newConfetti;
     },
 
     animateConfetti() {
@@ -38,24 +47,25 @@ export default {
         // var confetti = new Confetti();
         this.create();
       }
-      var confettis = document.querySelectorAll('.confetti');
+      var confettis = document.querySelectorAll(".confetti");
       for (var i = 0; i < this.confettis.length; i++) {
         var opacity = Math.random() + 0.1;
-        var animated = confettis[i].animate([
-          { transform: 'translate3d(0,0,0)', opacity: opacity },
-          { transform: 'translate3d(20vw,100vh,0)', opacity: 1 }
-        ], {
-          duration: Math.random() * 3000 + 3000,
-          iterations: Infinity,
-          delay: -(Math.random() * 5000)
-        });
-       this.confettiShower.push(animated);
+        var animated = confettis[i].animate(
+          [
+            { transform: "translate3d(0,0,0)", opacity: opacity },
+            { transform: "translate3d(20vw,100vh,0)", opacity: 1 },
+          ],
+          {
+            duration: Math.random() * 3000 + 3000,
+            iterations: Infinity,
+            delay: -(Math.random() * 5000),
+          }
+        );
+        this.confettiShower.push(animated);
       }
-    }
-  }
-
-
-}
+    },
+  },
+};
 
 // var confettiShower = [];
 // var numConfettis = 400;
@@ -98,7 +108,6 @@ export default {
 //   }
 // }
 // animateConfetti();
-
 </script>
 
 <style lang="scss" scoped>
@@ -107,7 +116,7 @@ $n: 400;
   box-sizing: border-box;
 }
 body {
-  background: #E5F4FF;
+  background: #e5f4ff;
   overflow: hidden;
   height: 100vh;
   width: 100%;
@@ -117,7 +126,7 @@ body {
 #confetti-container {
   width: 100vw;
   height: 100vh;
-  position:relative;
+  position: relative;
 }
 .confetti {
   position: absolute;
@@ -135,15 +144,15 @@ body {
 }
 @for $i from 0 to $n {
   .confetti:nth-child(#{$i}) .askew {
-    $time: 1s + random(100)*.01s;
+    $time: 1s + random(100) * 0.01s;
     animation-duration: $time;
-    animation-delay: -$time*random(100)*.01;
-	}
+    animation-delay: -$time * random(100) * 0.01;
+  }
   .confetti:nth-child(#{$i}) .rotate {
-    $time: 1s + random(100)*.01s;
+    $time: 1s + random(100) * 0.01s;
     animation-duration: $time;
-    animation-delay: -$time*random(100)*.01;
-	}
+    animation-delay: -$time * random(100) * 0.01;
+  }
 }
 
 @keyframes drift {
@@ -156,11 +165,10 @@ body {
 }
 @keyframes driftRotate {
   0% {
-    transform: rotateX(0) ;
+    transform: rotateX(0);
   }
   100% {
     transform: rotateX(360deg);
   }
 }
-
 </style>
