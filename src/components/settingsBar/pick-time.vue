@@ -102,10 +102,8 @@
 </template>
 <script>
 import {mapActions,mapGetters} from 'vuex';
-const ipcRenderer = require('electron').ipcRenderer;
-ipcRenderer.on('totalScreens',(displays) => {
-  console.log(displays)
-})                      
+const ipcRenderer = 'electron';                     
+
   export default {
     name:'PickTime',
     data () {
@@ -134,11 +132,17 @@ ipcRenderer.on('totalScreens',(displays) => {
         ],
         selectedObj:{},
         dialog: false,
-        loading:false
+        loading:false,
+        displays:null
       }
     },
     computed: {
       ...mapGetters(['muteSound'])
+    },
+    mounted() {
+      window.ipc.on('totalScreens', (payload) => {
+        console.log(payload)
+      })
     },
     methods: {
       ...mapActions(['setFocusTime','setBreakTime','setLongBreakTime','setTotalRounds','setMuteSound']),
@@ -174,7 +178,13 @@ ipcRenderer.on('totalScreens',(displays) => {
         }
         this.loading = false;
         this.dialog = false;
-      },      
+      },   
+      open() {
+        ipcRenderer.on('totalScreens',(event,displays) => {
+          this.displays = displays
+          console.log(displays)
+        })
+      }   
     }
   }
 </script>
