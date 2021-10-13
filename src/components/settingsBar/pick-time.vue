@@ -102,6 +102,10 @@
 </template>
 <script>
 import {mapActions,mapGetters} from 'vuex';
+const ipcRenderer = require('electron').ipcRenderer;
+ipcRenderer.on('totalScreens',(displays) => {
+  console.log(displays)
+})                      
   export default {
     name:'PickTime',
     data () {
@@ -170,14 +174,7 @@ import {mapActions,mapGetters} from 'vuex';
         }
         this.loading = false;
         this.dialog = false;
-      },
-
-      sendSelectedScreen(screen) {
-        const electron = require("electron");
-        const {ipcRenderer} = electron;
-
-        ipcRenderer.send('selectedScreen',screen)
-      }
+      },      
     }
   }
 </script>

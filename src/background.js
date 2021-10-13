@@ -1,5 +1,5 @@
 'use strict'
-import { app, protocol, BrowserWindow, ipcMain } from 'electron'
+import { app, protocol, BrowserWindow } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
@@ -23,7 +23,14 @@ async function createWindow() {
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
       nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION
-    }
+    }    
+  })
+
+  win.on('totalScreens', () => {
+    console.log('starting the count of screens');
+    const electron = require('electron');
+    let displays = electron.screen.getAllDisplays();
+    win.webContents.send('totalScreens',displays)
   })
   // electron positioner used here
   const positioner = new Positioner(win);
@@ -68,15 +75,6 @@ app.on('ready', async () => {
     }
   }
   createWindow()
-})
-
-// event Listeners
-ipcMain.on("selectedScreen", function (e,screen) {
-  if(screen == null) {
-    alert('Please Select the screen again. Did not go through')
-    return;
-  }
-  
 })
 
 // Exit cleanly on request from parent process in development mode.
