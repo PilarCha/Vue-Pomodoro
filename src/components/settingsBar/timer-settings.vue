@@ -72,6 +72,13 @@ export default {
       },
       restartRound() {
         this.setRestartRound(true);
+      },
+      sendSelectedScreen(screen) {
+        const electron = require("electron");
+        const {ipcRenderer} = electron;
+
+        ipcRenderer.send('selectedScreen',screen)
+
       }
     },
 
