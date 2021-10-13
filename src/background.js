@@ -1,5 +1,5 @@
 'use strict'
-import { app, protocol, BrowserWindow } from 'electron'
+import { app, protocol, BrowserWindow, ipcMain } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
@@ -68,6 +68,15 @@ app.on('ready', async () => {
     }
   }
   createWindow()
+})
+
+// event Listeners
+ipcMain.on("selectedScreen", function (e,screen) {
+  if(screen == null) {
+    alert('Please Select the screen again. Did not go through')
+    return;
+  }
+  
 })
 
 // Exit cleanly on request from parent process in development mode.
