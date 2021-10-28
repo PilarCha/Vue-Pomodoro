@@ -7,12 +7,8 @@
   >
     <template v-slot:activator>
       <v-btn v-model="fab" dark fab small icon class="main-icon">
-        <v-icon v-if="fab" class="mdiClose">
-          mdi-close
-        </v-icon>
-        <v-icon v-else large class="chevronRight">
-          mdi-chevron-right
-        </v-icon>
+        <v-icon v-if="fab" class="mdiClose"> mdi-close </v-icon>
+        <v-icon v-else large class="chevronRight"> mdi-chevron-right </v-icon>
       </v-btn>
     </template>
     <v-btn elevation="4" fab dark class="replay-icon" @click="restartRound()">

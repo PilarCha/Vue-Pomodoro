@@ -16,21 +16,17 @@
         <v-progress-linear height="10" indeterminate></v-progress-linear>
       </template>
 
-      <v-toolbar style="background-color:var(--settings-pink)" dense>
+      <v-toolbar style="background-color: var(--settings-pink)" dense>
         <v-btn icon @click="dialog = false">
           <v-icon>mdi-close</v-icon>
         </v-btn>
         <v-toolbar-title>Settings</v-toolbar-title>
         <v-spacer></v-spacer>
 
-        <v-btn style="margin-right:10px;" @click="updatePlaySound()" icon>
-          <v-icon v-if="muteSound">
-            mdi-volume-off
-          </v-icon>
+        <v-btn style="margin-right: 10px" @click="updatePlaySound()" icon>
+          <v-icon v-if="muteSound"> mdi-volume-off </v-icon>
 
-          <v-icon v-else>
-            mdi-volume-high
-          </v-icon>
+          <v-icon v-else> mdi-volume-high </v-icon>
         </v-btn>
 
         <v-btn small class="save-button-color" @click="saveSelected()">
@@ -39,11 +35,11 @@
       </v-toolbar>
 
       <div v-for="(chip, i) in chipObj" :key="i">
-        <v-card-title style="color:var(--settings-pink)">
+        <v-card-title style="color: var(--settings-pink)">
           {{ chip.title }}
         </v-card-title>
         <v-card-text>
-          <v-chip-group style="color:var(--mid-cyan)" column>
+          <v-chip-group style="color: var(--mid-cyan)" column>
             <v-chip
               outlined
               v-for="(chipValue, j) in chip.values"
