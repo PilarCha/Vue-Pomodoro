@@ -1,15 +1,15 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Timer from '../views/Timer.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Timer from "../views/Timer.vue";
 // import PickTime from '../components/PickTime.vue'
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Timer',
-    component: Timer
+    path: "/",
+    name: "Timer",
+    component: Timer,
   },
   // {
   //   path: '/',
@@ -24,12 +24,12 @@ const routes = [
   //   // which is lazy-loaded when the route is visited.
   //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   // }
-]
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
