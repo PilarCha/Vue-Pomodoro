@@ -220,7 +220,7 @@ export default {
         this.setCircleDasharray();
         this.setcurrentPathColor(this.timeLeft);
 
-        if (this.timeLeft === 0) {
+        if (this.timeLeft === 0 && !this.paused) {
           this.show = false;
           if (!this.muteSound) {
             let audio = new Audio(this.currentSound);
