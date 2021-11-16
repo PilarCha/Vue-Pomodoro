@@ -1,42 +1,43 @@
 <template>
-  <v-hover v-slot="{ hover }">
-    <div data-app>
-      <div class="container">
-        <v-row no-gutters class="flex-nowrap">
-          <v-col cols="2" class="mainbar-settings">
-            <v-expand-transition>
-              <MainBar v-if="hover" class="transition-fast-in-fast-out" />
-            </v-expand-transition>
-          </v-col>
-          <v-col cols="9">
-            <div id="app">
-              <div class="base-timer">
-                <svg
-                  class="base-timer__svg"
-                  viewBox="0 0 100 100"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g class="base-timer__circle">
-                    <circle
-                      class="base-timer__path-elapsed"
-                      cx="50"
-                      cy="50"
-                      r="45"
-                    ></circle>
-                    <path
-                      id="base-timer-path-remaining"
-                      :stroke-dasharray="remainingDashCircle"
-                      v-bind:class="currentPathColor"
-                      d="
+  <main>
+    <v-hover v-slot="{ hover }">
+      <div data-app>
+        <div class="container">
+          <v-row no-gutters class="flex-nowrap">
+            <v-col cols="2" class="mainbar-settings">
+              <v-expand-transition>
+                <MainBar v-if="hover" class="transition-fast-in-fast-out" />
+              </v-expand-transition>
+            </v-col>
+            <v-col cols="9">
+              <div id="app">
+                <div class="base-timer">
+                  <svg
+                    class="base-timer__svg"
+                    viewBox="0 0 100 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g class="base-timer__circle">
+                      <circle
+                        class="base-timer__path-elapsed"
+                        cx="50"
+                        cy="50"
+                        r="45"
+                      ></circle>
+                      <path
+                        id="base-timer-path-remaining"
+                        :stroke-dasharray="remainingDashCircle"
+                        v-bind:class="currentPathColor"
+                        d="
                         M 50, 50
                         m -45, 0
                         a 45,45 0 1,0 90,0
                         a 45,45 0 1,0 -90,0
                       "
-                    ></path>
-                  </g>
-                </svg>
-                <!-- <div id="demo">
+                      ></path>
+                    </g>
+                  </svg>
+                  <!-- <div id="demo">
                     <transition name="fadeOne">
                       <div v-show="show" class="transition-container">
                         <span id="base-timer-label" >{{formatTime(timeLeft)}}</span>
@@ -49,28 +50,33 @@
                     </transition>
                   </div> -->
 
-                <h3 class="round-counter">
-                  {{ currentRound }} / {{ totalRounds }}
-                </h3>
-                <span id="base-timer-label" v-bind:class="currentPathColor"
-                  >{{ formatTime(timeLeft) }}
-                </span>
-                <h3 class="current-phase" @click="paused = !paused">
-                  {{ currentPhase }}
-                </h3>
+                  <h3 class="round-counter">
+                    {{ currentRound }} / {{ totalRounds }}
+                  </h3>
+                  <span id="base-timer-label" v-bind:class="currentPathColor"
+                    >{{ formatTime(timeLeft) }}
+                  </span>
+                  <h3 class="current-phase" @click="paused = !paused">
+                    {{ currentPhase }}
+                  </h3>
+                </div>
               </div>
-            </div>
-          </v-col>
-        </v-row>
+            </v-col>
+          </v-row>
+        </div>
       </div>
-    </div>
-  </v-hover>
+    </v-hover>
+  </main>
 </template>
 <script>
 const roundEndAudio = require("@/assets/audios/moshi.mp3");
 const completeCycleAudio = require("@/assets/audios/congratulations.mp3");
 import MainBar from "@/components/settingsBar/main-bar.vue";
 import { mapGetters, mapActions } from "vuex";
+import Vue from "vue";
+import VueConfetti from "vue-confetti";
+
+Vue.use(VueConfetti);
 export default {
   components: {
     MainBar,
@@ -79,6 +85,7 @@ export default {
     return {
       roundEndAudio,
       completeCycleAudio,
+      beginConfetti: true,
       currentSound: roundEndAudio,
       hover: false,
       show: false,
@@ -207,6 +214,13 @@ export default {
         this.currentSound = roundEndAudio;
         if (phase == "Long Break") this.setCurrentRound(0);
       }
+      this.$confetti.start({
+        defaultDropRate: 5,
+        defaultSize: 5,
+      });
+      setTimeout(() => {
+        this.$confetti.stop();
+      }, 2000);
       // we have this here to immediately start the next phase
       this.startTimer();
     },
