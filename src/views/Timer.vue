@@ -214,13 +214,6 @@ export default {
         this.currentSound = roundEndAudio;
         if (phase == "Long Break") this.setCurrentRound(0);
       }
-      this.$confetti.start({
-        defaultDropRate: 5,
-        defaultSize: 5,
-      });
-      setTimeout(() => {
-        this.$confetti.stop();
-      }, 2000);
       // we have this here to immediately start the next phase
       this.startTimer();
     },
@@ -236,6 +229,13 @@ export default {
 
         if (this.timeLeft === 0 && !this.paused) {
           this.show = false;
+          this.$confetti.start({
+            defaultDropRate: 5,
+            defaultSize: 5,
+          });
+          setTimeout(() => {
+            this.$confetti.stop();
+          }, 2000);
           if (!this.muteSound) {
             let audio = new Audio(this.currentSound);
             audio.play();
