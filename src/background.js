@@ -1,9 +1,15 @@
 "use strict";
-import { app, protocol, BrowserWindow, ipcRenderer, ipcMain } from "electron";
+import { app, protocol, BrowserWindow, ipcMain } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
 const isDevelopment = process.env.NODE_ENV !== "production";
 const Positioner = require("electron-positioner");
+const sqlite3 = require("sqlite3");
+
+// Beginning Database setup
+const database = new sqlite3.Database("./public/PomodoroTimer.db", (err) => {
+  if (err) console.error("Database opening error: ", err);
+});
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
@@ -68,6 +74,13 @@ app.on("ready", async () => {
     }
   }
   createWindow();
+});
+
+ipcMain.on("asynchronous-message", (event, arg) => {
+  const sql = arg;
+  database.all(sql, (err, rows) => {
+    event.reply("asynchronous-reply", (err && err.message) || rows);
+  });
 });
 
 // Exit cleanly on request from parent process in development mode.
