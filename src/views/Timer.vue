@@ -186,7 +186,7 @@ export default {
     setUpTimer() {
       this.timeLeft = this.timeLimit - this.timePassed;
       this.formatTime(this.timeLeft);
-      this.setcurrentPathColor(this.timeLeft);
+      this.setCurrentPathColor(this.timeLeft);
     },
 
     restartTimer() {
@@ -225,7 +225,7 @@ export default {
         this.timeLeft = this.timeLimit - this.timePassed;
         this.formatTime(this.timeLeft);
         this.setCircleDasharray();
-        this.setcurrentPathColor(this.timeLeft);
+        this.setCurrentPathColor(this.timeLeft);
 
         if (this.timeLeft === 0 && !this.paused) {
           this.show = false;
@@ -255,7 +255,7 @@ export default {
       return `${minutes}:${seconds}`;
     },
 
-    setcurrentPathColor(timeLeft) {
+    setCurrentPathColor(timeLeft) {
       const { danger, warning } = this.colorCodes;
       if (timeLeft <= danger.threshold) {
         this.currentPathColor = "base-timer__path-remaining danger";
