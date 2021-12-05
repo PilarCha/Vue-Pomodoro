@@ -21,6 +21,7 @@ export default {
       let sql = "Select * from User";
       sendAsync(sql).then((result) => {
         this.response = result;
+        console.log("yse");
       });
     },
   },
