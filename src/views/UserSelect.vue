@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ response }}
+    {{ JSON.stringify(response, null, 2) }}
   </div>
 </template>
 <script>
@@ -20,10 +20,11 @@ export default {
     getUsers() {
       let sql = "Select * from User";
       sendAsync(sql).then((result) => {
+        console.log(result);
         this.response = result;
-        console.log("yse");
       });
     },
   },
 };
 </script>
+7
