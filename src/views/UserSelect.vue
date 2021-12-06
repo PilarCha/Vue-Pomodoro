@@ -1,5 +1,5 @@
 <template>
-  <v-card dark>
+  <v-card dark height="100%">
     <v-list rounded>
       <v-toolbar style="background-color: var(--settings-pink)" dense>
         <v-toolbar-title>Select User</v-toolbar-title>
@@ -13,7 +13,7 @@
           v-for="(user, i) in userList"
           :key="i"
           rounded
-          style="display: flex"
+          style="display: flex; justify-content: center"
         >
           <v-list-item-icon>
             <v-icon>mdi-account</v-icon>
