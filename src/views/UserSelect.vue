@@ -8,7 +8,9 @@
         <v-toolbar-title>Select User</v-toolbar-title>
         <v-spacer></v-spacer>
 
-        <v-btn small class="quit-button-color">Quit</v-btn>
+        <v-btn small class="quit-button-color" @click="quitApplication()"
+          >Quit</v-btn
+        >
       </v-toolbar>
       <v-list-item-group>
         <v-list-item v-for="(user, i) in userList" :key="i" rounded>
@@ -52,8 +54,14 @@ export default {
       let sql = "Select username from User";
       sendAsync(sql).then((result) => {
         this.userList = result[0];
-        console.log(this.userList);
       });
+    },
+
+    quitApplication() {
+      const electron = window.require("electron");
+      const { ipcRenderer } = electron;
+
+      ipcRenderer.send("quit-application");
     },
   },
 };

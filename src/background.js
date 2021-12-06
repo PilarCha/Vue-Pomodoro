@@ -1,6 +1,6 @@
 "use strict";
-require("./query-control/main");
-import { app, protocol, BrowserWindow } from "electron";
+require("./query-control/main.js");
+import { app, protocol, BrowserWindow, ipcMain } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
 const isDevelopment = process.env.NODE_ENV !== "production";
@@ -69,6 +69,10 @@ app.on("ready", async () => {
     }
   }
   createWindow();
+});
+
+ipcMain.on("quit-application", () => {
+  app.exit(0);
 });
 
 // Exit cleanly on request from parent process in development mode.
