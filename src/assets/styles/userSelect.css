@@ -5,3 +5,7 @@
 .icon-margin {
     margin-right: 20px;
 }
+
+.titles {
+    color: var(--settings-pink) !important;
+}

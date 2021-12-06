@@ -8,18 +8,15 @@
         <v-btn small class="quit-button-color">Quit</v-btn>
       </v-toolbar>
       <v-spacer></v-spacer>
-      <v-list-item-group color="primary">
-        <v-list-item
-          v-for="(user, i) in userList"
-          :key="i"
-          rounded
-          style="display: flex; justify-content: center"
-        >
+      <v-list-item-group
+        style="display: flex; justify-content: center; flex-wrap: wrap"
+      >
+        <v-list-item v-for="(user, i) in userList" :key="i" rounded>
           <v-list-item-icon>
-            <v-icon>mdi-account</v-icon>
+            <v-icon class="titles">mdi-account</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title v-text="user"></v-list-item-title>
+            <v-list-item-title class="titles" v-text="user"></v-list-item-title>
           </v-list-item-content>
           <v-btn icon>
             <v-icon>mdi-trash-can</v-icon>
@@ -27,10 +24,10 @@
         </v-list-item>
         <v-list-item>
           <v-list-item-icon>
-            <v-icon>mdi-account-plus</v-icon>
+            <v-icon class="titles">mdi-account-plus</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title>Add New User</v-list-item-title>
+            <v-list-item-title class="titles">Add New User</v-list-item-title>
           </v-list-item-content>
           <v-btn icon>
             <v-icon>mdi-trash-can</v-icon>
