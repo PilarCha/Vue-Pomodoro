@@ -1,23 +1,37 @@
 <template>
-  <v-card dark class="mx-auto" max-width="300" tile>
+  <v-card dark height="100%">
     <v-list rounded>
-      <v-subheader>Select User</v-subheader>
-      <v-list-item-group color="primary">
-        <v-list-item v-for="(user, i) in userList" :key="i">
+      <v-toolbar
+        style="background-color: var(--settings-pink); margin-bottom: 10px"
+        dense
+      >
+        <v-toolbar-title>Select User</v-toolbar-title>
+        <v-spacer></v-spacer>
+
+        <v-btn small class="quit-button-color">Quit</v-btn>
+      </v-toolbar>
+      <v-list-item-group>
+        <v-list-item v-for="(user, i) in userList" :key="i" rounded>
           <v-list-item-icon>
-            <v-icon>mdi-account</v-icon>
+            <v-icon class="titles icon-margin">mdi-account</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title v-text="user.username"></v-list-item-title>
+            <v-list-item-title class="titles" v-text="user"></v-list-item-title>
           </v-list-item-content>
+          <v-btn icon>
+            <v-icon>mdi-trash-can</v-icon>
+          </v-btn>
         </v-list-item>
         <v-list-item>
           <v-list-item-icon>
-            <v-icon>mdi-add</v-icon>
+            <v-icon class="titles icon-margin">mdi-account-plus</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title>Add user</v-list-item-title>
+            <v-list-item-title class="titles">Add New User</v-list-item-title>
           </v-list-item-content>
+          <v-btn icon>
+            <v-icon>mdi-trash-can</v-icon>
+          </v-btn>
         </v-list-item>
       </v-list-item-group>
     </v-list>
@@ -44,4 +58,4 @@ export default {
   },
 };
 </script>
-7
+<style src="@/assets/styles/userSelect.css"></style>

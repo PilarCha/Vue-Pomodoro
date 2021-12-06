@@ -1,0 +1,11 @@
+.quit-button-color {
+  background-color: var(--red) !important;
+}
+
+.icon-margin {
+    margin-right: 20px;
+}
+
+.titles {
+    color: var(--settings-pink) !important;
+}

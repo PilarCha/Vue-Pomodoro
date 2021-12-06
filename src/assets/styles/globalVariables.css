@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap');
+::-webkit-scrollbar {
+  display: none;
+}
+
+:root {
+  --neon-pink: #E800AF;
+  --light-purp:  	#BF00D7;
+  --dark-purp: #4900ff;
+  --mid-cyan: #00b8ff;
+  --light-cyan: #00fff9;
+  --blue: #156cdb;
+  --settings-cyan: #00DCFC;
+  --settings-pink: #D400C3;
+  --settings-darkblue: #1732DE;
+}
+
+#app {
+  font-family: 'Orbitron', sans-serif;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  height: 100vh;
+  place-items: center;
+  overflow-y: hidden;
+}
