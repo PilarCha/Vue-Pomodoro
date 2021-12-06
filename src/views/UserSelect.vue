@@ -5,17 +5,25 @@
         <v-toolbar-title>Select User</v-toolbar-title>
         <v-spacer></v-spacer>
 
-        <v-btn small class="save-button-color">Quit</v-btn>
+        <v-btn small class="quit-button-color">Quit</v-btn>
       </v-toolbar>
       <v-spacer></v-spacer>
       <v-list-item-group color="primary">
-        <v-list-item v-for="(user, i) in userList" :key="i" rounded>
+        <v-list-item
+          v-for="(user, i) in userList"
+          :key="i"
+          rounded
+          style="display: flex"
+        >
           <v-list-item-icon>
             <v-icon>mdi-account</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title v-text="user"></v-list-item-title>
           </v-list-item-content>
+          <v-btn icon>
+            <v-icon>mdi-trash-can</v-icon>
+          </v-btn>
         </v-list-item>
         <v-list-item>
           <v-list-item-icon>
@@ -24,6 +32,9 @@
           <v-list-item-content>
             <v-list-item-title>Add New User</v-list-item-title>
           </v-list-item-content>
+          <v-btn icon>
+            <v-icon>mdi-trash-can</v-icon>
+          </v-btn>
         </v-list-item>
       </v-list-item-group>
     </v-list>
