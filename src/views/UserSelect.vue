@@ -20,7 +20,10 @@
             <v-icon class="titles icon-margin">mdi-account</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title class="titles" v-text="user"></v-list-item-title>
+            <v-list-item-title
+              class="titles"
+              v-text="user.username"
+            ></v-list-item-title>
           </v-list-item-content>
           <v-btn icon>
             <v-icon>mdi-dots-vertical</v-icon>
@@ -53,7 +56,7 @@ export default {
     getUsers() {
       let sql = "Select username from User";
       sendAsync(sql).then((result) => {
-        this.userList = result[0];
+        this.userList = result;
       });
     },
 
