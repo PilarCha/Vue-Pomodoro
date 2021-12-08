@@ -9,3 +9,7 @@
 .titles {
     color: var(--settings-pink) !important;
 }
+
+.v-progress-linear .v-progress-linear__indeterminate .long, .v-progress-linear .v-progress-linear__indeterminate .short {
+  background-color: var(--settings-cyan) !important;
+}
