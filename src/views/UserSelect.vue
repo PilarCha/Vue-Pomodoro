@@ -13,7 +13,7 @@
       >
     </v-toolbar>
 
-    <v-list rounded>
+    <v-list rounded class="overflow-y-auto">
       <v-list-item-group>
         <v-list-item v-for="(user, i) in userList" :key="i" rounded>
           <v-list-item-icon>
