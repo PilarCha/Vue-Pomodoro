@@ -63,6 +63,14 @@ export default {
       });
     },
 
+    addUser() {
+      // add a user
+    },
+
+    editUser() {
+      // editUser
+    },
+
     deleteUser(userId) {
       let sql = `Delete From User where id = ${userId}`;
       sendAsync(sql).then((result) => {
