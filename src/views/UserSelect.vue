@@ -37,7 +37,9 @@
             <v-icon class="titles icon-margin">mdi-account-plus</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title class="titles">Add New User</v-list-item-title>
+            <v-list-item-title class="titles" @click="addUser()"
+              >Add New User</v-list-item-title
+            >
           </v-list-item-content>
         </v-list-item>
       </v-list-item-group>

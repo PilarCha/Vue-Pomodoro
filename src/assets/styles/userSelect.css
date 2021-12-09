@@ -1,5 +1,5 @@
 .quit-button-color {
-  background-color: var(--red) !important;
+  background-color: var(--dark-purp) !important;
 }
 
 .icon-margin {
@@ -13,3 +13,4 @@
 .v-progress-linear .v-progress-linear__indeterminate .long, .v-progress-linear .v-progress-linear__indeterminate .short {
   background-color: var(--settings-cyan) !important;
 }
+
