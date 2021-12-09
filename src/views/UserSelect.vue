@@ -15,7 +15,7 @@
 
     <v-list rounded class="overflow-y-auto">
       <v-list-item-group>
-        <div v-if="!addNewUser">
+        <div v-if="!showNewUserForm">
           <v-list-item v-for="(user, i) in userList" :key="i" rounded>
             <v-list-item-icon>
               <v-icon class="titles icon-margin">mdi-account-edit</v-icon>
@@ -35,7 +35,7 @@
           </v-list-item>
         </div>
 
-        <div v-if="addNewUser">
+        <div v-if="showNewUserForm">
           <v-list-item>
             <v-list-item-content>
               <v-text-field
@@ -51,10 +51,15 @@
                 >mdi-account-plus</v-icon
               >
             </v-btn>
+            <v-btn icon>
+              <v-icon class="titles" @click="showNewUserForm = !showNewUserForm"
+                >mdi-close</v-icon
+              >
+            </v-btn>
           </v-list-item>
         </div>
 
-        <v-list-item v-if="!addNewUser">
+        <v-list-item v-if="!showNewUserForm">
           <v-list-item-icon>
             <v-icon class="titles icon-margin">mdi-account-plus</v-icon>
           </v-list-item-icon>
@@ -74,7 +79,7 @@ export default {
   data: () => ({
     userList: null,
     loading: true,
-    addNewUser: false,
+    showNewUserForm: false,
     newUserName: "",
     rules: [
       (value) => !!value || "Required.",
@@ -94,7 +99,7 @@ export default {
     },
 
     addUser() {
-      this.addNewUser = true;
+      this.showNewUserForm = true;
     },
 
     createNewUser() {
@@ -104,7 +109,7 @@ export default {
 
       let sql = `Insert into User (username,createdOn) VALUES ('${this.newUserName}',strftime('%s','now'))`;
       sendAsync(sql).then((result) => {
-        this.addNewUser = false;
+        this.showNewUserForm = false;
         alert(result);
       });
     },
