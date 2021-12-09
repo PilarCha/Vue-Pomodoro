@@ -15,24 +15,46 @@
 
     <v-list rounded class="overflow-y-auto">
       <v-list-item-group>
-        <v-list-item v-for="(user, i) in userList" :key="i" rounded>
-          <v-list-item-icon>
-            <v-icon class="titles icon-margin">mdi-account-edit</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title
-              class="titles"
-              v-text="user.username"
-            ></v-list-item-title>
-          </v-list-item-content>
+        <div v-if="!addNewUser">
+          <v-list-item v-for="(user, i) in userList" :key="i" rounded>
+            <v-list-item-icon>
+              <v-icon class="titles icon-margin">mdi-account-edit</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title
+                class="titles"
+                v-text="user.username"
+              ></v-list-item-title>
+            </v-list-item-content>
 
-          <v-btn icon>
-            <v-icon class="titles" @click="deleteUser(user.id)"
-              >mdi-trash-can</v-icon
-            >
-          </v-btn>
-        </v-list-item>
-        <v-list-item>
+            <v-btn icon>
+              <v-icon class="titles" @click="deleteUser(user.id)"
+                >mdi-trash-can</v-icon
+              >
+            </v-btn>
+          </v-list-item>
+        </div>
+
+        <div v-if="addNewUser">
+          <v-list-item>
+            <v-list-item-content>
+              <v-text-field
+                label="UserName"
+                :rules="rules"
+                hide-details="auto"
+                v-model="newUserName"
+              ></v-text-field>
+            </v-list-item-content>
+
+            <v-btn icon>
+              <v-icon class="titles" @click="createNewUser()"
+                >mdi-account-plus</v-icon
+              >
+            </v-btn>
+          </v-list-item>
+        </div>
+
+        <v-list-item v-if="!addNewUser">
           <v-list-item-icon>
             <v-icon class="titles icon-margin">mdi-account-plus</v-icon>
           </v-list-item-icon>
@@ -52,6 +74,12 @@ export default {
   data: () => ({
     userList: null,
     loading: true,
+    addNewUser: false,
+    newUserName: "",
+    rules: [
+      (value) => !!value || "Required.",
+      (value) => (value && value.length >= 3) || "Min 3 characters",
+    ],
   }),
   mounted() {
     this.getUsers();
@@ -66,7 +94,16 @@ export default {
     },
 
     addUser() {
-      // add a user
+      this.addNewUser = true;
+    },
+
+    createNewUser() {
+      alert(this.newUserName);
+      let sql = `Insert into User (username,createdOn) VALUES ('${this.newUserName}',strftime('%s','now'))`;
+      sendAsync(sql).then((result) => {
+        this.addNewUser = false;
+        console.log(result);
+      });
     },
 
     editUser() {
