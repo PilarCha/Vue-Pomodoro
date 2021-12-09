@@ -17,7 +17,7 @@
       <v-list-item-group>
         <v-list-item v-for="(user, i) in userList" :key="i" rounded>
           <v-list-item-icon>
-            <v-icon class="titles icon-margin">mdi-account</v-icon>
+            <v-icon class="titles icon-margin">mdi-account-edit</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title
@@ -25,8 +25,11 @@
               v-text="user.username"
             ></v-list-item-title>
           </v-list-item-content>
+
           <v-btn icon>
-            <v-icon>mdi-dots-vertical</v-icon>
+            <v-icon class="titles" @click="deleteUser(user.id)"
+              >mdi-trash-can</v-icon
+            >
           </v-btn>
         </v-list-item>
         <v-list-item>
@@ -54,9 +57,16 @@ export default {
 
   methods: {
     getUsers() {
-      let sql = "Select username from User";
+      let sql = "Select id,username from User";
       sendAsync(sql).then((result) => {
         this.userList = result;
+      });
+    },
+
+    deleteUser(userId) {
+      let sql = `Delete From User where id = ${userId}`;
+      sendAsync(sql).then((result) => {
+        alert(result);
       });
     },
 
