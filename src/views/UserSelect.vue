@@ -98,11 +98,14 @@ export default {
     },
 
     createNewUser() {
-      alert(this.newUserName);
+      if (this.newUserName == "" || this.newUserName.length <= 3) {
+        return;
+      }
+
       let sql = `Insert into User (username,createdOn) VALUES ('${this.newUserName}',strftime('%s','now'))`;
       sendAsync(sql).then((result) => {
         this.addNewUser = false;
-        console.log(result);
+        alert(result);
       });
     },
 
