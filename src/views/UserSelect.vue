@@ -9,7 +9,7 @@
       <v-spacer></v-spacer>
 
       <v-btn small class="quit-button-color" @click="quitApplication()"
-        >Quit</v-btn
+        >Quit App</v-btn
       >
     </v-toolbar>
 
@@ -64,7 +64,9 @@
             <v-icon class="titles icon-margin">mdi-account-plus</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title class="titles" @click="addUser()"
+            <v-list-item-title
+              class="titles"
+              @click="showNewUserForm = !showNewUserForm"
               >Add New User</v-list-item-title
             >
           </v-list-item-content>
@@ -96,10 +98,6 @@ export default {
       sendAsync(sql).then((result) => {
         this.userList = result;
       });
-    },
-
-    addUser() {
-      this.showNewUserForm = true;
     },
 
     createNewUser() {
