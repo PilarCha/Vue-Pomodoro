@@ -24,6 +24,7 @@
               <v-list-item-title
                 class="titles"
                 v-text="user.username"
+                @click="directToTimer(user)"
               ></v-list-item-title>
             </v-list-item-content>
 
@@ -93,6 +94,10 @@ export default {
   },
 
   methods: {
+    directToTimer(user) {
+      console.log(user);
+      this.$router.push({ path: "/timer" });
+    },
     getUsers() {
       let sql = "Select id,username from User";
       sendAsync(sql).then((result) => {

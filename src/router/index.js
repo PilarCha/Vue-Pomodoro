@@ -1,16 +1,16 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import Timer from "../views/Timer.vue";
+import Timer from "../views/Timer.vue";
 import UserSelect from "../views/UserSelect.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
-  // {
-  //   path: "/",
-  //   name: "Timer",
-  //   component: Timer,
-  // },
+  {
+    path: "/timer",
+    name: "Timer",
+    component: Timer,
+  },
   {
     path: "/",
     name: "UserSelect",
