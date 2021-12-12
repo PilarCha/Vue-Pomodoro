@@ -96,6 +96,7 @@ export default {
   methods: {
     directToTimer(user) {
       console.log(user);
+      // TODO add user to state
       this.$router.push({ path: "/timer" });
     },
     getUsers() {
@@ -113,7 +114,8 @@ export default {
       let sql = `Insert into User (username,createdOn) VALUES ('${this.newUserName}',strftime('%s','now'))`;
       sendAsync(sql).then((result) => {
         this.showNewUserForm = false;
-        alert(result);
+        console.log(result);
+        // check for error codes or success of sql
       });
     },
 
@@ -125,6 +127,7 @@ export default {
       let sql = `Delete From User where id = ${userId}`;
       sendAsync(sql).then((result) => {
         alert(result);
+        // check for error code or success from sqlite
       });
     },
 
