@@ -78,6 +78,7 @@
 </template>
 <script>
 import sendAsync from "../query-control/renderer.js";
+import { mapGetters, mapActions } from "vuex";
 export default {
   data: () => ({
     userList: null,
@@ -92,8 +93,11 @@ export default {
   mounted() {
     this.getUsers();
   },
-
+  computed: {
+    ...mapGetters(["selectedUser"]),
+  },
   methods: {
+    ...mapActions(["setSelectedUser"]),
     directToTimer(user) {
       console.log(user);
       // TODO add user to state
