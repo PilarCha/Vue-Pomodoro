@@ -99,8 +99,7 @@ export default {
   methods: {
     ...mapActions(["setSelectedUser"]),
     directToTimer(user) {
-      console.log(user);
-      // TODO add user to state
+      this.setSelectedUser(user);
       this.$router.push({ path: "/timer" });
     },
     getUsers() {
