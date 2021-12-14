@@ -129,7 +129,7 @@ export default {
     deleteUser(userId) {
       let sql = `Delete From User where id = ${userId}`;
       sendAsync(sql).then((result) => {
-        alert(result);
+        console.log(result);
         // check for error code or success from sqlite
       });
     },
