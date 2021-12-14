@@ -78,7 +78,7 @@
 </template>
 <script>
 import sendAsync from "../query-control/renderer.js";
-import { mapGetters, mapActions } from "vuex";
+import { mapActions } from "vuex";
 export default {
   data: () => ({
     userList: null,
@@ -92,9 +92,6 @@ export default {
   }),
   mounted() {
     this.getUsers();
-  },
-  computed: {
-    ...mapGetters(["selectedUser"]),
   },
   methods: {
     ...mapActions(["setSelectedUser"]),
