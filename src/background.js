@@ -30,6 +30,9 @@ async function createWindow() {
   const positioner = new Positioner(win);
   positioner.move("bottomRight");
 
+  const displays = screen.getAllDisplays();
+  win.send("displays-available", displays);
+
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
     await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
@@ -69,11 +72,6 @@ app.on("ready", async () => {
     }
   }
   createWindow();
-});
-
-app.whenReady().then(() => {
-  const displays = screen.getAllDisplays();
-  window.send("displays-available", displays);
 });
 
 ipcMain.on("quit-application", () => {
