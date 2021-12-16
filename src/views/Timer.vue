@@ -1,5 +1,6 @@
 <template>
   <main>
+    <SnackBar :name="this.selectedUser.username" />
     <v-hover v-slot="{ hover }">
       <div data-app>
         <div class="container">
@@ -72,6 +73,7 @@
 const roundEndAudio = require("@/assets/audios/moshi.mp3");
 const completeCycleAudio = require("@/assets/audios/congratulations.mp3");
 import MainBar from "@/components/settingsBar/main-bar.vue";
+import SnackBar from "@/components/reusable/snackbar.vue";
 import { mapGetters, mapActions } from "vuex";
 import Vue from "vue";
 import VueConfetti from "vue-confetti";
@@ -80,6 +82,7 @@ Vue.use(VueConfetti);
 export default {
   components: {
     MainBar,
+    SnackBar,
   },
   data() {
     return {
@@ -116,6 +119,7 @@ export default {
   computed: {
     // calls store to set store variables to local variables. can be called with this.whatevsss
     ...mapGetters([
+      "selectedUser",
       "timeLimit",
       "focusTime",
       "breakTime",

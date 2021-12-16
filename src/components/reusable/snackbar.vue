@@ -1,7 +1,13 @@
 <template>
   <div class="text-center">
-    <v-snackbar v-model="snackbar" :timeout="timeout">
-      {{ text }}
+    <v-snackbar
+      v-model="snackbar"
+      :timeout="timeout"
+      shaped
+      bottom
+      max-width="50px"
+    >
+      {{ name }}
 
       <template v-slot:action="{ attrs }">
         <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
@@ -12,15 +18,14 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
 export default {
   data: () => ({
     snackbar: true,
-    text: this.selectedUser,
-    timeout: 2000,
+    text: "test",
+    timeout: 109000,
   }),
-  computed: {
-    ...mapGetters(["selectedUser"]),
+  props: {
+    name: String,
   },
 };
 </script>
