@@ -5,6 +5,7 @@
       :timeout="timeout"
       shaped
       top
+      right
       min-width="100px"
     >
       Hello, {{ name }}
