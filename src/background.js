@@ -1,6 +1,6 @@
 "use strict";
 require("./query-control/main.js");
-import { app, protocol, BrowserWindow, ipcMain } from "electron";
+import { app, protocol, BrowserWindow, ipcMain, screen } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
 const isDevelopment = process.env.NODE_ENV !== "production";
@@ -69,6 +69,11 @@ app.on("ready", async () => {
     }
   }
   createWindow();
+});
+
+app.whenReady().then(() => {
+  const displays = screen.getAllDisplays();
+  window.send("displays-available", displays);
 });
 
 ipcMain.on("quit-application", () => {
