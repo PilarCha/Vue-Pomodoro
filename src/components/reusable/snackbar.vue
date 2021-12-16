@@ -4,7 +4,7 @@
       v-model="snackbar"
       :timeout="timeout"
       shaped
-      top
+      bottom
       right
       min-width="100px"
     >
