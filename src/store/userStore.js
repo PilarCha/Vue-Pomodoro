@@ -4,6 +4,13 @@ const user = {
   },
   getters: {
     selectedUser: (state) => {
+      if (!state.selectedUser) {
+        const testUser = {
+          username: "testUser",
+          id: 999,
+        };
+        return testUser;
+      }
       return state.selectedUser;
     },
   },
