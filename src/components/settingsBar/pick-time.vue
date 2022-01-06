@@ -57,6 +57,8 @@
 </template>
 <script>
 import { mapActions, mapGetters } from "vuex";
+const electron = window.require("electron");
+const { ipcRenderer } = electron;
 export default {
   name: "PickTime",
   data() {
@@ -134,5 +136,8 @@ export default {
     },
   },
 };
+ipcRenderer.on("displays-available", function (store) {
+  alert(store);
+});
 </script>
 <style src="@/assets/styles/pickTime.css"></style>

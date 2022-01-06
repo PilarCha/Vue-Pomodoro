@@ -22,8 +22,6 @@
 
 <script>
 import { mapActions } from "vuex";
-const electron = window.require("electron");
-const { ipcRenderer } = electron;
 export default {
   name: "TimerSettings",
   data: () => ({
@@ -50,10 +48,6 @@ export default {
     },
   },
 };
-
-ipcRenderer.on("displays-available", function (store) {
-  alert(store);
-});
 </script>
 
 <style lang="css" scoped>
