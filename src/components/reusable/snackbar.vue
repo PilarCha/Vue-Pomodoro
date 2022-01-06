@@ -23,7 +23,7 @@ export default {
   data: () => ({
     snackbar: true,
     text: "test",
-    timeout: 1999900,
+    timeout: 5000,
   }),
   props: {
     name: String,
