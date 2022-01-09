@@ -202,6 +202,7 @@ export default {
       this.currentPathColor = "base-timer__path-remaining green";
       this.timePassed = 0;
       let phase = this.currentPhase;
+      this.insertTimeIntoDB(phase);
       if (phase == "Focus" && this.currentRound == this.totalRounds - 1) {
         this.setTimeLimit(this.longBreak);
         this.setCurrentRound();
@@ -250,8 +251,18 @@ export default {
       }, 1000);
     },
 
-    insertTimeIntoDB() {
-      let sql = "Insert into ";
+    insertTimeIntoDB(currentPhase) {
+      let sql;
+      if (currentPhase == "Focus") {
+        sql = `Insert into Time (userID,timeType,timeAmount,createdOn) VALUES(${
+          this.selectedUser.id
+        },Focus,${parseInt(this.focusTime) / 60},strftime('%s','now'))`;
+      } else {
+        sql = `Insert into Time (userID,timeType,timeAmount,createdOn) VALUES(${
+          this.selectedUser.id
+        },Break,${parseInt(this.focusTime) / 60},strftime('%s','now'))`;
+      }
+
       sendAsync(sql).then((result) => {
         console.log(result);
       });
