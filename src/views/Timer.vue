@@ -263,7 +263,7 @@ export default {
         sql = `Insert into Time (userID,timeType,timeAmount,createdOn) VALUES(${
           this.selectedUser.id
         },'Break',${Math.floor(
-          parseInt(this.focusTime) / 60
+          parseInt(this.breakTime) / 60
         )},strftime('%s','now'))`;
       }
       sendAsync(sql).then((result) => {
