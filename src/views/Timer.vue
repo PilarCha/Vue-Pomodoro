@@ -203,23 +203,7 @@ export default {
       this.timePassed = 0;
       let phase = this.currentPhase;
       this.insertTimeIntoDB(phase);
-      if (phase == "Focus" && this.currentRound == this.totalRounds - 1) {
-        this.setTimeLimit(this.longBreak);
-        this.setCurrentRound();
-        this.currentSound = completeCycleAudio;
-        this.setCurrentPhase("Long Break");
-        // TODO: Incorporate sending action to firebase api to store time limit
-      } else if (phase == "Focus") {
-        this.setTimeLimit(this.breakTime);
-        this.setCurrentRound();
-        this.currentSound = roundEndAudio;
-        this.setCurrentPhase("Break");
-      } else {
-        this.setTimeLimit(this.focusTime);
-        this.setCurrentPhase("Focus");
-        this.currentSound = roundEndAudio;
-        if (phase == "Long Break") this.setCurrentRound(0);
-      }
+      this.setUpTimerForNextRound(phase);
       // we have this here to immediately start the next phase
       this.startTimer();
     },
@@ -249,6 +233,25 @@ export default {
           this.restartTimer();
         }
       }, 1000);
+    },
+
+    setUpTimerForNextRound(phase) {
+      if (phase == "Focus" && this.currentRound == this.totalRounds - 1) {
+        this.setTimeLimit(this.longBreak);
+        this.setCurrentRound();
+        this.currentSound = completeCycleAudio;
+        this.setCurrentPhase("Long Break");
+      } else if (phase == "Focus") {
+        this.setTimeLimit(this.breakTime);
+        this.setCurrentRound();
+        this.currentSound = roundEndAudio;
+        this.setCurrentPhase("Break");
+      } else {
+        this.setTimeLimit(this.focusTime);
+        this.setCurrentPhase("Focus");
+        this.currentSound = roundEndAudio;
+        if (phase == "Long Break") this.setCurrentRound(0);
+      }
     },
 
     insertTimeIntoDB(currentPhase) {
