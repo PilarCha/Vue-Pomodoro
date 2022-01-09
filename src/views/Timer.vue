@@ -256,13 +256,16 @@ export default {
       if (currentPhase == "Focus") {
         sql = `Insert into Time (userID,timeType,timeAmount,createdOn) VALUES(${
           this.selectedUser.id
-        },Focus,${parseInt(this.focusTime) / 60},strftime('%s','now'))`;
+        },'Focus',${Math.floor(
+          parseInt(this.focusTime) / 60
+        )},strftime('%s','now'))`;
       } else {
         sql = `Insert into Time (userID,timeType,timeAmount,createdOn) VALUES(${
           this.selectedUser.id
-        },Break,${parseInt(this.focusTime) / 60},strftime('%s','now'))`;
+        },'Break',${Math.floor(
+          parseInt(this.focusTime) / 60
+        )},strftime('%s','now'))`;
       }
-
       sendAsync(sql).then((result) => {
         console.log(result);
       });
