@@ -74,7 +74,7 @@ const roundEndAudio = require("@/assets/audios/moshi.mp3");
 const completeCycleAudio = require("@/assets/audios/congratulations.mp3");
 import MainBar from "@/components/settingsBar/main-bar.vue";
 import SnackBar from "@/components/reusable/snackbar.vue";
-import sendAsync from "../query-control/renderer.js";
+// import sendAsync from "../query-control/renderer.js";
 import { mapGetters, mapActions } from "vuex";
 import Vue from "vue";
 import VueConfetti from "vue-confetti";
@@ -269,9 +269,10 @@ export default {
           parseInt(this.breakTime) / 60
         )},strftime('%s','now'))`;
       }
-      sendAsync(sql).then((result) => {
-        console.log(result);
-      });
+      // sendAsync(sql).then((result) => {
+      //   console.log(result);
+      // });
+      console.log(sql);
     },
 
     // setup methods below. No need to change these boyos
