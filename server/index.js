@@ -25,7 +25,7 @@ app.get("/getAllUsers", (req, res) => {
 // Get users daily time spent on app by day
 app.get("/userTime/:id", (req, res) => {
   db.serialize(() => {
-    db.each(
+    db.all(
       "SELECT timeType,sum(timeAmount) AS totalTime,strftime('%d-%m-%Y',createdOn,'unixepoch') AS formatTime FROM Time WHERE userID = ? GROUP BY timeType, formatTime",
       [req.params.id],
       (err, row) => {
@@ -33,10 +33,8 @@ app.get("/userTime/:id", (req, res) => {
           res.send("Error encountered fetching data for user focus time");
           console.error(err.message);
         }
-        res.send(
-          ` timeType: ${row.timeType}, totalTime: ${row.TotalTime}, formatTime: ${row.FormatTime}`
-        );
-        console.log("Successfully returned daily time spent on app focused");
+        res.send(row);
+        // console.log("Successfully returned daily time spent on app focused");
       }
     );
   });
