@@ -22,6 +22,31 @@ app.get("/getAllUsers", (req, res) => {
   });
 });
 
+// Get users daily time spent on app by day
+app.get("/userTime/:id", (req, res) => {
+  db.serialize(() => {
+    db.each(
+      `SELECT userID,timeType,sum(timeAmount) AS TotalTime,strftime('%d-%m-%Y',createdOn,'unixepoch') AS FormatTime FROM Time WHERE userID = ?
+GROUP BY timeType, FormatTime`,
+      [req.params.id],
+      (err, row) => {
+        if (err) {
+          res.send("Error encountered fetching data for user focus time");
+          console.error(err.message);
+        }
+        res.send(
+          ` Timetype: ${row.timeType}, TotalTime: ${row.TotalTime}, FormatTime: ${row.FormatTime}`
+        );
+        console.log("Successfully returned daily time spent on app focused");
+      }
+    );
+  });
+});
+// create new user
+
+// edit user
+
+// delete 1 user
 app.delete("/delete/:id", (req, res) => {
   db.serialize(() => {
     db.run("Delete from User WHERE id = ?", [req.params.id], (err) => {
