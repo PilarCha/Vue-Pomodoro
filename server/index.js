@@ -9,7 +9,7 @@ const db = new sqlite3.Database("../public/PomodoroTimer.db");
 // db.run('CREATE TABLE IF NOT EXISTS')
 app.get("/getAllUsers", (req, res) => {
   db.serialize(() => {
-    db.all("SELECT id,username FROM Users", (err, rows) => {
+    db.all("SELECT id,username FROM User", (err, rows) => {
       if (err) {
         res.send("Error encountered fetching the data");
         console.error(err.message);
