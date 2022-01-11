@@ -26,8 +26,7 @@ app.get("/getAllUsers", (req, res) => {
 app.get("/userTime/:id", (req, res) => {
   db.serialize(() => {
     db.each(
-      `SELECT userID,timeType,sum(timeAmount) AS TotalTime,strftime('%d-%m-%Y',createdOn,'unixepoch') AS FormatTime FROM Time WHERE userID = ?
-GROUP BY timeType, FormatTime`,
+      "SELECT timeType,sum(timeAmount) AS totalTime,strftime('%d-%m-%Y',createdOn,'unixepoch') AS formatTime FROM Time WHERE userID = ? GROUP BY timeType, formatTime",
       [req.params.id],
       (err, row) => {
         if (err) {
@@ -35,7 +34,7 @@ GROUP BY timeType, FormatTime`,
           console.error(err.message);
         }
         res.send(
-          ` Timetype: ${row.timeType}, TotalTime: ${row.TotalTime}, FormatTime: ${row.FormatTime}`
+          ` timeType: ${row.timeType}, totalTime: ${row.TotalTime}, formatTime: ${row.FormatTime}`
         );
         console.log("Successfully returned daily time spent on app focused");
       }
