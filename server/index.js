@@ -46,7 +46,7 @@ app.get("/userTime/:id", (req, res) => {
 app.post("/newUser/:name", (req, res) => {
   db.serialize(() => {
     db.run(
-      "Insert INTO User (username,createdOn) VALUES ('?', strftime('%s','now'))",
+      "Insert INTO User (username,createdOn) VALUES (?, strftime('%s','now'))",
       [req.params.name],
       (err) => {
         if (err) {
@@ -61,7 +61,22 @@ app.post("/newUser/:name", (req, res) => {
 });
 
 // edit user
-
+app.put("/editUser/:userid/:newname", (req, res) => {
+  db.serialize(() => {
+    db.run(
+      "UPDATE User SET username = ? WHERE id = ?",
+      [req.params.newname, req.params.userid],
+      (err) => {
+        if (err) {
+          res.send("Error encountered while updating username");
+          console.error(err.message);
+        }
+        res.send("User updated successfully");
+        console.log("User updated");
+      }
+    );
+  });
+});
 // delete 1 user
 app.delete("/delete/:id", (req, res) => {
   db.serialize(() => {
