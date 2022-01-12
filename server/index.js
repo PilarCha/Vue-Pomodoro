@@ -43,6 +43,22 @@ app.get("/userTime/:id", (req, res) => {
   });
 });
 // create new user
+app.post("/newUser/:name", (req, res) => {
+  db.serialize(() => {
+    db.run(
+      "Insert INTO User (username,createdOn) VALUES ('?', strftime('%s','now'))",
+      [req.params.name],
+      (err) => {
+        if (err) {
+          res.send("Error encountered when creating new user");
+          console.error(err.message);
+        }
+        res.send("User Created Successfully");
+        console.log("New User Created");
+      }
+    );
+  });
+});
 
 // edit user
 
