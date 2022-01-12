@@ -17,6 +17,7 @@
   "main": "background.js",
   "dependencies": {
     "@vue/test-utils": "^1.2.2",
+    "body-parser": "^1.19.1",
     "chai": "^4.3.4",
     "core-js": "^3.19.0",
     "electron-positioner": "^4.1.0",
