@@ -6,6 +6,9 @@ const app = express();
 const server = http.createServer(app);
 const db = new sqlite3.Database("../public/PomodoroTimer.db");
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // db.run('CREATE TABLE IF NOT EXISTS')
 // get all Users
 app.get("/getAllUsers", (req, res) => {
