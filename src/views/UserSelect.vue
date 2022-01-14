@@ -101,7 +101,7 @@ export default {
     },
     async getUsers() {
       const response = await axios.get("http://localhost:4000/getAllUsers/");
-      this.userList = response;
+      this.userList = response.data;
     },
 
     createNewUser() {
