@@ -104,29 +104,25 @@ export default {
       this.userList = response.data;
     },
 
-    createNewUser() {
+    async createNewUser() {
       if (this.newUserName == "" || this.newUserName.length <= 3) {
         return;
       }
 
-      // let sql = `Insert into User (username,createdOn) VALUES ('${this.newUserName}',strftime('%s','now'))`;
-      // sendAsync(sql).then((result) => {
-      //   this.showNewUserForm = false;
-      //   console.log(result);
-      //   // check for error codes or success of sql
-      // });
+      await axios.post(`http://localhost:4000/newUser/${this.newUserName}`);
     },
 
     editUser() {
       // editUser
     },
 
-    deleteUser() {
+    async deleteUser(userId) {
       // let sql = `Delete From User where id = ${userId}`;
       // sendAsync(sql).then((result) => {
       //   console.log(result);
       //   // check for error code or success from sqlite
       // });
+      await axios.delete(`http://localhost:4000/delete/${userId}`);
     },
 
     quitApplication() {
