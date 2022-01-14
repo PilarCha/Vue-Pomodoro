@@ -66,11 +66,11 @@ app.post("/newUser/:name", (req, res) => {
 });
 
 // insert into time db
-app.post("/insertTime/:userid/:time", (req, res) => {
+app.post("/insertTime/:userid/:type/:time", (req, res) => {
   db.serialize(() => {
     db.run(
-      "Insert into Time (userID,timeType,timeAmount,createdOn) VALUES(?,'Focus',?,strftime('%s','now'))",
-      [req.params.userid, req.params.time],
+      "Insert into Time (userID,timeType,timeAmount,createdOn) VALUES(?,?,?,strftime('%s','now'))",
+      [req.params.userid, req.params.type, req.params.time],
       (err) => {
         if (err) {
           res.send("Error encountered while inserting time into db");
