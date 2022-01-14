@@ -19,8 +19,6 @@ app.get("/getAllUsers", (req, res) => {
         console.error(err.message);
       }
       res.json(rows);
-      console.log(rows);
-      console.log("Reached GetAllUsers");
     });
   });
 });
