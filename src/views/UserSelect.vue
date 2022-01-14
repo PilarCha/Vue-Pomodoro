@@ -77,8 +77,8 @@
   </v-card>
 </template>
 <script>
-import sendAsync from "../query-control/renderer.js";
 import { mapActions } from "vuex";
+import axios from "axios";
 export default {
   data: () => ({
     userList: null,
@@ -99,11 +99,9 @@ export default {
       this.setSelectedUser(user);
       this.$router.push({ path: "/timer" });
     },
-    getUsers() {
-      let sql = "Select id,username from User";
-      sendAsync(sql).then((result) => {
-        this.userList = result;
-      });
+    async getUsers() {
+      const response = await axios.get("http://localhost:4000/getAllUsers/");
+      this.userList = response;
     },
 
     createNewUser() {
@@ -111,24 +109,24 @@ export default {
         return;
       }
 
-      let sql = `Insert into User (username,createdOn) VALUES ('${this.newUserName}',strftime('%s','now'))`;
-      sendAsync(sql).then((result) => {
-        this.showNewUserForm = false;
-        console.log(result);
-        // check for error codes or success of sql
-      });
+      // let sql = `Insert into User (username,createdOn) VALUES ('${this.newUserName}',strftime('%s','now'))`;
+      // sendAsync(sql).then((result) => {
+      //   this.showNewUserForm = false;
+      //   console.log(result);
+      //   // check for error codes or success of sql
+      // });
     },
 
     editUser() {
       // editUser
     },
 
-    deleteUser(userId) {
-      let sql = `Delete From User where id = ${userId}`;
-      sendAsync(sql).then((result) => {
-        console.log(result);
-        // check for error code or success from sqlite
-      });
+    deleteUser() {
+      // let sql = `Delete From User where id = ${userId}`;
+      // sendAsync(sql).then((result) => {
+      //   console.log(result);
+      //   // check for error code or success from sqlite
+      // });
     },
 
     quitApplication() {
