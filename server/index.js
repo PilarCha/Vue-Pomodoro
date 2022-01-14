@@ -65,6 +65,24 @@ app.post("/newUser/:name", (req, res) => {
   });
 });
 
+// insert into time db
+app.post("/insertTime/:userid/:time", (req, res) => {
+  db.serialize(() => {
+    db.run(
+      "Insert into Time (userID,timeType,timeAmount,createdOn) VALUES(?,'Focus',?,strftime('%s','now'))",
+      [req.params.userid, req.params.time],
+      (err) => {
+        if (err) {
+          res.send("Error encountered while inserting time into db");
+          console.error(err.message);
+        }
+        res.send("Inserted into DB correctly");
+        console.log("Inserted into db");
+      }
+    );
+  });
+});
+
 // edit user
 app.put("/editUser/:userid/:newname", (req, res) => {
   db.serialize(() => {
