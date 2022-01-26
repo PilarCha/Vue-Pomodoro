@@ -74,7 +74,7 @@ const roundEndAudio = require("@/assets/audios/moshi.mp3");
 const completeCycleAudio = require("@/assets/audios/congratulations.mp3");
 import MainBar from "@/components/settingsBar/main-bar.vue";
 import SnackBar from "@/components/reusable/snackbar.vue";
-import axios from "axios";
+// import axios from "axios";
 import { mapGetters, mapActions } from "vuex";
 import Vue from "vue";
 import VueConfetti from "vue-confetti";
@@ -196,7 +196,6 @@ export default {
     },
 
     restartTimer() {
-      event.preventDefault();
       clearInterval(this.timerInterval);
       this.remainingDashCircle = 34;
       this.timeLeft = null;
@@ -204,7 +203,7 @@ export default {
       this.currentPathColor = "base-timer__path-remaining green";
       this.timePassed = 0;
       let phase = this.currentPhase;
-      this.insertTimeIntoDB(phase);
+      // this.insertTimeIntoDB(phase);
       this.setUpTimerForNextRound(phase);
       // we have this here to immediately start the next phase
       this.startTimer();
@@ -256,12 +255,12 @@ export default {
       }
     },
 
-    async insertTimeIntoDB(currentPhase) {
-      let roundedTime = Math.floor(parseInt(this.focusTime) / 60);
-      await axios.post(
-        `http://localhost:4000/insertTime/${this.selectedUser.id}/${currentPhase}/${roundedTime}`
-      );
-    },
+    // async insertTimeIntoDB(currentPhase) {
+    //   let roundedTime = Math.floor(parseInt(this.focusTime) / 60);
+    //   await axios.post(
+    //     `http://localhost:4000/insertTime/${this.selectedUser.id}/${currentPhase}/${roundedTime}`
+    //   );
+    // },
 
     // setup methods below. No need to change these boyos
     formatTime(time) {

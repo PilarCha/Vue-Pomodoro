@@ -6,7 +6,7 @@ const timer = {
     nextRound: false,
     timeLimit: 1800,
     currentPhase: "Focus",
-    totalRounds: 3,
+    totalRounds: 4,
     currentRound: 0,
     focusTime: 1800,
     breakTime: 300,

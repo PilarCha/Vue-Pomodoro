@@ -117,11 +117,7 @@ export default {
     },
 
     async deleteUser(userId) {
-      // let sql = `Delete From User where id = ${userId}`;
-      // sendAsync(sql).then((result) => {
-      //   console.log(result);
-      //   // check for error code or success from sqlite
-      // });
+      event.preventDefault();
       await axios.delete(`http://localhost:4000/delete/${userId}`);
     },
 
