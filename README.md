@@ -11,11 +11,14 @@ I really love the concept of Pomodoro Timers. However, I couldn't find one to sh
 
 It isn't finished and am still working on it.
 
-## Getting started (#get-started)
+## Tech Used
 
-- npm i
-- npm audit fix
-- npm start
+- [Vue](https://github.com/vuejs)
+- [Electron](https://github.com/electron/)
+- [Sqlite](https://www.npmjs.com/package/sqlite)
+- [Vuetify](https://github.com/vuetifyjs/vuetify)
+- [Vue-Confetti](https://github.com/alexandermendes/vue-confetti)
+- [Vue-x](https://github.com/vuejs/vuex)
 
 ## Core team (#core-team)
 
