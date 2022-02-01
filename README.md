@@ -1,6 +1,6 @@
 ## Pomodoro Timer
 
-![Pomodoro Timer Demo] (public/gifs/mainintro.gif)
+![Pomodoro Timer Demo](public/gifs/mainintro.gif)
 
 - [Getting started] (#get-started)
 - [Core team] (#core-team)
