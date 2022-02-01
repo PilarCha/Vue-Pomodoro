@@ -1,9 +1,13 @@
 ## Pomodoro Timer
 
-![Pomodoro Timer Demo](public/gifs/mainintro.gif)
+## ![Pomodoro Timer Demo](public/gifs/mainintro.gif)
 
-- [Getting started] (#get-started)
-- [Core team] (#core-team)
+---
+
+- [Overview](#overview)
+- [Showcase](#showcase)
+- [Tech](#tech)
+- [Team](#core-team)
 
 ## Overview
 
@@ -11,7 +15,7 @@ I really love the concept of Pomodoro Timers for productivity. They really work 
 
 It isn't finished and am still working on it.
 
-## Tech Used
+## Tech
 
 - [Vue](https://github.com/vuejs)
 - [Electron](https://github.com/electron/)
