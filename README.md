@@ -7,7 +7,7 @@
 
 ## Overview
 
-I really love the concept of Pomodoro Timers. However, I couldn't find one to showcase data on how focus the user. So I created it!
+I really love the concept of Pomodoro Timers for productivity. They really work for me however, I couldn't find one showing history of productivity. So I created it!
 
 It isn't finished and am still working on it.
 
