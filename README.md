@@ -5,9 +5,11 @@
 - [Getting started] (#get-started)
 - [Core team] (#core-team)
 
-## How it Works
+## Overview
 
-Blah
+I really love the concept of Pomodoro Timers. However, I couldn't find one to showcase data on how focus the user. So I created it!
+
+It isn't finished and am still working on it.
 
 ## Getting started (#get-started)
 
