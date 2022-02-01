@@ -19,6 +19,10 @@ It isn't finished and am still working on it.
 
 ## ![timersetting](public/gifs/timersetting.gif)
 
+---
+
+## ![roundComplete](public/gifs/roundComplete.gif)
+
 ## Tech
 
 - [Vue](https://github.com/vuejs)
