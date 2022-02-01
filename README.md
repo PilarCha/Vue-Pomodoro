@@ -1,15 +1,37 @@
-## Table of Contents
-- [How it Works] (#how-it-works)
-- [Getting started] (#get-started)
-- [Core team] (#core-team)
+## Pomodoro Timer
 
-## How it Works
-Blah
+## ![Pomodoro Timer Demo](public/gifs/mainintro.gif)
 
-## Getting started (#get-started)
-- npm i
-- npm audit fix
-- npm start
+---
 
-## Core team (#core-team)
+- [Overview](#overview)
+- [Showcase](#showcase)
+- [Tech](#tech)
+- [Team](#core-team)
+
+## Overview
+
+I really love the concept of Pomodoro Timers for productivity. They really work for me however, I couldn't find one showing history of productivity. So I created it!
+
+It isn't finished and am still working on it.
+
+## Showcase
+
+## ![timersetting](public/gifs/timersetting.gif)
+
+---
+
+## ![roundComplete](public/gifs/roundComplete.gif)
+
+## Tech
+
+- [Vue](https://github.com/vuejs)
+- [Electron](https://github.com/electron/)
+- [Sqlite](https://www.npmjs.com/package/sqlite)
+- [Vuetify](https://github.com/vuetifyjs/vuetify)
+- [Vue-Confetti](https://github.com/alexandermendes/vue-confetti)
+- [Vue-x](https://github.com/vuejs/vuex)
+
+## Team
+
 -PilarCha
