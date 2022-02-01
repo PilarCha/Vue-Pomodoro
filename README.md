@@ -1,5 +1,5 @@
 <div align="center">
-## Pomodoro Timer
+ <h1>Pomodoro Timer</h1>
 </div>
 
 ## ![Pomodoro Timer Demo](public/gifs/mainintro.gif)
