@@ -15,6 +15,8 @@ I really love the concept of Pomodoro Timers for productivity. They really work 
 
 It isn't finished and am still working on it.
 
+## Showcase
+
 ## Tech
 
 - [Vue](https://github.com/vuejs)
@@ -24,6 +26,6 @@ It isn't finished and am still working on it.
 - [Vue-Confetti](https://github.com/alexandermendes/vue-confetti)
 - [Vue-x](https://github.com/vuejs/vuex)
 
-## Core team (#core-team)
+## Team
 
 -PilarCha
