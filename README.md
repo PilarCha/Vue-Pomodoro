@@ -17,6 +17,8 @@ It isn't finished and am still working on it.
 
 ## Showcase
 
+## ![timersetting](public/gifs/timersetting.gif)
+
 ## Tech
 
 - [Vue](https://github.com/vuejs)
