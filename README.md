@@ -1,8 +1,12 @@
+<div align="center">
 ## Pomodoro Timer
+</div>
 
 ## ![Pomodoro Timer Demo](public/gifs/mainintro.gif)
 
 ---
+
+## Table of Contents
 
 - [Overview](#overview)
 - [Showcase](#showcase)
