@@ -1,6 +1,6 @@
 <template>
-  <div data-app>
-    <v-card dark height="100%">
+  <div data-app height="100%">
+    <v-card dark>
       <template slot="progress" :loading="loading" class="mx-auto my-12">
         <v-progress-linear height="10" indeterminate></v-progress-linear>
       </template>

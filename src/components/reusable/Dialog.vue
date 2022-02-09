@@ -1,19 +1,13 @@
 <template>
   <v-row justify="center">
-    <v-dialog v-model="dialog" max-width="290">
+    <v-dialog dark v-model="dialog" max-width="290">
       <template v-slot:activator="{ on, attrs }">
         <v-btn color="primary" dark v-bind="attrs" v-on="on">
           Open Dialog
         </v-btn>
       </template>
       <v-card>
-        <v-card-title class="text-h5">
-          Use Google's location service?
-        </v-card-title>
-        <v-card-text
-          >Let Google help apps determine location. This means sending anonymous
-          location data to Google, even when no apps are running.</v-card-text
-        >
+        <v-card-title class="text-h5"> Exit Application? </v-card-title>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="green darken-1" text @click="dialog = false">
