@@ -2,9 +2,7 @@
   <v-row justify="center">
     <v-dialog dark v-model="dialog" max-width="290">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn color="primary" dark v-bind="attrs" v-on="on">
-          Open Dialog
-        </v-btn>
+        <v-btn dark v-bind="attrs" v-on="on"> Quit App </v-btn>
       </template>
       <v-card>
         <v-card-title class="text-h5"> Exit Application? </v-card-title>

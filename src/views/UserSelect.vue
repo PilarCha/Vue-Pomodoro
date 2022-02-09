@@ -4,14 +4,10 @@
       <template slot="progress" :loading="loading" class="mx-auto my-12">
         <v-progress-linear height="10" indeterminate></v-progress-linear>
       </template>
-      <Dialog />
       <v-toolbar style="background-color: var(--settings-pink)" dense>
         <v-toolbar-title>Select User</v-toolbar-title>
         <v-spacer></v-spacer>
-
-        <v-btn small class="quit-button-color" @click="quitApplication()"
-          >Quit App</v-btn
-        >
+        <Dialog />
       </v-toolbar>
 
       <v-list rounded class="overflow-y-auto">
