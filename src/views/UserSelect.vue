@@ -1,80 +1,84 @@
 <template>
-  <v-card dark height="100%">
-    <template slot="progress" :loading="loading" class="mx-auto my-12">
-      <v-progress-linear height="10" indeterminate></v-progress-linear>
-    </template>
-    <Dialog />
-    <v-toolbar style="background-color: var(--settings-pink)" dense>
-      <v-toolbar-title>Select User</v-toolbar-title>
-      <v-spacer></v-spacer>
+  <div data-app>
+    <v-card dark height="100%">
+      <template slot="progress" :loading="loading" class="mx-auto my-12">
+        <v-progress-linear height="10" indeterminate></v-progress-linear>
+      </template>
+      <Dialog />
+      <v-toolbar style="background-color: var(--settings-pink)" dense>
+        <v-toolbar-title>Select User</v-toolbar-title>
+        <v-spacer></v-spacer>
 
-      <v-btn small class="quit-button-color" @click="quitApplication()"
-        >Quit App</v-btn
-      >
-    </v-toolbar>
+        <v-btn small class="quit-button-color" @click="quitApplication()"
+          >Quit App</v-btn
+        >
+      </v-toolbar>
 
-    <v-list rounded class="overflow-y-auto">
-      <v-list-item-group>
-        <div v-if="!showNewUserForm">
-          <v-list-item v-for="(user, i) in userList" :key="i" rounded>
+      <v-list rounded class="overflow-y-auto">
+        <v-list-item-group>
+          <div v-if="!showNewUserForm">
+            <v-list-item v-for="(user, i) in userList" :key="i" rounded>
+              <v-list-item-icon>
+                <v-icon class="titles icon-margin">mdi-account-edit</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title
+                  class="titles"
+                  v-text="user.username"
+                  @click="directToTimer(user)"
+                ></v-list-item-title>
+              </v-list-item-content>
+
+              <v-btn icon>
+                <v-icon class="titles" @click="deleteUser(user.id)"
+                  >mdi-trash-can</v-icon
+                >
+              </v-btn>
+            </v-list-item>
+          </div>
+
+          <div v-if="showNewUserForm">
+            <v-list-item>
+              <v-list-item-content>
+                <v-text-field
+                  label="UserName"
+                  :rules="rules"
+                  hide-details="auto"
+                  v-model="newUserName"
+                ></v-text-field>
+              </v-list-item-content>
+
+              <v-btn icon>
+                <v-icon class="titles" @click="createNewUser()"
+                  >mdi-account-plus</v-icon
+                >
+              </v-btn>
+              <v-btn icon>
+                <v-icon
+                  class="titles"
+                  @click="showNewUserForm = !showNewUserForm"
+                  >mdi-close</v-icon
+                >
+              </v-btn>
+            </v-list-item>
+          </div>
+
+          <v-list-item v-if="!showNewUserForm">
             <v-list-item-icon>
-              <v-icon class="titles icon-margin">mdi-account-edit</v-icon>
+              <v-icon class="titles icon-margin">mdi-account-plus</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
               <v-list-item-title
                 class="titles"
-                v-text="user.username"
-                @click="directToTimer(user)"
-              ></v-list-item-title>
+                @click="showNewUserForm = !showNewUserForm"
+                >Add New User</v-list-item-title
+              >
             </v-list-item-content>
-
-            <v-btn icon>
-              <v-icon class="titles" @click="deleteUser(user.id)"
-                >mdi-trash-can</v-icon
-              >
-            </v-btn>
           </v-list-item>
-        </div>
-
-        <div v-if="showNewUserForm">
-          <v-list-item>
-            <v-list-item-content>
-              <v-text-field
-                label="UserName"
-                :rules="rules"
-                hide-details="auto"
-                v-model="newUserName"
-              ></v-text-field>
-            </v-list-item-content>
-
-            <v-btn icon>
-              <v-icon class="titles" @click="createNewUser()"
-                >mdi-account-plus</v-icon
-              >
-            </v-btn>
-            <v-btn icon>
-              <v-icon class="titles" @click="showNewUserForm = !showNewUserForm"
-                >mdi-close</v-icon
-              >
-            </v-btn>
-          </v-list-item>
-        </div>
-
-        <v-list-item v-if="!showNewUserForm">
-          <v-list-item-icon>
-            <v-icon class="titles icon-margin">mdi-account-plus</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title
-              class="titles"
-              @click="showNewUserForm = !showNewUserForm"
-              >Add New User</v-list-item-title
-            >
-          </v-list-item-content>
-        </v-list-item>
-      </v-list-item-group>
-    </v-list>
-  </v-card>
+        </v-list-item-group>
+      </v-list>
+    </v-card>
+  </div>
 </template>
 <script>
 import { mapActions } from "vuex";
