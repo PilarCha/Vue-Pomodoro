@@ -3,7 +3,7 @@
     <template slot="progress" :loading="loading" class="mx-auto my-12">
       <v-progress-linear height="10" indeterminate></v-progress-linear>
     </template>
-
+    <Dialog />
     <v-toolbar style="background-color: var(--settings-pink)" dense>
       <v-toolbar-title>Select User</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -78,8 +78,12 @@
 </template>
 <script>
 import { mapActions } from "vuex";
+import Dialog from "@/components/reusable/Dialog.vue";
 import axios from "axios";
 export default {
+  components: {
+    Dialog,
+  },
   data: () => ({
     userList: null,
     loading: true,
