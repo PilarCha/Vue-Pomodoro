@@ -1,8 +1,9 @@
 <template>
   <v-row justify="center">
+    <v-spacer></v-spacer>
     <v-dialog dark v-model="dialog" max-width="290">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn class="quit-button-color" dark v-bind="attrs" v-on="on">
+        <v-btn small class="quit-button-color" v-bind="attrs" v-on="on">
           Quit App
         </v-btn>
       </template>
@@ -11,10 +12,10 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="green darken-1" text @click="dialog = false">
-            Disagree
+            No
           </v-btn>
-          <v-btn color="green darken-1" text @click="dialog = false">
-            Agree
+          <v-btn color="green darken-1" text @click="quitApplication">
+            Yes
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -24,10 +25,17 @@
 <script>
 export default {
   name: "Dialog",
-  data() {
-    return {
-      dialog: false,
-    };
+  data: () => ({
+    dialog: false,
+  }),
+  methods: {
+    quitApplication() {
+      const electron = window.require("electron");
+      const { ipcRenderer } = electron;
+
+      ipcRenderer.send("quit-application");
+    },
   },
 };
 </script>
+<style src="@/assets/styles/dialog.css"></style>

@@ -6,7 +6,6 @@
       </template>
       <v-toolbar style="background-color: var(--settings-pink)" dense>
         <v-toolbar-title>Select User</v-toolbar-title>
-        <v-spacer></v-spacer>
         <Dialog />
       </v-toolbar>
 
@@ -123,13 +122,6 @@ export default {
     async deleteUser(userId) {
       event.preventDefault();
       await axios.delete(`http://localhost:4000/delete/${userId}`);
-    },
-
-    quitApplication() {
-      const electron = window.require("electron");
-      const { ipcRenderer } = electron;
-
-      ipcRenderer.send("quit-application");
     },
   },
 };
